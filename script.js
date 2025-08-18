@@ -1,10 +1,5 @@
-// Initialize Lucide icons
+// Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Lucide icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-
     // Initialize all functionality
     initStars();
     initSpellRotation();
@@ -68,8 +63,6 @@ function initSpellRotation() {
 function initMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileNav = document.getElementById('mobile-nav');
-    const menuIcon = mobileMenuBtn?.querySelector('[data-lucide="menu"]');
-    const closeIcon = mobileMenuBtn?.querySelector('[data-lucide="x"]');
 
     if (!mobileMenuBtn || !mobileNav) return;
 
@@ -83,8 +76,15 @@ function initMobileMenu() {
             mobileNav.style.opacity = '1';
             
             // Change icon to X
-            if (menuIcon) menuIcon.style.display = 'none';
-            if (closeIcon) closeIcon.style.display = 'block';
+            const menuIcon = mobileMenuBtn.querySelector('.icon-menu');
+            if (menuIcon) {
+                menuIcon.innerHTML = '';
+                menuIcon.style.position = 'relative';
+                menuIcon.innerHTML = `
+                    <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: currentColor; transform: translateY(-50%) rotate(45deg);"></div>
+                    <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: currentColor; transform: translateY(-50%) rotate(-45deg);"></div>
+                `;
+            }
         } else {
             // Close menu
             mobileNav.style.height = '0';
@@ -94,9 +94,17 @@ function initMobileMenu() {
                 mobileNav.classList.add('hidden');
             }, 300);
             
-            // Change icon to menu
-            if (menuIcon) menuIcon.style.display = 'block';
-            if (closeIcon) closeIcon.style.display = 'none';
+            // Change icon back to menu
+            const menuIcon = mobileMenuBtn.querySelector('.icon-menu');
+            if (menuIcon) {
+                menuIcon.innerHTML = '';
+                menuIcon.style.position = 'relative';
+                menuIcon.innerHTML = `
+                    <div style="position: absolute; top: 4px; left: 0; width: 100%; height: 2px; background: currentColor; border-radius: 1px;"></div>
+                    <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: currentColor; border-radius: 1px; transform: translateY(-50%);"></div>
+                    <div style="position: absolute; bottom: 4px; left: 0; width: 100%; height: 2px; background: currentColor; border-radius: 1px;"></div>
+                `;
+            }
         }
     });
 }
@@ -413,19 +421,6 @@ window.addEventListener('load', function() {
         });
     }, 500);
 });
-
-// Service Worker registration for PWA capabilities
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-                console.log('SW registered: ', registration);
-            })
-            .catch(function(registrationError) {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
-}
 
 // Add touch support for mobile devices
 let touchStartY = 0;

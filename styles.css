@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    font-family: 'Crimson Text', serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
@@ -51,6 +51,241 @@ body {
     100% {
         filter: drop-shadow(0 0 40px rgba(251, 191, 36, 0.7));
     }
+}
+
+/* Custom Icons */
+.icon-wand {
+    position: relative;
+    background: currentColor;
+    border-radius: 50%;
+}
+
+.icon-wand::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    background: currentColor;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px currentColor;
+}
+
+.icon-wand::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: 30%;
+    background: currentColor;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px currentColor;
+}
+
+.icon-menu {
+    position: relative;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+.icon-menu::before,
+.icon-menu::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+}
+
+.icon-menu::before {
+    top: 4px;
+}
+
+.icon-menu::after {
+    bottom: 4px;
+}
+
+.icon-arrow-right {
+    position: relative;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+.icon-arrow-right::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.icon-castle {
+    position: relative;
+    background: currentColor;
+    border-radius: 4px 4px 0 0;
+}
+
+.icon-castle::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 2px;
+    transform: translateX(-50%);
+}
+
+.icon-castle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: currentColor;
+    border-radius: 0 0 4px 4px;
+}
+
+.icon-users {
+    position: relative;
+    background: currentColor;
+    border-radius: 50%;
+}
+
+.icon-users::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    background: currentColor;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.icon-users::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 40%;
+    height: 40%;
+    background: currentColor;
+    border-radius: 50%;
+}
+
+.icon-zap {
+    position: relative;
+    background: currentColor;
+    clip-path: polygon(50% 0%, 0% 100%, 50% 70%, 100% 100%);
+}
+
+.icon-shield {
+    position: relative;
+    background: currentColor;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+}
+
+.icon-shield::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    background: currentColor;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.icon-book {
+    position: relative;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+.icon-book::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px 2px 0 0;
+}
+
+.icon-book::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 2px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+}
+
+.icon-heart {
+    position: relative;
+    background: currentColor;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(-45deg);
+}
+
+.icon-heart::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    background: currentColor;
+    border-radius: 50% 50% 0 0;
+    transform: translate(-50%, -50%);
+}
+
+.icon-trophy {
+    position: relative;
+    background: currentColor;
+    border-radius: 50% 50% 0 0;
+}
+
+.icon-trophy::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 40%;
+    height: 20%;
+    background: currentColor;
+    border-radius: 0 0 4px 4px;
+    transform: translateX(-50%);
+}
+
+.icon-trophy::after {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: currentColor;
+    border-radius: 2px;
 }
 
 /* Layout Utilities */
