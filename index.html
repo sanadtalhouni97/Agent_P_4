@@ -1,200 +1,241 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hogwarts School of Witchcraft and Wizardry - Digital Experience</title>
-    <meta name="description" content="Experience the magic of Harry Potter's world through an immersive digital journey. Explore Hogwarts, learn spells, discover houses, and live the wizarding life.">
-    <meta name="keywords" content="Harry Potter, Hogwarts, Magic, Wizarding World, Spells, Houses, Characters, Potions, Quidditch">
-    <meta name="author" content="Hogwarts Digital Experience">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Hogwarts School of Witchcraft and Wizardry">
-    <meta property="og:description" content="Enter the magical world of Harry Potter">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="/images/hogwarts-og.jpg">
-    
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hogwarts School of Witchcraft and Wizardry">
-    <meta name="twitter:description" content="Enter the magical world of Harry Potter">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    
-    <!-- CSS -->
+    <title>Hogwarts - Magical Digital Experience</title>
+    <meta name="description" content="Experience the magic of Harry Potter's world through an immersive digital journey">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="font-crimson antialiased">
-    <div class="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black">
-        <!-- Navigation -->
-        <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-yellow-500/30 shadow-2xl">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-20">
-                    <!-- Logo -->
-                    <div class="flex items-center space-x-3">
-                        <div class="animate-pulse">
-                            <div class="icon-wand text-yellow-400 h-10 w-10 drop-shadow-lg"></div>
-                        </div>
-                        <a href="/" class="text-2xl font-bold magical-title drop-shadow-lg">Hogwarts</a>
-                    </div>
-
-                    <!-- Desktop Navigation -->
-                    <div class="hidden lg:flex space-x-1" id="desktop-nav">
-                        <a href="/" class="nav-link active">Home</a>
-                        <a href="/houses.html" class="nav-link">Houses</a>
-                        <a href="/characters.html" class="nav-link">Characters</a>
-                        <a href="/spells.html" class="nav-link">Spells</a>
-                        <a href="/locations.html" class="nav-link">Locations</a>
-                        <a href="/creatures.html" class="nav-link">Creatures</a>
-                        <a href="/potions.html" class="nav-link">Potions</a>
-                        <a href="/quidditch.html" class="nav-link">Quidditch</a>
-                        <a href="/history.html" class="nav-link">History</a>
-                        <a href="/magical-items.html" class="nav-link">Magical Items</a>
-                    </div>
-
-                    <!-- Mobile menu button -->
-                    <div class="lg:hidden">
-                        <button id="mobile-menu-btn" class="text-gray-300 hover:text-yellow-400 transition-colors p-2 rounded-lg hover:bg-white/5">
-                            <div class="icon-menu h-6 w-6"></div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Mobile Navigation -->
-                <div id="mobile-nav" class="lg:hidden hidden">
-                    <div class="px-2 pt-2 pb-4 space-y-2 bg-black/95 backdrop-blur-xl border-t border-yellow-500/20">
-                        <a href="/" class="mobile-nav-link active">Home</a>
-                        <a href="/houses.html" class="mobile-nav-link">Houses</a>
-                        <a href="/characters.html" class="mobile-nav-link">Characters</a>
-                        <a href="/spells.html" class="mobile-nav-link">Spells</a>
-                        <a href="/locations.html" class="mobile-nav-link">Locations</a>
-                        <a href="/creatures.html" class="mobile-nav-link">Creatures</a>
-                        <a href="/potions.html" class="mobile-nav-link">Potions</a>
-                        <a href="/quidditch.html" class="mobile-nav-link">Quidditch</a>
-                        <a href="/history.html" class="mobile-nav-link">History</a>
-                        <a href="/magical-items.html" class="mobile-nav-link">Magical Items</a>
-                    </div>
-                </div>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">⚡</div>
+                <span>Hogwarts</span>
             </div>
-        </nav>
-
-        <!-- Hero Section -->
-        <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-            <!-- Animated background stars -->
-            <div class="absolute inset-0" id="stars-container"></div>
-            
-            <div class="relative z-10 text-center px-4 max-w-6xl mx-auto">
-                <div class="mb-12 animate-fade-in">
-                    <div class="mb-8">
-                        <div class="icon-wand text-yellow-400 h-24 w-24 mx-auto drop-shadow-2xl animate-pulse"></div>
-                    </div>
-                    <h1 class="text-7xl md:text-9xl font-bold magical-title mb-8 drop-shadow-2xl">Welcome to Hogwarts</h1>
-                    <p class="text-2xl md:text-3xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-                        Enter the magical world of Harry Potter and experience the wonder of witchcraft and wizardry
-                    </p>
-                </div>
-                
-                <div class="mb-16 animate-scale-in">
-                    <div class="bg-black/60 backdrop-blur-xl rounded-2xl p-8 border border-yellow-500/30 shadow-2xl">
-                        <p class="text-xl text-gray-300 mb-4">Current Spell:</p>
-                        <p class="text-4xl font-bold text-yellow-400" id="current-spell">Lumos Maxima</p>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up">
-                    <a href="/houses.html">
-                        <button class="btn-primary">
-                            Begin Your Journey
-                            <div class="icon-arrow-right h-6 w-6"></div>
-                        </button>
-                    </a>
-                    <a href="/characters.html">
-                        <button class="btn-secondary">Meet the Characters</button>
-                    </a>
-                </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="/houses.html" class="nav-link">Houses</a>
+                <a href="/characters.html" class="nav-link">Characters</a>
+                <a href="/spells.html" class="nav-link">Spells</a>
+                <a href="/locations.html" class="nav-link">Locations</a>
+                <a href="/potions.html" class="nav-link">Potions</a>
             </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="py-24 px-4 relative">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-20 animate-fade-in">
-                    <h2 class="text-5xl md:text-7xl font-bold magical-title mb-8">Discover the Magic</h2>
-                    <p class="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                        Explore every aspect of the wizarding world through our interactive experience
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="feature-card" data-href="/locations.html">
-                        <div class="feature-icon">
-                            <div class="icon-castle h-10 w-10 text-yellow-400"></div>
-                        </div>
-                        <h3>Explore Hogwarts</h3>
-                        <p>Discover the magical castle and its secrets</p>
-                    </div>
-                    
-                    <div class="feature-card" data-href="/characters.html">
-                        <div class="feature-icon">
-                            <div class="icon-users h-10 w-10 text-red-400"></div>
-                        </div>
-                        <h3>Meet Characters</h3>
-                        <p>Learn about your favorite wizards and witches</p>
-                    </div>
-                    
-                    <div class="feature-card" data-href="/spells.html">
-                        <div class="feature-icon">
-                            <div class="icon-zap h-10 w-10 text-blue-400"></div>
-                        </div>
-                        <h3>Master Spells</h3>
-                        <p>Study powerful magical incantations</p>
-                    </div>
-                    
-                    <div class="feature-card" data-href="/houses.html">
-                        <div class="feature-icon">
-                            <div class="icon-shield h-10 w-10 text-green-400"></div>
-                        </div>
-                        <h3>Join Houses</h3>
-                        <p>Find your place in the wizarding world</p>
-                    </div>
-                    
-                    <div class="feature-card" data-href="/potions.html">
-                        <div class="feature-icon">
-                            <div class="icon-book h-10 w-10 text-purple-400"></div>
-                        </div>
-                        <h3>Learn Potions</h3>
-                        <p>Brew magical concoctions and elixirs</p>
-                    </div>
-                    
-                    <div class="feature-card" data-href="/creatures.html">
-                        <div class="feature-icon">
-                            <div class="icon-heart h-10 w-10 text-pink-400"></div>
-                        </div>
-                        <h3>Magical Creatures</h3>
-                        <p>Encounter fantastic beasts and beings</p>
-                    </div>
-                </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </section>
+        </div>
+    </nav>
 
-        <!-- CTA Section -->
-        <section class="py-24 px-4 bg-gradient-to-t from-black/50 to-purple-900/30">
-            <div class="max-w-5xl mx-auto text-center">
-                <div class="animate-fade-in">
-                    <h2 class="text-5xl md:text-7xl font-bold magical-title mb-8">Ready to Cast Your First Spell?</h2>
-                    <p class="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
-                        Join thousands of wizards and witches in this magical journey
-                    </p>
-                    <button class="btn-primary" onclick="window.location.href='/spells.html'">
-                        Start Learning Magic
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="stars"></div>
+            <div class="twinkling"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">Welcome to</span>
+                    <span class="title-line magical">Hogwarts</span>
+                </h1>
+                <p class="hero-subtitle">Experience the magic of the wizarding world</p>
+                <div class="hero-cta">
+                    <button class="btn-primary" onclick="scrollToSection('features')">
+                        Begin Your Journey
+                        <div class="btn-icon">→</div>
+                    </button>
+                    <button class="btn-secondary" onclick="scrollToSection('houses')">
+                        Explore Houses
                     </button>
                 </div>
             </div>
-        </section>
-    </div>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="floating-icon" style="--delay: 0s">⚡</div>
+                    <div class="floating-icon" style="--delay: 1s">🏰</div>
+                    <div class="floating-icon" style="--delay: 2s">🦁</div>
+                    <div class="floating-icon" style="--delay: 3s">🦅</div>
+                    <div class="floating-icon" style="--delay: 4s">🐍</div>
+                    <div class="floating-icon" style="--delay: 5s">🦡</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
 
-    <!-- JavaScript -->
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Discover the Magic</h2>
+                <p class="section-subtitle">Explore every aspect of the wizarding world</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-href="/houses.html">
+                    <div class="feature-icon">🏰</div>
+                    <h3>Hogwarts Houses</h3>
+                    <p>Discover your destiny and find your place in the wizarding world</p>
+                    <div class="feature-hover">
+                        <span>Learn More</span>
+                    </div>
+                </div>
+                <div class="feature-card" data-href="/characters.html">
+                    <div class="feature-icon">👥</div>
+                    <h3>Magical Characters</h3>
+                    <p>Meet your favorite wizards, witches, and magical beings</p>
+                    <div class="feature-hover">
+                        <span>Learn More</span>
+                    </div>
+                </div>
+                <div class="feature-card" data-href="/spells.html">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Powerful Spells</h3>
+                    <p>Master the art of magic with powerful incantations</p>
+                    <div class="feature-hover">
+                        <span>Learn More</span>
+                    </div>
+                </div>
+                <div class="feature-card" data-href="/locations.html">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Magical Locations</h3>
+                    <p>Explore the most enchanting places in the wizarding world</p>
+                    <div class="feature-hover">
+                        <span>Learn More</span>
+                    </div>
+                </div>
+                <div class="feature-card" data-href="/potions.html">
+                    <div class="feature-icon">🧪</div>
+                    <h3>Brewing Potions</h3>
+                    <p>Learn to create magical concoctions and elixirs</p>
+                    <div class="feature-hover">
+                        <span>Learn More</span>
+                    </div>
+                </div>
+                <div class="feature-card" data-href="/creatures.html">
+                    <div class="feature-icon">🐉</div>
+                    <h3>Fantastic Beasts</h3>
+                    <p>Encounter magical creatures and learn their secrets</p>
+                    <div class="feature-hover">
+                        <span>Learn More</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Houses Preview Section -->
+    <section class="houses-preview" id="houses">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Four Houses</h2>
+                <p class="section-subtitle">Find your place in the wizarding world</p>
+            </div>
+            <div class="houses-grid">
+                <div class="house-card gryffindor" data-house="gryffindor">
+                    <div class="house-content">
+                        <div class="house-icon">🦁</div>
+                        <h3>Gryffindor</h3>
+                        <p>"Where dwell the brave at heart"</p>
+                        <div class="house-traits">
+                            <span>Bravery</span>
+                            <span>Courage</span>
+                            <span>Chivalry</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="house-card slytherin" data-house="slytherin">
+                    <div class="house-content">
+                        <div class="house-icon">🐍</div>
+                        <h3>Slytherin</h3>
+                        <p>"Those cunning folk use any means"</p>
+                        <div class="house-traits">
+                            <span>Ambition</span>
+                            <span>Cunning</span>
+                            <span>Leadership</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="house-card ravenclaw" data-house="ravenclaw">
+                    <div class="house-content">
+                        <div class="house-icon">🦅</div>
+                        <h3>Ravenclaw</h3>
+                        <p>"Wit beyond measure is man's greatest treasure"</p>
+                        <div class="house-traits">
+                            <span>Intelligence</span>
+                            <span>Creativity</span>
+                            <span>Learning</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="house-card hufflepuff" data-house="hufflepuff">
+                    <div class="house-content">
+                        <div class="house-icon">🦡</div>
+                        <h3>Hufflepuff</h3>
+                        <p>"Where they are just and loyal"</p>
+                        <div class="house-traits">
+                            <span>Hard Work</span>
+                            <span>Dedication</span>
+                            <span>Loyalty</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Cast Your First Spell?</h2>
+                <p>Join thousands of wizards and witches in this magical journey</p>
+                <button class="btn-primary large" onclick="window.location.href='/spells.html'">
+                    Start Learning Magic
+                    <div class="btn-icon">✨</div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">⚡</div>
+                        <span>Hogwarts</span>
+                    </div>
+                    <p>Experience the magic of the wizarding world</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <a href="/houses.html">Houses</a>
+                    <a href="/characters.html">Characters</a>
+                    <a href="/spells.html">Spells</a>
+                    <a href="/locations.html">Locations</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Learn</h4>
+                    <a href="/potions.html">Potions</a>
+                    <a href="/creatures.html">Creatures</a>
+                    <a href="/history.html">History</a>
+                    <a href="/magical-items.html">Magical Items</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hogwarts Digital Experience. Made with magic ✨</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html> 

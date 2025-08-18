@@ -1,31 +1,444 @@
-// Initialize all functionality when DOM is loaded
+// Modern JavaScript for Hogwarts Website
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
-    initStars();
-    initSpellRotation();
-    initMobileMenu();
-    initFeatureCards();
-    initScrollAnimations();
     initNavigation();
-    initLoadingAnimations();
+    initScrollAnimations();
+    initFeatureCards();
+    initHouseCards();
+    initParallaxEffects();
+    initParticleEffects();
 });
 
-// Create animated stars background
-function initStars() {
-    const starsContainer = document.getElementById('stars-container');
-    if (!starsContainer) return;
+// Navigation functionality
+function initNavigation() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navbar = document.querySelector('.navbar');
 
-    const numberOfStars = 50;
-    
-    for (let i = 0; i < numberOfStars; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = `${(i * 7) % 100}%`;
-        star.style.top = `${(i * 11) % 100}%`;
-        star.style.animationDelay = `${i * 0.1}s`;
-        star.style.animationDuration = `${3 + (i % 3)}s`;
-        starsContainer.appendChild(star);
+    // Mobile menu toggle
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = navMenu.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
     }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+        } else {
+            navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
+    });
+}
+
+// Scroll animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '-50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for animation
+    const animateElements = document.querySelectorAll('.feature-card, .house-card, .section-header');
+    animateElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.6s ease';
+        observer.observe(el);
+    });
+}
+
+// Feature cards functionality
+function initFeatureCards() {
+    const featureCards = document.querySelectorAll('.feature-card');
+    
+    featureCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const href = this.getAttribute('data-href');
+            if (href) {
+                // Add click animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 150);
+            }
+        });
+
+        // Hover effects
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+}
+
+// House cards functionality
+function initHouseCards() {
+    const houseCards = document.querySelectorAll('.house-card');
+    
+    houseCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const house = this.getAttribute('data-house');
+            showHouseModal(house);
+        });
+
+        // Hover effects
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.05)';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+}
+
+// House modal functionality
+function showHouseModal(house) {
+    const houseNames = {
+        gryffindor: 'Gryffindor',
+        slytherin: 'Slytherin',
+        ravenclaw: 'Ravenclaw',
+        hufflepuff: 'Hufflepuff'
+    };
+
+    const houseInfo = {
+        gryffindor: {
+            founder: 'Godric Gryffindor',
+            animal: 'Lion',
+            colors: 'Scarlet & Gold',
+            traits: ['Bravery', 'Courage', 'Chivalry', 'Nerve'],
+            description: 'Gryffindor values bravery, courage, and determination. Students are known for their daring and nerve.'
+        },
+        slytherin: {
+            founder: 'Salazar Slytherin',
+            animal: 'Serpent',
+            colors: 'Emerald & Silver',
+            traits: ['Ambition', 'Cunning', 'Leadership', 'Resourcefulness'],
+            description: 'Slytherin values ambition, cunning, and resourcefulness. Students are known for their determination and cleverness.'
+        },
+        ravenclaw: {
+            founder: 'Rowena Ravenclaw',
+            animal: 'Eagle',
+            colors: 'Blue & Bronze',
+            traits: ['Intelligence', 'Creativity', 'Learning', 'Wit'],
+            description: 'Ravenclaw values intelligence, creativity, and learning. Students are known for their wisdom and wit.'
+        },
+        hufflepuff: {
+            founder: 'Helga Hufflepuff',
+            animal: 'Badger',
+            colors: 'Yellow & Black',
+            traits: ['Hard Work', 'Dedication', 'Patience', 'Loyalty'],
+            description: 'Hufflepuff values hard work, dedication, and loyalty. Students are known for their patience and fairness.'
+        }
+    };
+
+    const info = houseInfo[house];
+    const name = houseNames[house];
+
+    const modal = document.createElement('div');
+    modal.className = 'house-modal';
+    modal.innerHTML = `
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close" onclick="this.closest('.house-modal').remove()">×</button>
+                <div class="modal-header">
+                    <h2>${name} House</h2>
+                    <div class="house-emblem">${getHouseEmblem(house)}</div>
+                </div>
+                <div class="modal-body">
+                    <p class="house-description">${info.description}</p>
+                    <div class="house-details">
+                        <div class="detail-item">
+                            <strong>Founder:</strong> ${info.founder}
+                        </div>
+                        <div class="detail-item">
+                            <strong>Animal:</strong> ${info.animal}
+                        </div>
+                        <div class="detail-item">
+                            <strong>Colors:</strong> ${info.colors}
+                        </div>
+                    </div>
+                    <div class="house-traits-modal">
+                        <h3>House Traits</h3>
+                        <div class="traits-grid">
+                            ${info.traits.map(trait => `<span class="trait-tag">${trait}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-primary" onclick="window.location.href='/houses.html'">
+                        Learn More About Houses
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Add modal styles
+    const modalStyles = document.createElement('style');
+    modalStyles.textContent = `
+        .house-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: #ffd700;
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-header h2 {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .house-emblem {
+            font-size: 3rem;
+        }
+        
+        .house-description {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .house-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-item {
+            margin-bottom: 0.5rem;
+            color: #f8fafc;
+        }
+        
+        .house-traits-modal h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+        
+        .traits-grid {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .trait-tag {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+        
+        .modal-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+    `;
+    document.head.appendChild(modalStyles);
+
+    // Close modal when clicking overlay
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+}
+
+// Get house emblem
+function getHouseEmblem(house) {
+    const emblems = {
+        gryffindor: '🦁',
+        slytherin: '🐍',
+        ravenclaw: '🦅',
+        hufflepuff: '🦡'
+    };
+    return emblems[house] || '🏰';
+}
+
+// Parallax effects
+function initParallaxEffects() {
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.floating-icon');
+        
+        parallaxElements.forEach((element, index) => {
+            const speed = 0.5 + (index * 0.1);
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+}
+
+// Particle effects for buttons
+function initParticleEffects() {
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            createParticles(e.clientX, e.clientY);
+        });
+    });
+}
+
+// Create particle effect
+function createParticles(x, y) {
+    const particleCount = 8;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+            position: fixed;
+            left: ${x}px;
+            top: ${y}px;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            animation: particleAnimation 0.6s ease-out forwards;
+        `;
+        
+        document.body.appendChild(particle);
+        
+        // Remove particle after animation
+        setTimeout(() => {
+            particle.remove();
+        }, 600);
+    }
+
+    // Add particle animation styles
+    if (!document.querySelector('#particle-styles')) {
+        const particleStyles = document.createElement('style');
+        particleStyles.id = 'particle-styles';
+        particleStyles.textContent = `
+            @keyframes particleAnimation {
+                0% {
+                    opacity: 1;
+                    transform: scale(1) translate(0, 0);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0) translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px);
+                }
+            }
+        `;
+        document.head.appendChild(particleStyles);
+    }
+}
+
+// Smooth scroll to section
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Typing effect for spell names
+function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    element.textContent = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
 }
 
 // Rotate through spells
@@ -55,277 +468,9 @@ function initSpellRotation() {
         }, 300);
     }
 
-    // Rotate spells every 3 seconds
-    setInterval(rotateSpell, 3000);
+    // Rotate spells every 4 seconds
+    setInterval(rotateSpell, 4000);
 }
-
-// Mobile menu functionality
-function initMobileMenu() {
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileNav = document.getElementById('mobile-nav');
-
-    if (!mobileMenuBtn || !mobileNav) return;
-
-    mobileMenuBtn.addEventListener('click', function() {
-        const isOpen = mobileNav.classList.contains('hidden');
-        
-        if (isOpen) {
-            // Open menu
-            mobileNav.classList.remove('hidden');
-            mobileNav.style.height = 'auto';
-            mobileNav.style.opacity = '1';
-            
-            // Change icon to X
-            const menuIcon = mobileMenuBtn.querySelector('.icon-menu');
-            if (menuIcon) {
-                menuIcon.innerHTML = '';
-                menuIcon.style.position = 'relative';
-                menuIcon.innerHTML = `
-                    <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: currentColor; transform: translateY(-50%) rotate(45deg);"></div>
-                    <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: currentColor; transform: translateY(-50%) rotate(-45deg);"></div>
-                `;
-            }
-        } else {
-            // Close menu
-            mobileNav.style.height = '0';
-            mobileNav.style.opacity = '0';
-            
-            setTimeout(() => {
-                mobileNav.classList.add('hidden');
-            }, 300);
-            
-            // Change icon back to menu
-            const menuIcon = mobileMenuBtn.querySelector('.icon-menu');
-            if (menuIcon) {
-                menuIcon.innerHTML = '';
-                menuIcon.style.position = 'relative';
-                menuIcon.innerHTML = `
-                    <div style="position: absolute; top: 4px; left: 0; width: 100%; height: 2px; background: currentColor; border-radius: 1px;"></div>
-                    <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: currentColor; border-radius: 1px; transform: translateY(-50%);"></div>
-                    <div style="position: absolute; bottom: 4px; left: 0; width: 100%; height: 2px; background: currentColor; border-radius: 1px;"></div>
-                `;
-            }
-        }
-    });
-}
-
-// Feature cards click functionality
-function initFeatureCards() {
-    const featureCards = document.querySelectorAll('.feature-card');
-    
-    featureCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const href = this.getAttribute('data-href');
-            if (href) {
-                window.location.href = href;
-            }
-        });
-    });
-}
-
-// Scroll animations
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '-50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('loaded');
-            }
-        });
-    }, observerOptions);
-
-    // Observe elements with loading class
-    document.querySelectorAll('.loading').forEach(el => {
-        observer.observe(el);
-    });
-}
-
-// Navigation active state
-function initNavigation() {
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
-    
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPath || (currentPath === '/' && href === '/')) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-}
-
-// Loading animations
-function initLoadingAnimations() {
-    // Add loading class to elements that should animate in
-    const elementsToAnimate = document.querySelectorAll('.animate-fade-in, .animate-scale-in, .animate-slide-up');
-    
-    elementsToAnimate.forEach((el, index) => {
-        el.classList.add('loading');
-        el.style.animationDelay = `${index * 0.1}s`;
-        
-        // Trigger animation after a short delay
-        setTimeout(() => {
-            el.classList.add('loaded');
-        }, 100 + (index * 50));
-    });
-}
-
-// Smooth scrolling for anchor links
-document.addEventListener('click', function(e) {
-    if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
-        e.preventDefault();
-        const targetId = e.target.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    }
-});
-
-// Parallax effect for background elements
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.parallax');
-    
-    parallaxElements.forEach(element => {
-        const speed = element.getAttribute('data-speed') || 0.5;
-        const yPos = -(scrolled * speed);
-        element.style.transform = `translateY(${yPos}px)`;
-    });
-});
-
-// Typing effect for spell names
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.textContent = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
-}
-
-// Magical particle effects
-function createParticles(x, y) {
-    const particleCount = 10;
-    
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.cssText = `
-            position: absolute;
-            left: ${x}px;
-            top: ${y}px;
-            width: 4px;
-            height: 4px;
-            background: #fbbf24;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1000;
-        `;
-        
-        document.body.appendChild(particle);
-        
-        const angle = (i / particleCount) * Math.PI * 2;
-        const velocity = 2 + Math.random() * 2;
-        const vx = Math.cos(angle) * velocity;
-        const vy = Math.sin(angle) * velocity;
-        
-        let opacity = 1;
-        let scale = 1;
-        
-        function animateParticle() {
-            if (opacity <= 0) {
-                particle.remove();
-                return;
-            }
-            
-            opacity -= 0.02;
-            scale -= 0.01;
-            
-            particle.style.opacity = opacity;
-            particle.style.transform = `scale(${scale})`;
-            particle.style.left = parseFloat(particle.style.left) + vx + 'px';
-            particle.style.top = parseFloat(particle.style.top) + vy + 'px';
-            
-            requestAnimationFrame(animateParticle);
-        }
-        
-        animateParticle();
-    }
-}
-
-// Add click effects to buttons
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('btn-primary') || e.target.classList.contains('btn-secondary')) {
-        createParticles(e.clientX, e.clientY);
-    }
-});
-
-// Hover effects for feature cards
-document.addEventListener('DOMContentLoaded', function() {
-    const featureCards = document.querySelectorAll('.feature-card');
-    
-    featureCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-});
-
-// Dynamic background color change based on scroll
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollProgress = scrolled / maxScroll;
-    
-    // Change background gradient based on scroll position
-    const hue = 240 + (scrollProgress * 60); // From blue to purple
-    document.body.style.background = `linear-gradient(135deg, 
-        hsl(${hue}, 70%, 10%) 0%, 
-        hsl(${hue + 20}, 70%, 15%) 25%, 
-        hsl(${hue + 40}, 70%, 20%) 50%, 
-        hsl(${hue + 60}, 70%, 25%) 75%, 
-        hsl(${hue + 80}, 70%, 30%) 100%)`;
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', function(e) {
-    // Escape key closes mobile menu
-    if (e.key === 'Escape') {
-        const mobileNav = document.getElementById('mobile-nav');
-        if (mobileNav && !mobileNav.classList.contains('hidden')) {
-            document.getElementById('mobile-menu-btn').click();
-        }
-    }
-    
-    // Arrow keys for spell navigation
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-        const spellElement = document.getElementById('current-spell');
-        if (spellElement) {
-            // Trigger spell rotation
-            spellElement.click();
-        }
-    }
-});
 
 // Performance optimization: Throttle scroll events
 function throttle(func, limit) {
@@ -343,115 +488,77 @@ function throttle(func, limit) {
 
 // Apply throttling to scroll events
 window.addEventListener('scroll', throttle(function() {
-    // Scroll-based animations
-    const scrolled = window.pageYOffset;
-    const elements = document.querySelectorAll('.scroll-animate');
-    
-    elements.forEach(element => {
-        const elementTop = element.offsetTop;
-        const elementHeight = element.offsetHeight;
-        const windowHeight = window.innerHeight;
-        
-        if (scrolled > elementTop - windowHeight + elementHeight * 0.5) {
-            element.classList.add('animate-in');
-        }
-    });
-}, 16)); // ~60fps
+    // Additional scroll-based effects can be added here
+}, 16));
 
-// Add CSS for new animations
-const style = document.createElement('style');
-style.textContent = `
-    .particle {
-        transition: all 0.3s ease-out;
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    // Escape key closes modals
+    if (e.key === 'Escape') {
+        const modals = document.querySelectorAll('.house-modal');
+        modals.forEach(modal => modal.remove());
     }
     
-    .scroll-animate {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease-out;
-    }
-    
-    .scroll-animate.animate-in {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    .feature-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .nav-link, .mobile-nav-link {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .btn-primary, .btn-secondary {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    #current-spell {
-        transition: all 0.3s ease-in-out;
-    }
-    
-    .star {
-        animation: twinkle 3s infinite;
-    }
-    
-    @keyframes twinkle {
-        0%, 100% {
-            opacity: 0.3;
-            transform: scale(0.5);
-        }
-        50% {
-            opacity: 1;
-            transform: scale(1);
+    // Arrow keys for navigation
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const currentSection = getCurrentSection();
+        const nextSection = getNextSection(currentSection);
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
         }
     }
-`;
-document.head.appendChild(style);
+    
+    if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const currentSection = getCurrentSection();
+        const prevSection = getPrevSection(currentSection);
+        if (prevSection) {
+            prevSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
 
-// Initialize everything when the page loads
+// Helper functions for keyboard navigation
+function getCurrentSection() {
+    const sections = document.querySelectorAll('section');
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    
+    for (let section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            return section;
+        }
+    }
+    return sections[0];
+}
+
+function getNextSection(currentSection) {
+    const sections = Array.from(document.querySelectorAll('section'));
+    const currentIndex = sections.indexOf(currentSection);
+    return sections[currentIndex + 1] || null;
+}
+
+function getPrevSection(currentSection) {
+    const sections = Array.from(document.querySelectorAll('section'));
+    const currentIndex = sections.indexOf(currentSection);
+    return sections[currentIndex - 1] || null;
+}
+
+// Initialize spell rotation if element exists
+if (document.getElementById('current-spell')) {
+    initSpellRotation();
+}
+
+// Add loading animation
 window.addEventListener('load', function() {
-    // Add loaded class to body for final animations
     document.body.classList.add('loaded');
     
-    // Trigger any remaining animations
+    // Trigger entrance animations
     setTimeout(() => {
-        document.querySelectorAll('.loading').forEach(el => {
-            el.classList.add('loaded');
+        const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-cta');
+        heroElements.forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.2}s`;
         });
-    }, 500);
-});
-
-// Add touch support for mobile devices
-let touchStartY = 0;
-let touchEndY = 0;
-
-document.addEventListener('touchstart', function(e) {
-    touchStartY = e.changedTouches[0].screenY;
-});
-
-document.addEventListener('touchend', function(e) {
-    touchEndY = e.changedTouches[0].screenY;
-    handleSwipe();
-});
-
-function handleSwipe() {
-    const swipeThreshold = 50;
-    const diff = touchStartY - touchEndY;
-    
-    if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-            // Swipe up - could trigger spell rotation
-            const spellElement = document.getElementById('current-spell');
-            if (spellElement) {
-                spellElement.click();
-            }
-        } else {
-            // Swipe down - could close mobile menu
-            const mobileNav = document.getElementById('mobile-nav');
-            if (mobileNav && !mobileNav.classList.contains('hidden')) {
-                document.getElementById('mobile-menu-btn').click();
-            }
-        }
-    }
-} 
+    }, 100);
+}); 
