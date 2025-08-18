@@ -1,60 +1,35 @@
 {
-  "name": "harry-potter-magic",
+  "name": "harry-potter-magic-static",
   "version": "1.0.0",
-  "description": "A modern, interactive Harry Potter website built with Next.js, React, and Tailwind CSS",
+  "description": "A beautiful Harry Potter website built with pure HTML, CSS, and JavaScript",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "export": "next build && next export",
-    "postbuild": "echo 'Static export completed successfully'",
-    "start": "next start",
-    "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "dev": "python -m http.server 8000",
+    "start": "python -m http.server 8000",
+    "build": "echo 'Static site - no build required'",
+    "serve": "python -m http.server 8000"
   },
   "keywords": [
     "harry-potter",
     "hogwarts",
-    "nextjs",
-    "react",
-    "typescript",
-    "tailwindcss",
+    "html",
+    "css",
+    "javascript",
     "magic",
-    "wizarding-world"
+    "wizarding-world",
+    "static-site"
   ],
   "author": "Hogwarts Digital Experience",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/harry-potter-magic.git"
+    "url": "https://github.com/sanadtalhouni97/Agent_P_4"
   },
   "homepage": "https://your-deployment-url.com",
   "bugs": {
-    "url": "https://github.com/yourusername/harry-potter-magic/issues"
-  },
-  "dependencies": {
-    "framer-motion": "^12.23.12",
-    "gsap": "^3.13.0",
-    "lucide-react": "^0.539.0",
-    "next": "15.4.6",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "react-intersection-observer": "^9.16.0"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^9",
-    "eslint-config-next": "15.4.6",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5"
+    "url": "https://github.com/sanadtalhouni97/Agent_P_4/issues"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=8.0.0"
+    "node": ">=14.0.0"
   }
 }

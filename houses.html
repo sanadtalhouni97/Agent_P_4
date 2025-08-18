@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Houses - Harry Potter Magic</title>
+    <meta name="description" content="Discover the four houses of Hogwarts: Gryffindor, Slytherin, Ravenclaw, and Hufflepuff. Learn about their traits, founders, and famous members.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="font-crimson antialiased">
+    <div class="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black">
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-yellow-500/30 shadow-2xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-3">
+                        <div class="animate-pulse">
+                            <i data-lucide="wand-sparkles" class="text-yellow-400 h-10 w-10 drop-shadow-lg"></i>
+                        </div>
+                        <a href="/" class="text-2xl font-bold magical-title drop-shadow-lg">Hogwarts</a>
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden lg:flex space-x-1">
+                        <a href="/" class="nav-link">Home</a>
+                        <a href="/houses.html" class="nav-link active">Houses</a>
+                        <a href="/characters.html" class="nav-link">Characters</a>
+                        <a href="/spells.html" class="nav-link">Spells</a>
+                        <a href="/locations.html" class="nav-link">Locations</a>
+                        <a href="/creatures.html" class="nav-link">Creatures</a>
+                        <a href="/potions.html" class="nav-link">Potions</a>
+                        <a href="/quidditch.html" class="nav-link">Quidditch</a>
+                        <a href="/history.html" class="nav-link">History</a>
+                        <a href="/magical-items.html" class="nav-link">Magical Items</a>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="lg:hidden">
+                        <button id="mobile-menu-btn" class="text-gray-300 hover:text-yellow-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                            <i data-lucide="menu" class="h-6 w-6"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Navigation -->
+                <div id="mobile-nav" class="lg:hidden hidden">
+                    <div class="px-2 pt-2 pb-4 space-y-2 bg-black/95 backdrop-blur-xl border-t border-yellow-500/20">
+                        <a href="/" class="mobile-nav-link">Home</a>
+                        <a href="/houses.html" class="mobile-nav-link active">Houses</a>
+                        <a href="/characters.html" class="mobile-nav-link">Characters</a>
+                        <a href="/spells.html" class="mobile-nav-link">Spells</a>
+                        <a href="/locations.html" class="mobile-nav-link">Locations</a>
+                        <a href="/creatures.html" class="mobile-nav-link">Creatures</a>
+                        <a href="/potions.html" class="mobile-nav-link">Potions</a>
+                        <a href="/quidditch.html" class="mobile-nav-link">Quidditch</a>
+                        <a href="/history.html" class="mobile-nav-link">History</a>
+                        <a href="/magical-items.html" class="mobile-nav-link">Magical Items</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="relative pt-20 pb-16 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 animate-fade-in">
+                    <h1 class="text-5xl md:text-7xl font-bold magical-title mb-6">The Four Houses</h1>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Discover your destiny and find your place in the wizarding world
+                    </p>
+                </div>
+
+                <!-- Houses Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Gryffindor -->
+                    <div class="house-card gryffindor" data-house="gryffindor">
+                        <div class="house-header">
+                            <div class="house-icon">
+                                <i data-lucide="shield" class="h-16 w-16 text-red-500"></i>
+                            </div>
+                            <h2 class="house-title">Gryffindor</h2>
+                            <p class="house-motto">&ldquo;Where dwell the brave at heart&rdquo;</p>
+                        </div>
+                        <div class="house-content">
+                            <div class="house-traits">
+                                <h3>Traits</h3>
+                                <ul>
+                                    <li>Bravery</li>
+                                    <li>Courage</li>
+                                    <li>Chivalry</li>
+                                    <li>Nerve</li>
+                                </ul>
+                            </div>
+                            <div class="house-info">
+                                <p><strong>Founder:</strong> Godric Gryffindor</p>
+                                <p><strong>Animal:</strong> Lion</p>
+                                <p><strong>Colors:</strong> Scarlet & Gold</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slytherin -->
+                    <div class="house-card slytherin" data-house="slytherin">
+                        <div class="house-header">
+                            <div class="house-icon">
+                                <i data-lucide="crown" class="h-16 w-16 text-green-500"></i>
+                            </div>
+                            <h2 class="house-title">Slytherin</h2>
+                            <p class="house-motto">&ldquo;Those cunning folk use any means&rdquo;</p>
+                        </div>
+                        <div class="house-content">
+                            <div class="house-traits">
+                                <h3>Traits</h3>
+                                <ul>
+                                    <li>Ambition</li>
+                                    <li>Cunning</li>
+                                    <li>Leadership</li>
+                                    <li>Resourcefulness</li>
+                                </ul>
+                            </div>
+                            <div class="house-info">
+                                <p><strong>Founder:</strong> Salazar Slytherin</p>
+                                <p><strong>Animal:</strong> Serpent</p>
+                                <p><strong>Colors:</strong> Emerald & Silver</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ravenclaw -->
+                    <div class="house-card ravenclaw" data-house="ravenclaw">
+                        <div class="house-header">
+                            <div class="house-icon">
+                                <i data-lucide="book-open" class="h-16 w-16 text-blue-500"></i>
+                            </div>
+                            <h2 class="house-title">Ravenclaw</h2>
+                            <p class="house-motto">&ldquo;Wit beyond measure is man's greatest treasure&rdquo;</p>
+                        </div>
+                        <div class="house-content">
+                            <div class="house-traits">
+                                <h3>Traits</h3>
+                                <ul>
+                                    <li>Intelligence</li>
+                                    <li>Creativity</li>
+                                    <li>Learning</li>
+                                    <li>Wit</li>
+                                </ul>
+                            </div>
+                            <div class="house-info">
+                                <p><strong>Founder:</strong> Rowena Ravenclaw</p>
+                                <p><strong>Animal:</strong> Eagle</p>
+                                <p><strong>Colors:</strong> Blue & Bronze</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hufflepuff -->
+                    <div class="house-card hufflepuff" data-house="hufflepuff">
+                        <div class="house-header">
+                            <div class="house-icon">
+                                <i data-lucide="heart" class="h-16 w-16 text-yellow-500"></i>
+                            </div>
+                            <h2 class="house-title">Hufflepuff</h2>
+                            <p class="house-motto">&ldquo;Where they are just and loyal&rdquo;</p>
+                        </div>
+                        <div class="house-content">
+                            <div class="house-traits">
+                                <h3>Traits</h3>
+                                <ul>
+                                    <li>Hard Work</li>
+                                    <li>Dedication</li>
+                                    <li>Patience</li>
+                                    <li>Loyalty</li>
+                                </ul>
+                            </div>
+                            <div class="house-info">
+                                <p><strong>Founder:</strong> Helga Hufflepuff</p>
+                                <p><strong>Animal:</strong> Badger</p>
+                                <p><strong>Colors:</strong> Yellow & Black</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sorting Hat Section -->
+        <section class="py-16 px-4 bg-gradient-to-b from-black/50 to-purple-900/30">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="bg-black/40 backdrop-blur-md rounded-lg p-8 border border-yellow-500/30">
+                    <i data-lucide="trophy" class="h-16 w-16 text-yellow-400 mx-auto mb-6"></i>
+                    <h2 class="text-3xl font-bold magical-title mb-4">The Sorting Hat</h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        &ldquo;You might belong in Gryffindor, where dwell the brave at heart, their daring, nerve, and chivalry set Gryffindors apart...&rdquo;
+                    </p>
+                    <button class="btn-primary" onclick="startSorting()">
+                        Take the Sorting Quiz
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // House-specific functionality
+        function startSorting() {
+            const houses = ['gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff'];
+            const randomHouse = houses[Math.floor(Math.random() * houses.length)];
+            
+            // Create sorting animation
+            const sortingContainer = document.createElement('div');
+            sortingContainer.className = 'sorting-overlay';
+            sortingContainer.innerHTML = `
+                <div class="sorting-content">
+                    <h2>Sorting...</h2>
+                    <div class="sorting-animation">
+                        <div class="hat"></div>
+                    </div>
+                    <p>Thinking...</p>
+                </div>
+            `;
+            
+            document.body.appendChild(sortingContainer);
+            
+            setTimeout(() => {
+                sortingContainer.innerHTML = `
+                    <div class="sorting-content">
+                        <h2>Congratulations!</h2>
+                        <p>You belong to <strong>${randomHouse.charAt(0).toUpperCase() + randomHouse.slice(1)}</strong>!</p>
+                        <button class="btn-primary" onclick="this.parentElement.parentElement.remove()">Continue</button>
+                    </div>
+                `;
+            }, 3000);
+        }
+
+        // Add house card interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            const houseCards = document.querySelectorAll('.house-card');
+            
+            houseCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const house = this.getAttribute('data-house');
+                    showHouseDetails(house);
+                });
+            });
+        });
+
+        function showHouseDetails(house) {
+            // Create modal with house details
+            const modal = document.createElement('div');
+            modal.className = 'house-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <button class="modal-close" onclick="this.parentElement.parentElement.remove()">×</button>
+                    <h2>${house.charAt(0).toUpperCase() + house.slice(1)} House</h2>
+                    <p>Detailed information about ${house} house...</p>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+    </script>
+
+    <style>
+        /* House-specific styles */
+        .house-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(24px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .house-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .house-card.gryffindor:hover {
+            border-color: rgba(239, 68, 68, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(239, 68, 68, 0.25);
+        }
+
+        .house-card.slytherin:hover {
+            border-color: rgba(34, 197, 94, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(34, 197, 94, 0.25);
+        }
+
+        .house-card.ravenclaw:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+        }
+
+        .house-card.hufflepuff:hover {
+            border-color: rgba(251, 191, 36, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(251, 191, 36, 0.25);
+        }
+
+        .house-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .house-icon {
+            margin-bottom: 1rem;
+        }
+
+        .house-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .house-motto {
+            font-style: italic;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        .house-content {
+            text-align: left;
+        }
+
+        .house-traits h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+
+        .house-traits ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .house-traits li {
+            color: #d1d5db;
+            margin-bottom: 0.25rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .house-traits li::before {
+            content: "•";
+            color: #fbbf24;
+            position: absolute;
+            left: 0;
+        }
+
+        .house-info p {
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .house-info strong {
+            color: #d1d5db;
+        }
+
+        /* Sorting overlay */
+        .sorting-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .sorting-content {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .sorting-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .sorting-animation {
+            margin: 2rem 0;
+        }
+
+        .hat {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: pulse 2s infinite;
+        }
+
+        /* Modal styles */
+        .house-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(24px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #9ca3af;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #fbbf24;
+        }
+    </style>
+</body>
+</html> 
