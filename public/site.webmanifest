@@ -1,0 +1,21 @@
+{
+  "name": "Hogwarts School of Witchcraft and Wizardry",
+  "short_name": "Hogwarts",
+  "description": "Experience the magic of Harry Potter's world through an immersive digital journey",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#d4af37",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 
