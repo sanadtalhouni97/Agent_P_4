@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import FloatingIcons from '@/components/FloatingIcons';
 import ScrollAnimation from '@/components/ScrollAnimation';
-import { MapPin, Castle, Building, Trees, Mountain, Search } from 'lucide-react';
+import { MapPin, Castle, Building, Trees, Search } from 'lucide-react';
 
 export default function LocationsPage() {
   const [searchTerm, setSearchTerm] = useState('');

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import FloatingIcons from '@/components/FloatingIcons';
 import ScrollAnimation from '@/components/ScrollAnimation';
-import { BookOpen, Heart, Star } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 export default function BooksPage() {
   return (
@@ -29,7 +29,7 @@ export default function BooksPage() {
             <ScrollAnimation delay={0.1}>
               <motion.div className="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-yellow-500/20">
                 <BookOpen className="h-12 w-12 text-red-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Philosopher's Stone</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Philosopher&apos;s Stone</h3>
                 <p className="text-gray-300">The beginning of the magical journey.</p>
               </motion.div>
             </ScrollAnimation>

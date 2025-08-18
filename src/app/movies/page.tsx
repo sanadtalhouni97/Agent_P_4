@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import FloatingIcons from '@/components/FloatingIcons';
 import ScrollAnimation from '@/components/ScrollAnimation';
-import { Film, Star, Heart } from 'lucide-react';
+import { Film } from 'lucide-react';
 
 export default function MoviesPage() {
   return (
@@ -29,7 +29,7 @@ export default function MoviesPage() {
             <ScrollAnimation delay={0.1}>
               <motion.div className="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-yellow-500/20">
                 <Film className="h-12 w-12 text-red-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Philosopher's Stone</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Philosopher&apos;s Stone</h3>
                 <p className="text-gray-300">2001 - The beginning of the journey.</p>
               </motion.div>
             </ScrollAnimation>

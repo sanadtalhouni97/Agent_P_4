@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import FloatingIcons from '@/components/FloatingIcons';
 import ScrollAnimation from '@/components/ScrollAnimation';
-import { User, Wand2, Shield, Crown, BookOpen, Heart, Search, Filter } from 'lucide-react';
+import { Shield, Crown, BookOpen, Heart, Search } from 'lucide-react';
 
 export default function CharactersPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -322,7 +322,7 @@ export default function CharactersPage() {
                                 key={index}
                                 className="italic text-gray-300 border-l-4 border-yellow-500 pl-4"
                               >
-                                "{quote}"
+                                &ldquo;{quote}&rdquo;
                               </blockquote>
                             ))}
                           </div>

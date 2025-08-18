@@ -20,7 +20,7 @@ export default function GryffindorPage() {
                 Gryffindor House
               </h1>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                "Where dwell the brave at heart, their daring, nerve, and chivalry set Gryffindors apart"
+                &ldquo;Where dwell the brave at heart, their daring, nerve, and chivalry set Gryffindors apart&rdquo;
               </p>
             </div>
           </ScrollAnimation>
@@ -46,7 +46,7 @@ export default function GryffindorPage() {
               <motion.div className="bg-red-900/40 backdrop-blur-md rounded-lg p-6 border border-red-500/30">
                 <Crown className="h-12 w-12 text-red-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Nerve</h3>
-                <p className="text-gray-300">Gryffindors have the determination to stand up for what's right.</p>
+                <p className="text-gray-300">Gryffindors have the determination to stand up for what&apos;s right.</p>
               </motion.div>
             </ScrollAnimation>
           </div>

@@ -46,7 +46,7 @@ export default function PrivacyPage() {
               <motion.div className="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-yellow-500/20">
                 <Eye className="h-12 w-12 text-yellow-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Transparency</h3>
-                <p className="text-gray-300">We're transparent about how we use your data.</p>
+                <p className="text-gray-300">We&apos;re transparent about how we use your data.</p>
               </motion.div>
             </ScrollAnimation>
           </div>

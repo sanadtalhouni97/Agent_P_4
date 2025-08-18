@@ -46,7 +46,7 @@ export default function MagicalItemsPage() {
               <motion.div className="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-yellow-500/20">
                 <Shield className="h-12 w-12 text-green-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Horcruxes</h3>
-                <p className="text-gray-300">Dark magical objects that contain pieces of a wizard's soul.</p>
+                <p className="text-gray-300">Dark magical objects that contain pieces of a wizard&apos;s soul.</p>
               </motion.div>
             </ScrollAnimation>
             

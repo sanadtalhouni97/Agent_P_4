@@ -30,7 +30,7 @@ export default function HarryPage() {
               <motion.div className="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-yellow-500/20">
                 <Shield className="h-12 w-12 text-red-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Bravery</h3>
-                <p className="text-gray-300">Harry's courage in facing Voldemort and protecting his friends.</p>
+                <p className="text-gray-300">Harry&apos;s courage in facing Voldemort and protecting his friends.</p>
               </motion.div>
             </ScrollAnimation>
             

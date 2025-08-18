@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import FloatingIcons from '@/components/FloatingIcons';
 import ScrollAnimation from '@/components/ScrollAnimation';
-import { Zap, Shield, Eye, Heart, Search, Filter, Wand2, Star } from 'lucide-react';
+import { Zap, Shield, Eye, Heart, Search, Wand2 } from 'lucide-react';
 
 export default function SpellsPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -32,7 +32,7 @@ export default function SpellsPage() {
       category: 'Charm',
       effect: 'Disarms opponent',
       difficulty: 'Intermediate',
-      description: 'The Disarming Charm causes the target\'s wand to fly out of their hand. Harry Potter\'s signature spell.',
+      description: 'The Disarming Charm causes the target&apos;s wand to fly out of their hand. Harry Potter&apos;s signature spell.',
       wandMovement: 'Forward thrust',
       color: 'Red',
       icon: <Shield className="h-8 w-8 text-red-400" />
@@ -80,7 +80,7 @@ export default function SpellsPage() {
       category: 'Charm',
       effect: 'Summons objects',
       difficulty: 'Intermediate',
-      description: 'A charm that summons objects to the caster. The summoned object will fly through the air to the caster\'s hand.',
+      description: 'A charm that summons objects to the caster. The summoned object will fly through the air to the caster&apos;s hand.',
       wandMovement: 'Point and pull',
       color: 'Blue',
       icon: <Zap className="h-8 w-8 text-purple-400" />
@@ -231,7 +231,7 @@ export default function SpellsPage() {
                     {spell.icon}
                     <div>
                       <h3 className="text-xl font-bold text-white">{spell.name}</h3>
-                      <p className="text-gray-400 italic">"{spell.incantation}"</p>
+                      <p className="text-gray-400 italic">&ldquo;{spell.incantation}&rdquo;</p>
                     </div>
                   </div>
                   
@@ -271,7 +271,7 @@ export default function SpellsPage() {
                           {spell.icon}
                           <div>
                             <h2 className="text-3xl font-bold text-white">{spell.name}</h2>
-                            <p className="text-xl text-gray-400 italic">"{spell.incantation}"</p>
+                            <p className="text-xl text-gray-400 italic">&ldquo;{spell.incantation}&rdquo;</p>
                           </div>
                         </div>
                         <button
@@ -343,7 +343,7 @@ export default function SpellsPage() {
                 Practice Your Spells
               </h2>
               <p className="text-lg text-gray-300 mb-6">
-                Remember: "It's leviOsa, not levioSAR!" - Hermione Granger
+                Remember: &ldquo;It&apos;s leviOsa, not levioSAR!&rdquo; - Hermione Granger
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}

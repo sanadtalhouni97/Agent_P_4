@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import FloatingIcons from '@/components/FloatingIcons';
 import ScrollAnimation from '@/components/ScrollAnimation';
-import { FlaskConical, Heart, Zap, Eye } from 'lucide-react';
+import { FlaskConical, Zap, Eye } from 'lucide-react';
 
 export default function PotionsPage() {
   const potions = [

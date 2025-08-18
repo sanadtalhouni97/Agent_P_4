@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Navigation from '@/components/Navigation';
 import FloatingIcons from '@/components/FloatingIcons';
 import ScrollAnimation from '@/components/ScrollAnimation';
-import { Wand2, Star, Castle, BookOpen, Users, Zap, Heart, Shield, ArrowRight } from 'lucide-react';
+import { Wand2, Castle, BookOpen, Users, Zap, Heart, Shield, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
       setCurrentSpell((prev) => (prev + 1) % spells.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [spells.length]);
 
   const features = [
     {

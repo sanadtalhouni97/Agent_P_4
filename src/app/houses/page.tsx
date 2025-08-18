@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import FloatingIcons from '@/components/FloatingIcons';
 import ScrollAnimation from '@/components/ScrollAnimation';
-import { Shield, Crown, BookOpen, Heart, Star, Users, Trophy, Sword } from 'lucide-react';
+import { Shield, Crown, BookOpen, Heart, Star, Users, Trophy } from 'lucide-react';
 
 export default function HousesPage() {
   const [selectedHouse, setSelectedHouse] = useState<string | null>(null);
@@ -247,7 +247,7 @@ export default function HousesPage() {
                 The Sorting Hat
               </h2>
               <p className="text-lg text-gray-300 mb-6">
-                "You might belong in Gryffindor, where dwell the brave at heart, their daring, nerve, and chivalry set Gryffindors apart..."
+                &ldquo;You might belong in Gryffindor, where dwell the brave at heart, their daring, nerve, and chivalry set Gryffindors apart...&rdquo;
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
