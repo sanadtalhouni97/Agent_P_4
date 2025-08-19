@@ -78,35 +78,80 @@ function initializeNavigation() {
         navMenu.classList.toggle('active');
     });
 
+    // Touch event for mobile
+    navToggle.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
     // Close mobile menu when clicking on links
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navToggle.classList.remove('active');
             navMenu.classList.remove('active');
         });
+        
+        // Touch event for mobile links
+        link.addEventListener('touchstart', () => {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
     });
 
-    // Navbar background on scroll
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+
+    // Close mobile menu on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+
+    // Navbar auto-hide/show and background on scroll
+    let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
         const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 100) {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Change background opacity based on scroll
+        if (currentScroll > 100) {
             navbar.style.background = 'rgba(10, 10, 10, 0.95)';
         } else {
             navbar.style.background = 'rgba(10, 10, 10, 0.8)';
         }
+        
+        // Auto-hide/show navbar
+        if (currentScroll > lastScrollTop && currentScroll > 200) {
+            // Scrolling down - hide navbar
+            navbar.classList.add('hidden');
+        } else {
+            // Scrolling up - show navbar
+            navbar.classList.remove('hidden');
+        }
+        
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
 }
 
 // Initialize scroll effects
 function initializeScrollEffects() {
-    // Parallax effect for hero section
+    // Parallax effect for hero section (reduced intensity to prevent overlapping)
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const hero = document.querySelector('.hero');
         const heroContent = document.querySelector('.hero-content');
         
         if (hero && heroContent) {
-            heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+            // Reduced parallax effect to prevent overlapping
+            heroContent.style.transform = `translateY(${scrolled * 0.2}px)`;
         }
     });
 
