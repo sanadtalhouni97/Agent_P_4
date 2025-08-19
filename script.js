@@ -1,124 +1,369 @@
-// Modern JavaScript for Hogwarts Website
+// DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
-    initNavigation();
-    initScrollAnimations();
-    initFeatureCards();
-    initHouseCards();
-    initParallaxEffects();
-    initParticleEffects();
+    initializeAnimations();
+    initializeNavigation();
+    initializeScrollEffects();
+    initializeHouseCards();
+    initializeSpellCards();
+    initializeParallax();
 });
 
-// Navigation functionality
-function initNavigation() {
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navbar = document.querySelector('.navbar');
+// Initialize all animations
+function initializeAnimations() {
+    // Animate elements on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all cards and sections
+    document.querySelectorAll('.house-card, .spell-card, .creature-card, .section-title, .section-subtitle').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Add CSS for animations
+    const style = document.createElement('style');
+    style.textContent = `
+        .house-card, .spell-card, .creature-card, .section-title, .section-subtitle {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .house-card:nth-child(1) { transition-delay: 0.1s; }
+        .house-card:nth-child(2) { transition-delay: 0.2s; }
+        .house-card:nth-child(3) { transition-delay: 0.3s; }
+        .house-card:nth-child(4) { transition-delay: 0.4s; }
+        
+        .spell-card:nth-child(1) { transition-delay: 0.1s; }
+        .spell-card:nth-child(2) { transition-delay: 0.2s; }
+        .spell-card:nth-child(3) { transition-delay: 0.3s; }
+        .spell-card:nth-child(4) { transition-delay: 0.4s; }
+    `;
+    document.head.appendChild(style);
+}
+
+// Initialize navigation
+function initializeNavigation() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
     // Mobile menu toggle
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
 
-        // Close menu when clicking on a link
-        const navLinks = navMenu.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-            });
+    // Close mobile menu when clicking on links
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
         });
-    }
+    });
 
-    // Navbar scroll effect
-    window.addEventListener('scroll', function() {
+    // Smooth scrolling for navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
         if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(15, 23, 42, 0.98)';
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
         } else {
-            navbar.style.background = 'rgba(15, 23, 42, 0.95)';
-            navbar.style.boxShadow = 'none';
+            navbar.style.background = 'rgba(10, 10, 10, 0.8)';
         }
     });
 }
 
-// Scroll animations
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '-50px 0px'
-    };
+// Initialize scroll effects
+function initializeScrollEffects() {
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        const heroContent = document.querySelector('.hero-content');
+        
+        if (hero) {
+            heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    });
 
-    const observer = new IntersectionObserver((entries) => {
+    // Reveal animations on scroll
+    const revealElements = document.querySelectorAll('.house-card, .spell-card, .creature-card');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    // Observe elements for animation
-    const animateElements = document.querySelectorAll('.feature-card, .house-card, .section-header');
-    animateElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease';
-        observer.observe(el);
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
     });
 }
 
-// Feature cards functionality
-function initFeatureCards() {
-    const featureCards = document.querySelectorAll('.feature-card');
-    
-    featureCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const href = this.getAttribute('data-href');
-            if (href) {
-                // Add click animation
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 150);
-            }
-        });
-
-        // Hover effects
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-}
-
-// House cards functionality
-function initHouseCards() {
+// Initialize house cards interactions
+function initializeHouseCards() {
     const houseCards = document.querySelectorAll('.house-card');
     
     houseCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const house = this.getAttribute('data-house');
-            showHouseModal(house);
+        card.addEventListener('mouseenter', () => {
+            // Add house-specific effects
+            const house = card.dataset.house;
+            addHouseEffect(card, house);
         });
-
-        // Hover effects
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.05)';
+        
+        card.addEventListener('mouseleave', () => {
+            removeHouseEffect(card);
         });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+        
+        card.addEventListener('click', () => {
+            showHouseModal(card.dataset.house);
         });
     });
 }
 
-// House modal functionality
+// Add house-specific visual effects
+function addHouseEffect(card, house) {
+    const colors = {
+        gryffindor: { primary: '#740001', secondary: '#D3A625' },
+        slytherin: { primary: '#1a472a', secondary: '#5d5d5d' },
+        ravenclaw: { primary: '#0e1a40', secondary: '#946b2d' },
+        hufflepuff: { primary: '#ecb939', secondary: '#372e29' }
+    };
+    
+    const houseColors = colors[house];
+    if (houseColors) {
+        card.style.borderColor = houseColors.primary;
+        card.style.boxShadow = `0 20px 40px ${houseColors.primary}40`;
+        
+        // Add floating particles
+        createFloatingParticles(card, houseColors.primary);
+    }
+}
+
+// Remove house effects
+function removeHouseEffect(card) {
+    card.style.borderColor = '';
+    card.style.boxShadow = '';
+    
+    // Remove particles
+    const particles = card.querySelectorAll('.house-particle');
+    particles.forEach(particle => particle.remove());
+}
+
+// Create floating particles for house cards
+function createFloatingParticles(card, color) {
+    for (let i = 0; i < 5; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'house-particle';
+        particle.style.cssText = `
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: ${color};
+            border-radius: 50%;
+            pointer-events: none;
+            animation: houseParticleFloat 3s ease-in-out infinite;
+            animation-delay: ${i * 0.2}s;
+        `;
+        
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        
+        card.appendChild(particle);
+    }
+}
+
+// Initialize spell cards
+function initializeSpellCards() {
+    const spellCards = document.querySelectorAll('.spell-card');
+    
+    spellCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            createSpellEffect(card);
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            removeSpellEffect(card);
+        });
+        
+        card.addEventListener('click', () => {
+            castSpell(card);
+        });
+    });
+}
+
+// Create spell casting effect
+function createSpellEffect(card) {
+    const spellName = card.querySelector('h3').textContent;
+    const effects = {
+        'Lumos': { color: '#FFD700', icon: '✨' },
+        'Wingardium Leviosa': { color: '#87CEEB', icon: '🪶' },
+        'Protego': { color: '#98FB98', icon: '🛡️' },
+        'Incendio': { color: '#FF6347', icon: '🔥' }
+    };
+    
+    const effect = effects[spellName];
+    if (effect) {
+        card.style.borderColor = effect.color;
+        card.style.boxShadow = `0 15px 30px ${effect.color}40`;
+        
+        // Add sparkle effect
+        createSparkleEffect(card, effect.color);
+    }
+}
+
+// Remove spell effect
+function removeSpellEffect(card) {
+    card.style.borderColor = '';
+    card.style.boxShadow = '';
+    
+    const sparkles = card.querySelectorAll('.spell-sparkle');
+    sparkles.forEach(sparkle => sparkle.remove());
+}
+
+// Create sparkle effect for spells
+function createSparkleEffect(card, color) {
+    for (let i = 0; i < 8; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'spell-sparkle';
+        sparkle.style.cssText = `
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: ${color};
+            border-radius: 50%;
+            pointer-events: none;
+            animation: spellSparkle 2s ease-in-out infinite;
+            animation-delay: ${i * 0.1}s;
+        `;
+        
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        
+        card.appendChild(sparkle);
+    }
+}
+
+// Cast spell animation
+function castSpell(card) {
+    const spellName = card.querySelector('h3').textContent;
+    
+    // Create spell cast effect
+    const castEffect = document.createElement('div');
+    castEffect.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        color: #FFD700;
+        pointer-events: none;
+        z-index: 10000;
+        animation: spellCast 1s ease-out forwards;
+    `;
+    
+    const effects = {
+        'Lumos': '✨',
+        'Wingardium Leviosa': '🪶',
+        'Protego': '🛡️',
+        'Incendio': '🔥'
+    };
+    
+    castEffect.textContent = effects[spellName] || '✨';
+    document.body.appendChild(castEffect);
+    
+    // Show spell name
+    const spellText = document.createElement('div');
+    spellText.style.cssText = `
+        position: fixed;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #FFD700;
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        pointer-events: none;
+        z-index: 10000;
+        animation: spellText 1s ease-out forwards;
+    `;
+    spellText.textContent = spellName;
+    document.body.appendChild(spellText);
+    
+    // Remove effects after animation
+    setTimeout(() => {
+        castEffect.remove();
+        spellText.remove();
+    }, 1000);
+}
+
+// Initialize parallax effects
+function initializeParallax() {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        
+        // Parallax for floating elements
+        const floatingElements = document.querySelectorAll('.floating-book, .floating-wand, .floating-potion');
+        floatingElements.forEach((el, index) => {
+            const speed = 0.5 + (index * 0.1);
+            el.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+        
+        // Parallax for particles
+        const particles = document.querySelectorAll('.particle');
+        particles.forEach((particle, index) => {
+            const speed = 0.2 + (index * 0.05);
+            particle.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+}
+
+// Smooth scroll to section
+function scrollToSection(sectionId) {
+    const section = document.querySelector(`#${sectionId}`);
+    if (section) {
+        const offsetTop = section.offsetTop - 80;
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Show house modal (placeholder for future enhancement)
 function showHouseModal(house) {
     const houseNames = {
         gryffindor: 'Gryffindor',
@@ -126,351 +371,167 @@ function showHouseModal(house) {
         ravenclaw: 'Ravenclaw',
         hufflepuff: 'Hufflepuff'
     };
+    
+    console.log(`Welcome to ${houseNames[house]}!`);
+    // Future: Implement modal with house details
+}
 
-    const houseInfo = {
-        gryffindor: {
-            founder: 'Godric Gryffindor',
-            animal: 'Lion',
-            colors: 'Scarlet & Gold',
-            traits: ['Bravery', 'Courage', 'Chivalry', 'Nerve'],
-            description: 'Gryffindor values bravery, courage, and determination. Students are known for their daring and nerve.'
-        },
-        slytherin: {
-            founder: 'Salazar Slytherin',
-            animal: 'Serpent',
-            colors: 'Emerald & Silver',
-            traits: ['Ambition', 'Cunning', 'Leadership', 'Resourcefulness'],
-            description: 'Slytherin values ambition, cunning, and resourcefulness. Students are known for their determination and cleverness.'
-        },
-        ravenclaw: {
-            founder: 'Rowena Ravenclaw',
-            animal: 'Eagle',
-            colors: 'Blue & Bronze',
-            traits: ['Intelligence', 'Creativity', 'Learning', 'Wit'],
-            description: 'Ravenclaw values intelligence, creativity, and learning. Students are known for their wisdom and wit.'
-        },
-        hufflepuff: {
-            founder: 'Helga Hufflepuff',
-            animal: 'Badger',
-            colors: 'Yellow & Black',
-            traits: ['Hard Work', 'Dedication', 'Patience', 'Loyalty'],
-            description: 'Hufflepuff values hard work, dedication, and loyalty. Students are known for their patience and fairness.'
+// Add CSS animations
+const additionalStyles = `
+    @keyframes houseParticleFloat {
+        0%, 100% { 
+            opacity: 0; 
+            transform: translateY(0px) scale(0); 
         }
-    };
+        50% { 
+            opacity: 1; 
+            transform: translateY(-20px) scale(1); 
+        }
+    }
+    
+    @keyframes spellSparkle {
+        0%, 100% { 
+            opacity: 0; 
+            transform: scale(0) rotate(0deg); 
+        }
+        50% { 
+            opacity: 1; 
+            transform: scale(1) rotate(180deg); 
+        }
+    }
+    
+    @keyframes spellCast {
+        0% { 
+            opacity: 0; 
+            transform: translate(-50%, -50%) scale(0); 
+        }
+        50% { 
+            opacity: 1; 
+            transform: translate(-50%, -50%) scale(1.5); 
+        }
+        100% { 
+            opacity: 0; 
+            transform: translate(-50%, -50%) scale(2); 
+        }
+    }
+    
+    @keyframes spellText {
+        0% { 
+            opacity: 0; 
+            transform: translate(-50%, -50%) scale(0.5); 
+        }
+        50% { 
+            opacity: 1; 
+            transform: translate(-50%, -50%) scale(1.1); 
+        }
+        100% { 
+            opacity: 0; 
+            transform: translate(-50%, -50%) scale(1); 
+        }
+    }
+    
+    .nav-menu.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid var(--border-color);
+        padding: 1rem 0;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+`;
 
-    const info = houseInfo[house];
-    const name = houseNames[house];
+// Inject additional styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);
 
-    const modal = document.createElement('div');
-    modal.className = 'house-modal';
-    modal.innerHTML = `
-        <div class="modal-overlay">
-            <div class="modal-content">
-                <button class="modal-close" onclick="this.closest('.house-modal').remove()">×</button>
-                <div class="modal-header">
-                    <h2>${name} House</h2>
-                    <div class="house-emblem">${getHouseEmblem(house)}</div>
-                </div>
-                <div class="modal-body">
-                    <p class="house-description">${info.description}</p>
-                    <div class="house-details">
-                        <div class="detail-item">
-                            <strong>Founder:</strong> ${info.founder}
-                        </div>
-                        <div class="detail-item">
-                            <strong>Animal:</strong> ${info.animal}
-                        </div>
-                        <div class="detail-item">
-                            <strong>Colors:</strong> ${info.colors}
-                        </div>
-                    </div>
-                    <div class="house-traits-modal">
-                        <h3>House Traits</h3>
-                        <div class="traits-grid">
-                            ${info.traits.map(trait => `<span class="trait-tag">${trait}</span>`).join('')}
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn-primary" onclick="window.location.href='/houses.html'">
-                        Learn More About Houses
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    // Add modal styles
-    const modalStyles = document.createElement('style');
-    modalStyles.textContent = `
-        .house-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+// Add loading animation
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+    
+    // Add CSS for loading animation
+    const loadingStyle = document.createElement('style');
+    loadingStyle.textContent = `
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
         
-        .modal-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-        }
-        
-        .modal-content {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalSlideIn 0.3s ease;
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: #94a3b8;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .modal-close:hover {
-            color: #ffd700;
-        }
-        
-        .modal-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .modal-header h2 {
-            color: #ffd700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .house-emblem {
-            font-size: 3rem;
-        }
-        
-        .house-description {
-            color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        
-        .house-details {
-            margin-bottom: 1.5rem;
-        }
-        
-        .detail-item {
-            margin-bottom: 0.5rem;
-            color: #f8fafc;
-        }
-        
-        .house-traits-modal h3 {
-            color: #ffd700;
-            margin-bottom: 1rem;
-        }
-        
-        .traits-grid {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .trait-tag {
-            background: rgba(255, 215, 0, 0.2);
-            color: #ffd700;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-        }
-        
-        .modal-footer {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-        
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8) translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+        body.loaded {
+            opacity: 1;
         }
     `;
-    document.head.appendChild(modalStyles);
+    document.head.appendChild(loadingStyle);
+});
 
-    // Close modal when clicking overlay
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.remove();
+// Add cursor trail effect
+let mouseX = 0;
+let mouseY = 0;
+let trail = [];
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // Create trail effect
+    if (Math.random() > 0.9) {
+        createTrailParticle(mouseX, mouseY);
+    }
+});
+
+function createTrailParticle(x, y) {
+    const particle = document.createElement('div');
+    particle.style.cssText = `
+        position: fixed;
+        left: ${x}px;
+        top: ${y}px;
+        width: 2px;
+        height: 2px;
+        background: var(--accent-blue);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        animation: trailFade 1s ease-out forwards;
+    `;
+    
+    document.body.appendChild(particle);
+    
+    setTimeout(() => {
+        particle.remove();
+    }, 1000);
+}
+
+// Add trail fade animation
+const trailStyle = document.createElement('style');
+trailStyle.textContent = `
+    @keyframes trailFade {
+        0% { 
+            opacity: 1; 
+            transform: scale(1); 
         }
-    });
-}
-
-// Get house emblem
-function getHouseEmblem(house) {
-    const emblems = {
-        gryffindor: '🦁',
-        slytherin: '🐍',
-        ravenclaw: '🦅',
-        hufflepuff: '🦡'
-    };
-    return emblems[house] || '🏰';
-}
-
-// Parallax effects
-function initParallaxEffects() {
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.floating-icon');
-        
-        parallaxElements.forEach((element, index) => {
-            const speed = 0.5 + (index * 0.1);
-            const yPos = -(scrolled * speed);
-            element.style.transform = `translateY(${yPos}px)`;
-        });
-    });
-}
-
-// Particle effects for buttons
-function initParticleEffects() {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
-    
-    buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            createParticles(e.clientX, e.clientY);
-        });
-    });
-}
-
-// Create particle effect
-function createParticles(x, y) {
-    const particleCount = 8;
-    
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.cssText = `
-            position: fixed;
-            left: ${x}px;
-            top: ${y}px;
-            width: 4px;
-            height: 4px;
-            background: #ffd700;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1000;
-            animation: particleAnimation 0.6s ease-out forwards;
-        `;
-        
-        document.body.appendChild(particle);
-        
-        // Remove particle after animation
-        setTimeout(() => {
-            particle.remove();
-        }, 600);
-    }
-
-    // Add particle animation styles
-    if (!document.querySelector('#particle-styles')) {
-        const particleStyles = document.createElement('style');
-        particleStyles.id = 'particle-styles';
-        particleStyles.textContent = `
-            @keyframes particleAnimation {
-                0% {
-                    opacity: 1;
-                    transform: scale(1) translate(0, 0);
-                }
-                100% {
-                    opacity: 0;
-                    transform: scale(0) translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px);
-                }
-            }
-        `;
-        document.head.appendChild(particleStyles);
-    }
-}
-
-// Smooth scroll to section
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-}
-
-// Typing effect for spell names
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.textContent = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
+        100% { 
+            opacity: 0; 
+            transform: scale(0); 
         }
     }
-    
-    type();
-}
-
-// Rotate through spells
-function initSpellRotation() {
-    const spellElement = document.getElementById('current-spell');
-    if (!spellElement) return;
-
-    const spells = [
-        "Lumos Maxima",
-        "Expecto Patronum", 
-        "Wingardium Leviosa",
-        "Alohomora",
-        "Expelliarmus"
-    ];
-
-    let currentSpellIndex = 0;
-
-    function rotateSpell() {
-        spellElement.style.opacity = '0';
-        spellElement.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            currentSpellIndex = (currentSpellIndex + 1) % spells.length;
-            spellElement.textContent = spells[currentSpellIndex];
-            spellElement.style.opacity = '1';
-            spellElement.style.transform = 'translateY(0)';
-        }, 300);
-    }
-
-    // Rotate spells every 4 seconds
-    setInterval(rotateSpell, 4000);
-}
+`;
+document.head.appendChild(trailStyle);
 
 // Performance optimization: Throttle scroll events
 function throttle(func, limit) {
@@ -487,78 +548,6 @@ function throttle(func, limit) {
 }
 
 // Apply throttling to scroll events
-window.addEventListener('scroll', throttle(function() {
-    // Additional scroll-based effects can be added here
-}, 16));
-
-// Keyboard navigation
-document.addEventListener('keydown', function(e) {
-    // Escape key closes modals
-    if (e.key === 'Escape') {
-        const modals = document.querySelectorAll('.house-modal');
-        modals.forEach(modal => modal.remove());
-    }
-    
-    // Arrow keys for navigation
-    if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        const currentSection = getCurrentSection();
-        const nextSection = getNextSection(currentSection);
-        if (nextSection) {
-            nextSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-    
-    if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        const currentSection = getCurrentSection();
-        const prevSection = getPrevSection(currentSection);
-        if (prevSection) {
-            prevSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-});
-
-// Helper functions for keyboard navigation
-function getCurrentSection() {
-    const sections = document.querySelectorAll('section');
-    const scrollPosition = window.scrollY + window.innerHeight / 2;
-    
-    for (let section of sections) {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-            return section;
-        }
-    }
-    return sections[0];
-}
-
-function getNextSection(currentSection) {
-    const sections = Array.from(document.querySelectorAll('section'));
-    const currentIndex = sections.indexOf(currentSection);
-    return sections[currentIndex + 1] || null;
-}
-
-function getPrevSection(currentSection) {
-    const sections = Array.from(document.querySelectorAll('section'));
-    const currentIndex = sections.indexOf(currentSection);
-    return sections[currentIndex - 1] || null;
-}
-
-// Initialize spell rotation if element exists
-if (document.getElementById('current-spell')) {
-    initSpellRotation();
-}
-
-// Add loading animation
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-    
-    // Trigger entrance animations
-    setTimeout(() => {
-        const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .hero-cta');
-        heroElements.forEach((el, index) => {
-            el.style.animationDelay = `${index * 0.2}s`;
-        });
-    }, 100);
-}); 
+window.addEventListener('scroll', throttle(() => {
+    // Scroll effects are handled in initializeScrollEffects
+}, 16)); // ~60fps 
