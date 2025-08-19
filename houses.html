@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏠 Hogwarts Houses - Choose Your Destiny! 🏠</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-icon">🦁</div>
+        <div class="floating-icon">🐍</div>
+        <div class="floating-icon">🦅</div>
+        <div class="floating-icon">🦡</div>
+        <div class="floating-icon">⚡</div>
+        <div class="floating-icon">💎</div>
+        <div class="floating-icon">🔥</div>
+        <div class="floating-icon">🌟</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🏰</span>
+                <span class="logo-text">Hogwarts Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+                <li><a href="houses.html" class="nav-link active">🏠 Houses</a></li>
+                <li><a href="spells.html" class="nav-link">🪄 Spells</a></li>
+                <li><a href="creatures.html" class="nav-link">🐉 Creatures</a></li>
+                <li><a href="characters.html" class="nav-link">👥 Characters</a></li>
+                <li><a href="potions.html" class="nav-link">🧪 Potions</a></li>
+                <li><a href="quidditch.html" class="nav-link">🏆 Quidditch</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero houses-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">🏠 Choose Your House 🏠</span>
+                    <span class="title-main">The Four Noble Houses</span>
+                    <span class="title-sub">🎭 Where will the Sorting Hat place you? 🎭</span>
+                </h1>
+                <p class="hero-description">
+                    🎪 The Sorting Hat will look into your mind and place you in the house where you truly belong! 
+                    Each house has its own unique traits, values, and legendary members! 🌟
+                </p>
+            </div>
+            <div class="hero-visual">
+                <div class="sorting-hat">🎩</div>
+                <div class="house-symbols">
+                    <div class="symbol">🦁</div>
+                    <div class="symbol">🐍</div>
+                    <div class="symbol">🦅</div>
+                    <div class="symbol">🦡</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Houses Grid -->
+    <section class="houses-section">
+        <div class="container">
+            <div class="houses-grid">
+                <!-- Gryffindor -->
+                <div class="house-card gryffindor" data-house="gryffindor">
+                    <div class="house-header">
+                        <div class="house-icon">🦁</div>
+                        <h2>Gryffindor</h2>
+                        <div class="house-motto">"Where dwell the brave at heart"</div>
+                    </div>
+                    <div class="house-content">
+                        <div class="house-traits">
+                            <h3>🎭 House Traits:</h3>
+                            <ul>
+                                <li>💪 Bravery</li>
+                                <li>⚡ Courage</li>
+                                <li>🔥 Determination</li>
+                                <li>🦁 Chivalry</li>
+                                <li>⚔️ Daring</li>
+                                <li>🌟 Nerve</li>
+                            </ul>
+                        </div>
+                        <div class="house-info">
+                            <div class="info-item">
+                                <span class="info-label">🏰 Common Room:</span>
+                                <span class="info-value">Gryffindor Tower</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">🎨 Colors:</span>
+                                <span class="info-value">Scarlet & Gold</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">👑 Founder:</span>
+                                <span class="info-value">Godric Gryffindor</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">👻 Ghost:</span>
+                                <span class="info-value">Nearly Headless Nick</span>
+                            </div>
+                        </div>
+                        <div class="famous-members">
+                            <h3>🌟 Famous Members:</h3>
+                            <div class="members-list">
+                                <span>⚡ Harry Potter</span>
+                                <span>📚 Hermione Granger</span>
+                                <span>🧡 Ron Weasley</span>
+                                <span>👨‍🦰 Albus Dumbledore</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="house-glow"></div>
+                </div>
+
+                <!-- Slytherin -->
+                <div class="house-card slytherin" data-house="slytherin">
+                    <div class="house-header">
+                        <div class="house-icon">🐍</div>
+                        <h2>Slytherin</h2>
+                        <div class="house-motto">"Those cunning folk use any means"</div>
+                    </div>
+                    <div class="house-content">
+                        <div class="house-traits">
+                            <h3>🎭 House Traits:</h3>
+                            <ul>
+                                <li>🎯 Ambition</li>
+                                <li>🧠 Cunning</li>
+                                <li>💎 Resourcefulness</li>
+                                <li>🐍 Determination</li>
+                                <li>👑 Leadership</li>
+                                <li>🎪 Self-preservation</li>
+                            </ul>
+                        </div>
+                        <div class="house-info">
+                            <div class="info-item">
+                                <span class="info-label">🏰 Common Room:</span>
+                                <span class="info-value">Slytherin Dungeon</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">🎨 Colors:</span>
+                                <span class="info-value">Emerald & Silver</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">👑 Founder:</span>
+                                <span class="info-value">Salazar Slytherin</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">👻 Ghost:</span>
+                                <span class="info-value">The Bloody Baron</span>
+                            </div>
+                        </div>
+                        <div class="famous-members">
+                            <h3>🌟 Famous Members:</h3>
+                            <div class="members-list">
+                                <span>🧙‍♂️ Severus Snape</span>
+                                <span>💚 Draco Malfoy</span>
+                                <span>🌿 Horace Slughorn</span>
+                                <span>⚡ Tom Riddle</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="house-glow"></div>
+                </div>
+
+                <!-- Ravenclaw -->
+                <div class="house-card ravenclaw" data-house="ravenclaw">
+                    <div class="house-header">
+                        <div class="house-icon">🦅</div>
+                        <h2>Ravenclaw</h2>
+                        <div class="house-motto">"Wit beyond measure is man's greatest treasure"</div>
+                    </div>
+                    <div class="house-content">
+                        <div class="house-traits">
+                            <h3>🎭 House Traits:</h3>
+                            <ul>
+                                <li>🧠 Intelligence</li>
+                                <li>💡 Creativity</li>
+                                <li>📚 Learning</li>
+                                <li>🦅 Wit</li>
+                                <li>🎨 Originality</li>
+                                <li>🌟 Individuality</li>
+                            </ul>
+                        </div>
+                        <div class="house-info">
+                            <div class="info-item">
+                                <span class="info-label">🏰 Common Room:</span>
+                                <span class="info-value">Ravenclaw Tower</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">🎨 Colors:</span>
+                                <span class="info-value">Blue & Bronze</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">👑 Founder:</span>
+                                <span class="info-value">Rowena Ravenclaw</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">👻 Ghost:</span>
+                                <span class="info-value">The Grey Lady</span>
+                            </div>
+                        </div>
+                        <div class="famous-members">
+                            <h3>🌟 Famous Members:</h3>
+                            <div class="members-list">
+                                <span>📖 Luna Lovegood</span>
+                                <span>🎭 Cho Chang</span>
+                                <span>🧠 Filius Flitwick</span>
+                                <span>📚 Gilderoy Lockhart</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="house-glow"></div>
+                </div>
+
+                <!-- Hufflepuff -->
+                <div class="house-card hufflepuff" data-house="hufflepuff">
+                    <div class="house-header">
+                        <div class="house-icon">🦡</div>
+                        <h2>Hufflepuff</h2>
+                        <div class="house-motto">"Where they are just and loyal"</div>
+                    </div>
+                    <div class="house-content">
+                        <div class="house-traits">
+                            <h3>🎭 House Traits:</h3>
+                            <ul>
+                                <li>🤝 Loyalty</li>
+                                <li>⏰ Patience</li>
+                                <li>💛 Hard Work</li>
+                                <li>🦡 Fair Play</li>
+                                <li>🤗 Kindness</li>
+                                <li>🌿 Dedication</li>
+                            </ul>
+                        </div>
+                        <div class="house-info">
+                            <div class="info-item">
+                                <span class="info-label">🏰 Common Room:</span>
+                                <span class="info-value">Hufflepuff Basement</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">🎨 Colors:</span>
+                                <span class="info-value">Yellow & Black</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">👑 Founder:</span>
+                                <span class="info-value">Helga Hufflepuff</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">👻 Ghost:</span>
+                                <span class="info-value">The Fat Friar</span>
+                            </div>
+                        </div>
+                        <div class="famous-members">
+                            <h3>🌟 Famous Members:</h3>
+                            <div class="members-list">
+                                <span>💛 Cedric Diggory</span>
+                                <span>🌿 Nymphadora Tonks</span>
+                                <span>🧪 Newt Scamander</span>
+                                <span>🌱 Pomona Sprout</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="house-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sorting Quiz Section -->
+    <section class="sorting-quiz">
+        <div class="container">
+            <h2 class="section-title">🎩 Take the Sorting Quiz! 🎩</h2>
+            <p class="section-subtitle">🧠 Let's see where the Sorting Hat would place you! 🧠</p>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>Question 1: What's your favorite way to spend a weekend? 🌟</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-house="gryffindor">⚔️ Going on an adventure!</button>
+                        <button class="quiz-option" data-house="slytherin">🎯 Working towards my goals</button>
+                        <button class="quiz-option" data-house="ravenclaw">📚 Reading and learning</button>
+                        <button class="quiz-option" data-house="hufflepuff">🤗 Spending time with friends</button>
+                    </div>
+                </div>
+                <div class="quiz-result" style="display: none;">
+                    <h3>🎭 The Sorting Hat has decided! 🎭</h3>
+                    <div class="result-house">
+                        <div class="result-icon">🦁</div>
+                        <h4>You belong in <span class="house-name">Gryffindor</span>!</h4>
+                        <p class="result-description">Welcome to the house of the brave! 🦁</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🏰 Hogwarts Hub</h3>
+                    <p>Your gateway to the magical world! ✨</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>🚀 Quick Links</h4>
+                    <ul>
+                        <li><a href="houses.html">🏠 Houses</a></li>
+                        <li><a href="spells.html">🪄 Spells</a></li>
+                        <li><a href="creatures.html">🐉 Creatures</a></li>
+                        <li><a href="characters.html">👥 Characters</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>🎭 More Magic</h4>
+                    <ul>
+                        <li><a href="potions.html">🧪 Potions</a></li>
+                        <li><a href="quidditch.html">🏆 Quidditch</a></li>
+                        <li><a href="index.html">🏠 Home</a></li>
+                        <li><a href="#">📞 Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>✨ Made with magic and love for the wizarding world! ✨</p>
+                <p>© 2024 Hogwarts Hub - All rights reserved! 🏰</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

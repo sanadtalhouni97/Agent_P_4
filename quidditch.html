@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Hogwarts Quidditch - Fly to Victory! 🏆</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-icon">🏆</div>
+        <div class="floating-icon">🧹</div>
+        <div class="floating-icon">⚡</div>
+        <div class="floating-icon">🏅</div>
+        <div class="floating-icon">🎯</div>
+        <div class="floating-icon">🌟</div>
+        <div class="floating-icon">💎</div>
+        <div class="floating-icon">✨</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🏰</span>
+                <span class="logo-text">Hogwarts Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+                <li><a href="houses.html" class="nav-link">🏠 Houses</a></li>
+                <li><a href="spells.html" class="nav-link">🪄 Spells</a></li>
+                <li><a href="creatures.html" class="nav-link">🐉 Creatures</a></li>
+                <li><a href="characters.html" class="nav-link">👥 Characters</a></li>
+                <li><a href="potions.html" class="nav-link">🧪 Potions</a></li>
+                <li><a href="quidditch.html" class="nav-link active">🏆 Quidditch</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero quidditch-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">🏆 The Most Popular Sport in the Wizarding World 🏆</span>
+                    <span class="title-main">Hogwarts Quidditch</span>
+                    <span class="title-sub">🧹 Fly on broomsticks and chase the Golden Snitch! 🧹</span>
+                </h1>
+                <p class="hero-description">
+                    🎭 Experience the thrill of Quidditch! From the lightning-fast Chasers to the daring Seekers, 
+                    discover the most exciting sport in the magical world! "It's Quidditch!" - Oliver Wood ⚡
+                </p>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-quidditch">
+                    <div class="quidditch-element">🧹</div>
+                    <div class="quidditch-element">🏆</div>
+                    <div class="quidditch-element">⚡</div>
+                    <div class="quidditch-element">🎯</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quidditch Positions -->
+    <section class="positions-section">
+        <div class="container">
+            <h2 class="section-title">👥 Quidditch Positions 👥</h2>
+            <div class="positions-grid">
+                <!-- Seeker -->
+                <div class="position-card" data-position="seeker">
+                    <div class="position-image">⚡</div>
+                    <div class="position-content">
+                        <h3>Seeker</h3>
+                        <p class="position-description">Chases the Golden Snitch! The most important position! ⚡</p>
+                        <div class="position-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Objective:</span>
+                                <span class="detail-value">Catch the Snitch</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🏆 Points:</span>
+                                <span class="detail-value">150 Points</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🌟 Famous:</span>
+                                <span class="detail-value">Harry Potter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chaser -->
+                <div class="position-card" data-position="chaser">
+                    <div class="position-image">🎯</div>
+                    <div class="position-content">
+                        <h3>Chaser</h3>
+                        <p class="position-description">Scores goals with the Quaffle! Team's main scorers! 🎯</p>
+                        <div class="position-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Objective:</span>
+                                <span class="detail-value">Score Goals</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🏆 Points:</span>
+                                <span class="detail-value">10 Points</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🌟 Famous:</span>
+                                <span class="detail-value">Angelina Johnson</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keeper -->
+                <div class="position-card" data-position="keeper">
+                    <div class="position-image">🛡️</div>
+                    <div class="position-content">
+                        <h3>Keeper</h3>
+                        <p class="position-description">Defends the goal posts! Last line of defense! 🛡️</p>
+                        <div class="position-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Objective:</span>
+                                <span class="detail-value">Block Goals</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🏆 Points:</span>
+                                <span class="detail-value">0 Points</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🌟 Famous:</span>
+                                <span class="detail-value">Oliver Wood</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beater -->
+                <div class="position-card" data-position="beater">
+                    <div class="position-image">🏏</div>
+                    <div class="position-content">
+                        <h3>Beater</h3>
+                        <p class="position-description">Protects team from Bludgers! Uses bats! 🏏</p>
+                        <div class="position-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Objective:</span>
+                                <span class="detail-value">Defend Team</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🏆 Points:</span>
+                                <span class="detail-value">0 Points</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🌟 Famous:</span>
+                                <span class="detail-value">Fred & George</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- House Teams -->
+    <section class="teams-section">
+        <div class="container">
+            <h2 class="section-title">🏠 House Quidditch Teams 🏠</h2>
+            <div class="teams-grid">
+                <!-- Gryffindor -->
+                <div class="team-card gryffindor">
+                    <div class="team-header">
+                        <div class="team-icon">🦁</div>
+                        <h3>Gryffindor Lions</h3>
+                    </div>
+                    <div class="team-content">
+                        <p class="team-description">Brave and daring! Known for their aggressive playing style! 🦁</p>
+                        <div class="team-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">🏆 Championships:</span>
+                                <span class="stat-value">Multiple</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">🌟 Famous Player:</span>
+                                <span class="stat-value">Harry Potter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slytherin -->
+                <div class="team-card slytherin">
+                    <div class="team-header">
+                        <div class="team-icon">🐍</div>
+                        <h3>Slytherin Serpents</h3>
+                    </div>
+                    <div class="team-content">
+                        <p class="team-description">Ambitious and cunning! Known for their strategic approach! 🐍</p>
+                        <div class="team-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">🏆 Championships:</span>
+                                <span class="stat-value">Multiple</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">🌟 Famous Player:</span>
+                                <span class="stat-value">Draco Malfoy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ravenclaw -->
+                <div class="team-card ravenclaw">
+                    <div class="team-header">
+                        <div class="team-icon">🦅</div>
+                        <h3>Ravenclaw Eagles</h3>
+                    </div>
+                    <div class="team-content">
+                        <p class="team-description">Wise and intelligent! Known for their tactical brilliance! 🦅</p>
+                        <div class="team-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">🏆 Championships:</span>
+                                <span class="stat-value">Several</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">🌟 Famous Player:</span>
+                                <span class="stat-value">Cho Chang</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hufflepuff -->
+                <div class="team-card hufflepuff">
+                    <div class="team-header">
+                        <div class="team-icon">🦡</div>
+                        <h3>Hufflepuff Badgers</h3>
+                    </div>
+                    <div class="team-content">
+                        <p class="team-description">Loyal and fair! Known for their sportsmanship! 🦡</p>
+                        <div class="team-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">🏆 Championships:</span>
+                                <span class="stat-value">Few</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">🌟 Famous Player:</span>
+                                <span class="stat-value">Cedric Diggory</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quidditch Equipment -->
+    <section class="equipment-section">
+        <div class="container">
+            <h2 class="section-title">🧹 Quidditch Equipment 🧹</h2>
+            <div class="equipment-grid">
+                <div class="equipment-item">
+                    <div class="equipment-icon">🧹</div>
+                    <h3>Broomsticks</h3>
+                    <p>Flying vehicles for players! Nimbus 2000, Firebolt, and more! 🧹</p>
+                </div>
+                <div class="equipment-item">
+                    <div class="equipment-icon">🏈</div>
+                    <h3>Quaffle</h3>
+                    <p>Red ball for scoring goals! Worth 10 points each! 🏈</p>
+                </div>
+                <div class="equipment-item">
+                    <div class="equipment-icon">⚫</div>
+                    <h3>Bludgers</h3>
+                    <p>Black balls that attack players! Beaters defend against them! ⚫</p>
+                </div>
+                <div class="equipment-item">
+                    <div class="equipment-icon">⚡</div>
+                    <h3>Golden Snitch</h3>
+                    <p>Tiny golden ball with wings! Worth 150 points! ⚡</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🏰 Hogwarts Hub</h3>
+                    <p>Your gateway to the magical world! ✨</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>🚀 Quick Links</h4>
+                    <ul>
+                        <li><a href="houses.html">🏠 Houses</a></li>
+                        <li><a href="spells.html">🪄 Spells</a></li>
+                        <li><a href="creatures.html">🐉 Creatures</a></li>
+                        <li><a href="characters.html">👥 Characters</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>🎭 More Magic</h4>
+                    <ul>
+                        <li><a href="potions.html">🧪 Potions</a></li>
+                        <li><a href="quidditch.html">🏆 Quidditch</a></li>
+                        <li><a href="index.html">🏠 Home</a></li>
+                        <li><a href="#">📞 Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>✨ Made with magic and love for the wizarding world! ✨</p>
+                <p>© 2024 Hogwarts Hub - All rights reserved! 🏰</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

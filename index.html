@@ -3,41 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hogwarts - A Magical Experience</title>
+    <title>✨ Hogwarts Magic Hub ✨</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Floating Particles Background -->
-    <div class="particles-container">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-icon">🪄</div>
+        <div class="floating-icon">⚡</div>
+        <div class="floating-icon">🦁</div>
+        <div class="floating-icon">🐍</div>
+        <div class="floating-icon">🦅</div>
+        <div class="floating-icon">🦡</div>
+        <div class="floating-icon">🔥</div>
+        <div class="floating-icon">💎</div>
+        <div class="floating-icon">🌟</div>
+        <div class="floating-icon">✨</div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <i class="fas fa-magic"></i>
-                <span>Hogwarts</span>
+                <span class="logo-icon">🏰</span>
+                <span class="logo-text">Hogwarts Hub</span>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#houses" class="nav-link">Houses</a></li>
-                <li><a href="#spells" class="nav-link">Spells</a></li>
-                <li><a href="#creatures" class="nav-link">Creatures</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="index.html" class="nav-link active">🏠 Home</a></li>
+                <li><a href="houses.html" class="nav-link">🏠 Houses</a></li>
+                <li><a href="spells.html" class="nav-link">🪄 Spells</a></li>
+                <li><a href="creatures.html" class="nav-link">🐉 Creatures</a></li>
+                <li><a href="characters.html" class="nav-link">👥 Characters</a></li>
+                <li><a href="potions.html" class="nav-link">🧪 Potions</a></li>
+                <li><a href="quidditch.html" class="nav-link">🏆 Quidditch</a></li>
             </ul>
-            <div class="hamburger">
+            <div class="nav-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -46,225 +48,135 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="title-line">Welcome to</span>
-                    <span class="title-main">Hogwarts</span>
-                    <span class="title-sub">School of Witchcraft & Wizardry</span>
+                    <span class="title-line">✨ Welcome to the Magical World ✨</span>
+                    <span class="title-main">Hogwarts Hub</span>
+                    <span class="title-sub">🏰 School of Witchcraft & Wizardry 🏰</span>
                 </h1>
                 <p class="hero-description">
-                    Step into a world of magic, wonder, and endless possibilities. 
-                    Discover your destiny among the four noble houses.
+                    🎭 Step into a world where magic is real, friendships are forever, and adventures await around every corner! 
+                    Discover your destiny among the four noble houses and unlock the secrets of the wizarding world! 🌟
                 </p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="scrollToSection('houses')">
-                        <i class="fas fa-hat-wizard"></i>
-                        Explore Houses
-                    </button>
-                    <button class="btn btn-secondary" onclick="scrollToSection('spells')">
-                        <i class="fas fa-wand-magic-sparkles"></i>
-                        Learn Spells
-                    </button>
+                    <a href="houses.html" class="btn btn-primary">
+                        <span class="btn-icon">🏠</span>
+                        <span class="btn-text">Explore Houses</span>
+                    </a>
+                    <a href="spells.html" class="btn btn-secondary">
+                        <span class="btn-icon">🪄</span>
+                        <span class="btn-text">Learn Spells</span>
+                    </a>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="floating-castle">
-                    <div class="castle-tower"></div>
-                    <div class="castle-tower"></div>
-                    <div class="castle-tower"></div>
-                    <div class="castle-base"></div>
+                    <div class="castle-tower">🏰</div>
+                    <div class="castle-tower">🏰</div>
+                    <div class="castle-tower">🏰</div>
                 </div>
                 <div class="magic-sparks">
-                    <div class="spark"></div>
-                    <div class="spark"></div>
-                    <div class="spark"></div>
-                    <div class="spark"></div>
-                    <div class="spark"></div>
+                    <div class="spark">✨</div>
+                    <div class="spark">⭐</div>
+                    <div class="spark">💫</div>
+                    <div class="spark">🌟</div>
+                    <div class="spark">✨</div>
                 </div>
             </div>
         </div>
         <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
+            <div class="scroll-text">Scroll Down ✨</div>
+            <div class="scroll-arrow">⬇️</div>
         </div>
     </section>
 
-    <!-- Houses Section -->
-    <section id="houses" class="houses">
+    <!-- Quick Access Section -->
+    <section class="quick-access">
         <div class="container">
-            <h2 class="section-title">The Four Houses</h2>
-            <p class="section-subtitle">Choose your destiny wisely</p>
-            
-            <div class="houses-grid">
-                <div class="house-card gryffindor" data-house="gryffindor">
-                    <div class="house-icon">
-                        <i class="fas fa-lion"></i>
-                    </div>
-                    <h3>Gryffindor</h3>
-                    <p>Bravery, courage, and determination</p>
-                    <div class="house-traits">
-                        <span>Brave</span>
-                        <span>Bold</span>
-                        <span>Noble</span>
-                    </div>
-                    <div class="house-glow"></div>
-                </div>
-
-                <div class="house-card slytherin" data-house="slytherin">
-                    <div class="house-icon">
-                        <i class="fas fa-snake"></i>
-                    </div>
-                    <h3>Slytherin</h3>
-                    <p>Ambition, cunning, and resourcefulness</p>
-                    <div class="house-traits">
-                        <span>Ambitious</span>
-                        <span>Cunning</span>
-                        <span>Determined</span>
-                    </div>
-                    <div class="house-glow"></div>
-                </div>
-
-                <div class="house-card ravenclaw" data-house="ravenclaw">
-                    <div class="house-icon">
-                        <i class="fas fa-eagle"></i>
-                    </div>
-                    <h3>Ravenclaw</h3>
-                    <p>Wisdom, wit, and learning</p>
-                    <div class="house-traits">
-                        <span>Wise</span>
-                        <span>Creative</span>
-                        <span>Intelligent</span>
-                    </div>
-                    <div class="house-glow"></div>
-                </div>
-
-                <div class="house-card hufflepuff" data-house="hufflepuff">
-                    <div class="house-icon">
-                        <i class="fas fa-badger"></i>
-                    </div>
-                    <h3>Hufflepuff</h3>
-                    <p>Loyalty, patience, and hard work</p>
-                    <div class="house-traits">
-                        <span>Loyal</span>
-                        <span>Patient</span>
-                        <span>Fair</span>
-                    </div>
-                    <div class="house-glow"></div>
-                </div>
+            <h2 class="section-title">🚀 Quick Access Portal 🚀</h2>
+            <div class="quick-grid">
+                <a href="houses.html" class="quick-card">
+                    <div class="quick-icon">🏠</div>
+                    <h3>Houses</h3>
+                    <p>Discover your destiny! 🎭</p>
+                </a>
+                <a href="spells.html" class="quick-card">
+                    <div class="quick-icon">🪄</div>
+                    <h3>Spells</h3>
+                    <p>Master the magic! ✨</p>
+                </a>
+                <a href="creatures.html" class="quick-card">
+                    <div class="quick-icon">🐉</div>
+                    <h3>Creatures</h3>
+                    <p>Meet magical beings! 🦅</p>
+                </a>
+                <a href="characters.html" class="quick-card">
+                    <div class="quick-icon">👥</div>
+                    <h3>Characters</h3>
+                    <p>Meet the legends! ⚡</p>
+                </a>
+                <a href="potions.html" class="quick-card">
+                    <div class="quick-icon">🧪</div>
+                    <h3>Potions</h3>
+                    <p>Brew some magic! 🔮</p>
+                </a>
+                <a href="quidditch.html" class="quick-card">
+                    <div class="quick-icon">🏆</div>
+                    <h3>Quidditch</h3>
+                    <p>Fly to victory! 🧹</p>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Spells Section -->
-    <section id="spells" class="spells">
+    <!-- Featured Section -->
+    <section class="featured">
         <div class="container">
-            <h2 class="section-title">Magical Spells</h2>
-            <p class="section-subtitle">Master the art of spellcasting</p>
-            
-            <div class="spells-container">
-                <div class="spell-card">
-                    <div class="spell-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>Lumos</h3>
-                    <p>Creates light at wand tip</p>
-                    <div class="spell-effect"></div>
+            <h2 class="section-title">🌟 Featured Magic 🌟</h2>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-icon">⚡</div>
+                    <h3>The Boy Who Lived</h3>
+                    <p>Harry Potter's incredible journey from the cupboard under the stairs to the hero of the wizarding world! 🎭</p>
+                    <a href="characters.html" class="featured-link">Learn More →</a>
                 </div>
-
-                <div class="spell-card">
-                    <div class="spell-icon">
-                        <i class="fas fa-feather"></i>
-                    </div>
+                <div class="featured-card">
+                    <div class="featured-icon">🦁</div>
+                    <h3>Gryffindor Pride</h3>
+                    <p>Bravery, courage, and determination - the house of the brave! Where dwell the brave at heart! 💪</p>
+                    <a href="houses.html" class="featured-link">Learn More →</a>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-icon">🪄</div>
                     <h3>Wingardium Leviosa</h3>
-                    <p>Makes objects levitate</p>
-                    <div class="spell-effect"></div>
-                </div>
-
-                <div class="spell-card">
-                    <div class="spell-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Protego</h3>
-                    <p>Shield charm for protection</p>
-                    <div class="spell-effect"></div>
-                </div>
-
-                <div class="spell-card">
-                    <div class="spell-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3>Incendio</h3>
-                    <p>Creates fire from wand</p>
-                    <div class="spell-effect"></div>
+                    <p>The levitation charm that made Hermione famous! It's LeviOsa, not LeviosA! 📚</p>
+                    <a href="spells.html" class="featured-link">Learn More →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Creatures Section -->
-    <section id="creatures" class="creatures">
+    <!-- Stats Section -->
+    <section class="stats">
         <div class="container">
-            <h2 class="section-title">Magical Creatures</h2>
-            <p class="section-subtitle">Discover the wonders of the magical world</p>
-            
-            <div class="creatures-grid">
-                <div class="creature-card">
-                    <div class="creature-image phoenix"></div>
-                    <h3>Phoenix</h3>
-                    <p>Immortal bird of rebirth and healing</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">🏠 Noble Houses</div>
                 </div>
-
-                <div class="creature-card">
-                    <div class="creature-image dragon"></div>
-                    <h3>Dragon</h3>
-                    <p>Majestic fire-breathing creatures</p>
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">📚 Years of History</div>
                 </div>
-
-                <div class="creature-card">
-                    <div class="creature-image unicorn"></div>
-                    <h3>Unicorn</h3>
-                    <p>Pure and magical horned horses</p>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">✨ Magical Possibilities</div>
                 </div>
-
-                <div class="creature-card">
-                    <div class="creature-image hippogriff"></div>
-                    <h3>Hippogriff</h3>
-                    <p>Proud creatures with eagle and horse features</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About Hogwarts</h2>
-                    <p>Founded over a thousand years ago by the four greatest witches and wizards of the age, Hogwarts School of Witchcraft and Wizardry stands as a beacon of magical education and discovery.</p>
-                    <p>Located in the Scottish Highlands, this ancient castle has been the training ground for countless generations of witches and wizards, preparing them for a life of magic, adventure, and wonder.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">1000+</span>
-                            <span class="stat-label">Years of History</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">4</span>
-                            <span class="stat-label">Noble Houses</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">∞</span>
-                            <span class="stat-label">Magical Possibilities</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-visual">
-                    <div class="floating-elements">
-                        <div class="floating-book"></div>
-                        <div class="floating-wand"></div>
-                        <div class="floating-potion"></div>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">📖 Books & Movies</div>
                 </div>
             </div>
         </div>
@@ -275,29 +187,37 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Hogwarts</h3>
-                    <p>School of Witchcraft & Wizardry</p>
+                    <h3>🏰 Hogwarts Hub</h3>
+                    <p>Your gateway to the magical world! ✨</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4>🚀 Quick Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#houses">Houses</a></li>
-                        <li><a href="#spells">Spells</a></li>
-                        <li><a href="#creatures">Creatures</a></li>
+                        <li><a href="houses.html">🏠 Houses</a></li>
+                        <li><a href="spells.html">🪄 Spells</a></li>
+                        <li><a href="creatures.html">🐉 Creatures</a></li>
+                        <li><a href="characters.html">👥 Characters</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                    </div>
+                    <h4>🎭 More Magic</h4>
+                    <ul>
+                        <li><a href="potions.html">🧪 Potions</a></li>
+                        <li><a href="quidditch.html">🏆 Quidditch</a></li>
+                        <li><a href="index.html">🏠 Home</a></li>
+                        <li><a href="#">📞 Contact</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Hogwarts School of Witchcraft & Wizardry. All rights reserved.</p>
+                <p>✨ Made with magic and love for the wizarding world! ✨</p>
+                <p>© 2024 Hogwarts Hub - All rights reserved! 🏰</p>
             </div>
         </div>
     </footer>

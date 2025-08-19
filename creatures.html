@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐉 Magical Creatures - Meet the Beasts! 🐉</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-icon">🐉</div>
+        <div class="floating-icon">🦅</div>
+        <div class="floating-icon">🦁</div>
+        <div class="floating-icon">🦄</div>
+        <div class="floating-icon">🦡</div>
+        <div class="floating-icon">🦉</div>
+        <div class="floating-icon">🦋</div>
+        <div class="floating-icon">🦕</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🏰</span>
+                <span class="logo-text">Hogwarts Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+                <li><a href="houses.html" class="nav-link">🏠 Houses</a></li>
+                <li><a href="spells.html" class="nav-link">🪄 Spells</a></li>
+                <li><a href="creatures.html" class="nav-link active">🐉 Creatures</a></li>
+                <li><a href="characters.html" class="nav-link">👥 Characters</a></li>
+                <li><a href="potions.html" class="nav-link">🧪 Potions</a></li>
+                <li><a href="quidditch.html" class="nav-link">🏆 Quidditch</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero creatures-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">🐉 Discover Magical Creatures 🐉</span>
+                    <span class="title-main">Fantastic Beasts</span>
+                    <span class="title-sub">🦅 From gentle giants to fierce dragons! 🦅</span>
+                </h1>
+                <p class="hero-description">
+                    🎭 Explore the incredible world of magical creatures! From the majestic phoenix to the mysterious thestral, 
+                    discover the amazing beasts that inhabit the wizarding world! 🌟
+                </p>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-creatures">
+                    <div class="creature">🦅</div>
+                    <div class="creature">🦄</div>
+                    <div class="creature">🐉</div>
+                    <div class="creature">🦁</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creatures Grid -->
+    <section class="creatures-section">
+        <div class="container">
+            <h2 class="section-title">🌟 Magical Creatures Gallery 🌟</h2>
+            <div class="creatures-grid">
+                <!-- Phoenix -->
+                <div class="creature-card" data-creature="phoenix">
+                    <div class="creature-image">🦅</div>
+                    <div class="creature-content">
+                        <h3>Phoenix</h3>
+                        <p class="creature-description">Immortal bird of rebirth and healing! Tears have magical properties! 🦅</p>
+                        <div class="creature-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🏠 Habitat:</span>
+                                <span class="detail-value">Mountains</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🎭 Nature:</span>
+                                <span class="detail-value">Gentle</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">✨ Special Ability:</span>
+                                <span class="detail-value">Rebirth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dragon -->
+                <div class="creature-card" data-creature="dragon">
+                    <div class="creature-image">🐉</div>
+                    <div class="creature-content">
+                        <h3>Dragon</h3>
+                        <p class="creature-description">Majestic fire-breathing creatures! Extremely dangerous but magnificent! 🐉</p>
+                        <div class="creature-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🏠 Habitat:</span>
+                                <span class="detail-value">Mountains</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🎭 Nature:</span>
+                                <span class="detail-value">Aggressive</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">✨ Special Ability:</span>
+                                <span class="detail-value">Fire Breathing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unicorn -->
+                <div class="creature-card" data-creature="unicorn">
+                    <div class="creature-image">🦄</div>
+                    <div class="creature-content">
+                        <h3>Unicorn</h3>
+                        <p class="creature-description">Pure and magical horned horses! Hair is used in wand cores! 🦄</p>
+                        <div class="creature-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🏠 Habitat:</span>
+                                <span class="detail-value">Forests</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🎭 Nature:</span>
+                                <span class="detail-value">Gentle</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">✨ Special Ability:</span>
+                                <span class="detail-value">Healing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hippogriff -->
+                <div class="creature-card" data-creature="hippogriff">
+                    <div class="creature-image">🦅</div>
+                    <div class="creature-content">
+                        <h3>Hippogriff</h3>
+                        <p class="creature-description">Proud creatures with eagle and horse features! Must be approached with respect! 🦅</p>
+                        <div class="creature-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🏠 Habitat:</span>
+                                <span class="detail-value">Forests</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🎭 Nature:</span>
+                                <span class="detail-value">Proud</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">✨ Special Ability:</span>
+                                <span class="detail-value">Flight</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thestral -->
+                <div class="creature-card" data-creature="thestral">
+                    <div class="creature-image">🦇</div>
+                    <div class="creature-content">
+                        <h3>Thestral</h3>
+                        <p class="creature-description">Skeletal winged horses! Only visible to those who have seen death! 🦇</p>
+                        <div class="creature-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🏠 Habitat:</span>
+                                <span class="detail-value">Forbidden Forest</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🎭 Nature:</span>
+                                <span class="detail-value">Mysterious</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">✨ Special Ability:</span>
+                                <span class="detail-value">Invisibility</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Centaur -->
+                <div class="creature-card" data-creature="centaur">
+                    <div class="creature-image">🐎</div>
+                    <div class="creature-content">
+                        <h3>Centaur</h3>
+                        <p class="creature-description">Half-human, half-horse beings! Skilled in archery and divination! 🐎</p>
+                        <div class="creature-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🏠 Habitat:</span>
+                                <span class="detail-value">Forbidden Forest</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">🎭 Nature:</span>
+                                <span class="detail-value">Wise</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">✨ Special Ability:</span>
+                                <span class="detail-value">Divination</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creature Quiz -->
+    <section class="creature-quiz">
+        <div class="container">
+            <h2 class="section-title">🧠 Test Your Creature Knowledge! 🧠</h2>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>Which creature is only visible to those who have seen death? 👻</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-answer="thestral">🦇 Thestral</button>
+                        <button class="quiz-option" data-answer="phoenix">🦅 Phoenix</button>
+                        <button class="quiz-option" data-answer="unicorn">🦄 Unicorn</button>
+                        <button class="quiz-option" data-answer="dragon">🐉 Dragon</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🏰 Hogwarts Hub</h3>
+                    <p>Your gateway to the magical world! ✨</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>🚀 Quick Links</h4>
+                    <ul>
+                        <li><a href="houses.html">🏠 Houses</a></li>
+                        <li><a href="spells.html">🪄 Spells</a></li>
+                        <li><a href="creatures.html">🐉 Creatures</a></li>
+                        <li><a href="characters.html">👥 Characters</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>🎭 More Magic</h4>
+                    <ul>
+                        <li><a href="potions.html">🧪 Potions</a></li>
+                        <li><a href="quidditch.html">🏆 Quidditch</a></li>
+                        <li><a href="index.html">🏠 Home</a></li>
+                        <li><a href="#">📞 Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>✨ Made with magic and love for the wizarding world! ✨</p>
+                <p>© 2024 Hogwarts Hub - All rights reserved! 🏰</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

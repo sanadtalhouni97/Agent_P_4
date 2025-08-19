@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Hogwarts Potions - Brew Some Magic! 🧪</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-icon">🧪</div>
+        <div class="floating-icon">🔮</div>
+        <div class="floating-icon">💊</div>
+        <div class="floating-icon">🌿</div>
+        <div class="floating-icon">⚗️</div>
+        <div class="floating-icon">🧬</div>
+        <div class="floating-icon">💎</div>
+        <div class="floating-icon">✨</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🏰</span>
+                <span class="logo-text">Hogwarts Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+                <li><a href="houses.html" class="nav-link">🏠 Houses</a></li>
+                <li><a href="spells.html" class="nav-link">🪄 Spells</a></li>
+                <li><a href="creatures.html" class="nav-link">🐉 Creatures</a></li>
+                <li><a href="characters.html" class="nav-link">👥 Characters</a></li>
+                <li><a href="potions.html" class="nav-link active">🧪 Potions</a></li>
+                <li><a href="quidditch.html" class="nav-link">🏆 Quidditch</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero potions-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">🧪 Master the Art of Potion Making 🧪</span>
+                    <span class="title-main">Hogwarts Potions</span>
+                    <span class="title-sub">🔮 Brew powerful potions and magical elixirs! 🔮</span>
+                </h1>
+                <p class="hero-description">
+                    🎭 Discover the secrets of potion making! From simple healing potions to complex love potions, 
+                    learn to brew magic in a cauldron! Remember: "Turn to page 394" - Professor Snape 📚
+                </p>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-potions">
+                    <div class="potion">🧪</div>
+                    <div class="potion">🔮</div>
+                    <div class="potion">⚗️</div>
+                    <div class="potion">💊</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Potions Grid -->
+    <section class="potions-section">
+        <div class="container">
+            <h2 class="section-title">🌟 Potion Collection 🌟</h2>
+            <div class="potions-grid">
+                <!-- Felix Felicis -->
+                <div class="potion-card" data-potion="felix-felicis">
+                    <div class="potion-image">🍀</div>
+                    <div class="potion-content">
+                        <h3>Felix Felicis</h3>
+                        <p class="potion-description">Liquid luck! Makes you incredibly lucky for a short time! 🍀</p>
+                        <div class="potion-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Good Fortune</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">⏰ Duration:</span>
+                                <span class="detail-value">12 Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Polyjuice Potion -->
+                <div class="potion-card" data-potion="polyjuice">
+                    <div class="potion-image">👥</div>
+                    <div class="potion-content">
+                        <h3>Polyjuice Potion</h3>
+                        <p class="potion-description">Transform into someone else! Requires a piece of the target! 👥</p>
+                        <div class="potion-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Transformation</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">⏰ Duration:</span>
+                                <span class="detail-value">1 Hour</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amortentia -->
+                <div class="potion-card" data-potion="amortentia">
+                    <div class="potion-image">💕</div>
+                    <div class="potion-content">
+                        <h3>Amortentia</h3>
+                        <p class="potion-description">The most powerful love potion! Smells different to each person! 💕</p>
+                        <div class="potion-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Love Potion</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">⏰ Duration:</span>
+                                <span class="detail-value">Variable</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Expert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Veritaserum -->
+                <div class="potion-card" data-potion="veritaserum">
+                    <div class="potion-image">🤐</div>
+                    <div class="potion-content">
+                        <h3>Veritaserum</h3>
+                        <p class="potion-description">Truth serum! Makes the drinker tell the truth! 🤐</p>
+                        <div class="potion-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Truth Telling</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">⏰ Duration:</span>
+                                <span class="detail-value">1 Hour</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Expert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wolfsbane Potion -->
+                <div class="potion-card" data-potion="wolfsbane">
+                    <div class="potion-image">🐺</div>
+                    <div class="potion-content">
+                        <h3>Wolfsbane Potion</h3>
+                        <p class="potion-description">Helps werewolves retain their minds during transformation! 🐺</p>
+                        <div class="potion-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Werewolf Control</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">⏰ Duration:</span>
+                                <span class="detail-value">1 Month</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Draught of Living Death -->
+                <div class="potion-card" data-potion="draught-living-death">
+                    <div class="potion-image">💀</div>
+                    <div class="potion-content">
+                        <h3>Draught of Living Death</h3>
+                        <p class="potion-description">Puts the drinker into a death-like sleep! Extremely dangerous! 💀</p>
+                        <div class="potion-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Deep Sleep</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">⏰ Duration:</span>
+                                <span class="detail-value">Indefinite</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Expert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Potion Brewing Section -->
+    <section class="brewing-section">
+        <div class="container">
+            <h2 class="section-title">⚗️ Potion Brewing Station ⚗️</h2>
+            <div class="brewing-area">
+                <div class="cauldron">
+                    <div class="cauldron-icon">⚗️</div>
+                    <div class="cauldron-text">Your brewing station!</div>
+                </div>
+                <div class="ingredients">
+                    <h3>🌿 Common Ingredients:</h3>
+                    <div class="ingredient-list">
+                        <span class="ingredient">🌿 Mandrake Root</span>
+                        <span class="ingredient">🦎 Lizard Tails</span>
+                        <span class="ingredient">🕷️ Spider Legs</span>
+                        <span class="ingredient">🐸 Frog Eyes</span>
+                        <span class="ingredient">🌱 Wolfsbane</span>
+                        <span class="ingredient">🌺 Belladonna</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🏰 Hogwarts Hub</h3>
+                    <p>Your gateway to the magical world! ✨</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>🚀 Quick Links</h4>
+                    <ul>
+                        <li><a href="houses.html">🏠 Houses</a></li>
+                        <li><a href="spells.html">🪄 Spells</a></li>
+                        <li><a href="creatures.html">🐉 Creatures</a></li>
+                        <li><a href="characters.html">👥 Characters</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>🎭 More Magic</h4>
+                    <ul>
+                        <li><a href="potions.html">🧪 Potions</a></li>
+                        <li><a href="quidditch.html">🏆 Quidditch</a></li>
+                        <li><a href="index.html">🏠 Home</a></li>
+                        <li><a href="#">📞 Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>✨ Made with magic and love for the wizarding world! ✨</p>
+                <p>© 2024 Hogwarts Hub - All rights reserved! 🏰</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

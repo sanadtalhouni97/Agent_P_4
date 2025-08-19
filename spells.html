@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🪄 Hogwarts Spells - Master the Magic! 🪄</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-icon">🪄</div>
+        <div class="floating-icon">✨</div>
+        <div class="floating-icon">⚡</div>
+        <div class="floating-icon">🔥</div>
+        <div class="floating-icon">💫</div>
+        <div class="floating-icon">🌟</div>
+        <div class="floating-icon">💎</div>
+        <div class="floating-icon">🌈</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🏰</span>
+                <span class="logo-text">Hogwarts Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+                <li><a href="houses.html" class="nav-link">🏠 Houses</a></li>
+                <li><a href="spells.html" class="nav-link active">🪄 Spells</a></li>
+                <li><a href="creatures.html" class="nav-link">🐉 Creatures</a></li>
+                <li><a href="characters.html" class="nav-link">👥 Characters</a></li>
+                <li><a href="potions.html" class="nav-link">🧪 Potions</a></li>
+                <li><a href="quidditch.html" class="nav-link">🏆 Quidditch</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero spells-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">🪄 Master the Art of Spellcasting 🪄</span>
+                    <span class="title-main">Hogwarts Spells</span>
+                    <span class="title-sub">✨ Learn the most powerful spells in the wizarding world! ✨</span>
+                </h1>
+                <p class="hero-description">
+                    🎭 From simple charms to powerful curses, discover the spells that made wizarding history! 
+                    Remember: "It's LeviOsa, not LeviosA!" - Hermione Granger 📚
+                </p>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-wand">🪄</div>
+                <div class="spell-effects">
+                    <div class="spell-effect">✨</div>
+                    <div class="spell-effect">⚡</div>
+                    <div class="spell-effect">💫</div>
+                    <div class="spell-effect">🌟</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spells Categories -->
+    <section class="spells-categories">
+        <div class="container">
+            <h2 class="section-title">📚 Spell Categories 📚</h2>
+            <div class="categories-grid">
+                <div class="category-card charms">
+                    <div class="category-icon">✨</div>
+                    <h3>Charms</h3>
+                    <p>Simple spells for everyday magic! 🎭</p>
+                </div>
+                <div class="category-card transfiguration">
+                    <div class="category-icon">🔄</div>
+                    <h3>Transfiguration</h3>
+                    <p>Transform objects and creatures! 🦋</p>
+                </div>
+                <div class="category-card jinxes">
+                    <div class="category-icon">⚡</div>
+                    <h3>Jinxes</h3>
+                    <p>Minor spells with amusing effects! 😄</p>
+                </div>
+                <div class="category-card hexes">
+                    <div class="category-icon">🔥</div>
+                    <h3>Hexes</h3>
+                    <p>Spells that cause discomfort! 😵</p>
+                </div>
+                <div class="category-card curses">
+                    <div class="category-icon">💀</div>
+                    <h3>Curses</h3>
+                    <p>The most powerful dark magic! ⚠️</p>
+                </div>
+                <div class="category-card counter-spells">
+                    <div class="category-icon">🛡️</div>
+                    <h3>Counter-Spells</h3>
+                    <p>Protection and defense magic! 🛡️</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Spells -->
+    <section class="popular-spells">
+        <div class="container">
+            <h2 class="section-title">⭐ Most Popular Spells ⭐</h2>
+            <div class="spells-grid">
+                <!-- Lumos -->
+                <div class="spell-card" data-spell="lumos">
+                    <div class="spell-header">
+                        <div class="spell-icon">💡</div>
+                        <h3>Lumos</h3>
+                        <div class="spell-type">Charm</div>
+                    </div>
+                    <div class="spell-content">
+                        <p class="spell-description">Creates light at the tip of your wand! Perfect for exploring dark places! 🌟</p>
+                        <div class="spell-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Creates light</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Beginner</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">👨‍🏫 Taught by:</span>
+                                <span class="detail-value">Professor Flitwick</span>
+                            </div>
+                        </div>
+                        <div class="spell-incantation">
+                            <span class="incantation-label">🗣️ Incantation:</span>
+                            <span class="incantation-text">"Lumos"</span>
+                        </div>
+                    </div>
+                    <button class="cast-spell-btn" onclick="castSpell('lumos')">
+                        <span class="btn-icon">🪄</span>
+                        <span class="btn-text">Cast Spell</span>
+                    </button>
+                </div>
+
+                <!-- Wingardium Leviosa -->
+                <div class="spell-card" data-spell="wingardium-leviosa">
+                    <div class="spell-header">
+                        <div class="spell-icon">🪶</div>
+                        <h3>Wingardium Leviosa</h3>
+                        <div class="spell-type">Charm</div>
+                    </div>
+                    <div class="spell-content">
+                        <p class="spell-description">Makes objects levitate! Remember: "It's LeviOsa, not LeviosA!" 🪶</p>
+                        <div class="spell-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Levitation</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Intermediate</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">👨‍🏫 Taught by:</span>
+                                <span class="detail-value">Professor Flitwick</span>
+                            </div>
+                        </div>
+                        <div class="spell-incantation">
+                            <span class="incantation-label">🗣️ Incantation:</span>
+                            <span class="incantation-text">"Wingardium Leviosa"</span>
+                        </div>
+                    </div>
+                    <button class="cast-spell-btn" onclick="castSpell('wingardium-leviosa')">
+                        <span class="btn-icon">🪄</span>
+                        <span class="btn-text">Cast Spell</span>
+                    </button>
+                </div>
+
+                <!-- Expecto Patronum -->
+                <div class="spell-card" data-spell="expecto-patronum">
+                    <div class="spell-header">
+                        <div class="spell-icon">🦌</div>
+                        <h3>Expecto Patronum</h3>
+                        <div class="spell-type">Charm</div>
+                    </div>
+                    <div class="spell-content">
+                        <p class="spell-description">Conjures a Patronus to drive away Dementors! Think of your happiest memory! 🦌</p>
+                        <div class="spell-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Patronus Charm</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Advanced</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">👨‍🏫 Taught by:</span>
+                                <span class="detail-value">Professor Lupin</span>
+                            </div>
+                        </div>
+                        <div class="spell-incantation">
+                            <span class="incantation-label">🗣️ Incantation:</span>
+                            <span class="incantation-text">"Expecto Patronum"</span>
+                        </div>
+                    </div>
+                    <button class="cast-spell-btn" onclick="castSpell('expecto-patronum')">
+                        <span class="btn-icon">🪄</span>
+                        <span class="btn-text">Cast Spell</span>
+                    </button>
+                </div>
+
+                <!-- Alohomora -->
+                <div class="spell-card" data-spell="alohomora">
+                    <div class="spell-header">
+                        <div class="spell-icon">🔓</div>
+                        <h3>Alohomora</h3>
+                        <div class="spell-type">Charm</div>
+                    </div>
+                    <div class="spell-content">
+                        <p class="spell-description">Unlocks doors and other locked objects! The thief's friend! 🔓</p>
+                        <div class="spell-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Unlocking</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Beginner</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">👨‍🏫 Taught by:</span>
+                                <span class="detail-value">Professor Flitwick</span>
+                            </div>
+                        </div>
+                        <div class="spell-incantation">
+                            <span class="incantation-label">🗣️ Incantation:</span>
+                            <span class="incantation-text">"Alohomora"</span>
+                        </div>
+                    </div>
+                    <button class="cast-spell-btn" onclick="castSpell('alohomora')">
+                        <span class="btn-icon">🪄</span>
+                        <span class="btn-text">Cast Spell</span>
+                    </button>
+                </div>
+
+                <!-- Protego -->
+                <div class="spell-card" data-spell="protego">
+                    <div class="spell-header">
+                        <div class="spell-icon">🛡️</div>
+                        <h3>Protego</h3>
+                        <div class="spell-type">Charm</div>
+                    </div>
+                    <div class="spell-content">
+                        <p class="spell-description">Creates a magical shield to deflect spells and protect you! 🛡️</p>
+                        <div class="spell-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Shield Charm</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Intermediate</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">👨‍🏫 Taught by:</span>
+                                <span class="detail-value">Professor Flitwick</span>
+                            </div>
+                        </div>
+                        <div class="spell-incantation">
+                            <span class="incantation-label">🗣️ Incantation:</span>
+                            <span class="incantation-text">"Protego"</span>
+                        </div>
+                    </div>
+                    <button class="cast-spell-btn" onclick="castSpell('protego')">
+                        <span class="btn-icon">🪄</span>
+                        <span class="btn-text">Cast Spell</span>
+                    </button>
+                </div>
+
+                <!-- Incendio -->
+                <div class="spell-card" data-spell="incendio">
+                    <div class="spell-header">
+                        <div class="spell-icon">🔥</div>
+                        <h3>Incendio</h3>
+                        <div class="spell-type">Charm</div>
+                    </div>
+                    <div class="spell-content">
+                        <p class="spell-description">Creates fire from your wand! Perfect for lighting fires or defense! 🔥</p>
+                        <div class="spell-details">
+                            <div class="detail-item">
+                                <span class="detail-label">🎯 Effect:</span>
+                                <span class="detail-value">Fire Creation</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">📚 Difficulty:</span>
+                                <span class="detail-value">Intermediate</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">👨‍🏫 Taught by:</span>
+                                <span class="detail-value">Professor McGonagall</span>
+                            </div>
+                        </div>
+                        <div class="spell-incantation">
+                            <span class="incantation-label">🗣️ Incantation:</span>
+                            <span class="incantation-text">"Incendio"</span>
+                        </div>
+                    </div>
+                    <button class="cast-spell-btn" onclick="castSpell('incendio')">
+                        <span class="btn-icon">🪄</span>
+                        <span class="btn-text">Cast Spell</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spell Practice Section -->
+    <section class="spell-practice">
+        <div class="container">
+            <h2 class="section-title">🎯 Practice Your Spells! 🎯</h2>
+            <div class="practice-area">
+                <div class="practice-target">
+                    <div class="target-icon">🎯</div>
+                    <div class="target-text">Cast spells here!</div>
+                </div>
+                <div class="practice-spells">
+                    <button class="practice-spell" onclick="practiceSpell('lumos')">💡 Lumos</button>
+                    <button class="practice-spell" onclick="practiceSpell('wingardium-leviosa')">🪶 Wingardium Leviosa</button>
+                    <button class="practice-spell" onclick="practiceSpell('alohomora')">🔓 Alohomora</button>
+                    <button class="practice-spell" onclick="practiceSpell('protego')">🛡️ Protego</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🏰 Hogwarts Hub</h3>
+                    <p>Your gateway to the magical world! ✨</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>🚀 Quick Links</h4>
+                    <ul>
+                        <li><a href="houses.html">🏠 Houses</a></li>
+                        <li><a href="spells.html">🪄 Spells</a></li>
+                        <li><a href="creatures.html">🐉 Creatures</a></li>
+                        <li><a href="characters.html">👥 Characters</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>🎭 More Magic</h4>
+                    <ul>
+                        <li><a href="potions.html">🧪 Potions</a></li>
+                        <li><a href="quidditch.html">🏆 Quidditch</a></li>
+                        <li><a href="index.html">🏠 Home</a></li>
+                        <li><a href="#">📞 Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>✨ Made with magic and love for the wizarding world! ✨</p>
+                <p>© 2024 Hogwarts Hub - All rights reserved! 🏰</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

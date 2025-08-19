@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimations();
     initializeNavigation();
     initializeScrollEffects();
-    initializeHouseCards();
-    initializeSpellCards();
+    initializeInteractiveElements();
+    initializeSpellCasting();
+    initializeQuizzes();
     initializeParallax();
 });
 
@@ -25,14 +26,14 @@ function initializeAnimations() {
     }, observerOptions);
 
     // Observe all cards and sections
-    document.querySelectorAll('.house-card, .spell-card, .creature-card, .section-title, .section-subtitle').forEach(el => {
+    document.querySelectorAll('.quick-card, .featured-card, .house-card, .spell-card, .creature-card, .character-card, .potion-card, .position-card, .team-card, .equipment-item, .section-title, .section-subtitle').forEach(el => {
         observer.observe(el);
     });
 
     // Add CSS for animations
     const style = document.createElement('style');
     style.textContent = `
-        .house-card, .spell-card, .creature-card, .section-title, .section-subtitle {
+        .quick-card, .featured-card, .house-card, .spell-card, .creature-card, .character-card, .potion-card, .position-card, .team-card, .equipment-item, .section-title, .section-subtitle {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
@@ -43,6 +44,13 @@ function initializeAnimations() {
             transform: translateY(0);
         }
         
+        .quick-card:nth-child(1) { transition-delay: 0.1s; }
+        .quick-card:nth-child(2) { transition-delay: 0.2s; }
+        .quick-card:nth-child(3) { transition-delay: 0.3s; }
+        .quick-card:nth-child(4) { transition-delay: 0.4s; }
+        .quick-card:nth-child(5) { transition-delay: 0.5s; }
+        .quick-card:nth-child(6) { transition-delay: 0.6s; }
+        
         .house-card:nth-child(1) { transition-delay: 0.1s; }
         .house-card:nth-child(2) { transition-delay: 0.2s; }
         .house-card:nth-child(3) { transition-delay: 0.3s; }
@@ -52,44 +60,29 @@ function initializeAnimations() {
         .spell-card:nth-child(2) { transition-delay: 0.2s; }
         .spell-card:nth-child(3) { transition-delay: 0.3s; }
         .spell-card:nth-child(4) { transition-delay: 0.4s; }
+        .spell-card:nth-child(5) { transition-delay: 0.5s; }
+        .spell-card:nth-child(6) { transition-delay: 0.6s; }
     `;
     document.head.appendChild(style);
 }
 
 // Initialize navigation
 function initializeNavigation() {
-    const hamburger = document.querySelector('.hamburger');
+    const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
     // Mobile menu toggle
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
 
     // Close mobile menu when clicking on links
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
+            navToggle.classList.remove('active');
             navMenu.classList.remove('active');
-        });
-    });
-
-    // Smooth scrolling for navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
         });
     });
 
@@ -112,13 +105,13 @@ function initializeScrollEffects() {
         const hero = document.querySelector('.hero');
         const heroContent = document.querySelector('.hero-content');
         
-        if (hero) {
+        if (hero && heroContent) {
             heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
         }
     });
 
     // Reveal animations on scroll
-    const revealElements = document.querySelectorAll('.house-card, .spell-card, .creature-card');
+    const revealElements = document.querySelectorAll('.quick-card, .featured-card, .house-card, .spell-card, .creature-card, .character-card, .potion-card, .position-card, .team-card, .equipment-item');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -134,15 +127,13 @@ function initializeScrollEffects() {
     });
 }
 
-// Initialize house cards interactions
-function initializeHouseCards() {
+// Initialize interactive elements
+function initializeInteractiveElements() {
+    // House cards interactions
     const houseCards = document.querySelectorAll('.house-card');
-    
     houseCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-            // Add house-specific effects
-            const house = card.dataset.house;
-            addHouseEffect(card, house);
+            addHouseEffect(card);
         });
         
         card.addEventListener('mouseleave', () => {
@@ -153,10 +144,59 @@ function initializeHouseCards() {
             showHouseModal(card.dataset.house);
         });
     });
+
+    // Spell cards interactions
+    const spellCards = document.querySelectorAll('.spell-card');
+    spellCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            createSpellEffect(card);
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            removeSpellEffect(card);
+        });
+    });
+
+    // Creature cards interactions
+    const creatureCards = document.querySelectorAll('.creature-card');
+    creatureCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            createCreatureEffect(card);
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            removeCreatureEffect(card);
+        });
+    });
+
+    // Character cards interactions
+    const characterCards = document.querySelectorAll('.character-card');
+    characterCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            createCharacterEffect(card);
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            removeCharacterEffect(card);
+        });
+    });
+
+    // Potion cards interactions
+    const potionCards = document.querySelectorAll('.potion-card');
+    potionCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            createPotionEffect(card);
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            removePotionEffect(card);
+        });
+    });
 }
 
 // Add house-specific visual effects
-function addHouseEffect(card, house) {
+function addHouseEffect(card) {
+    const house = card.dataset.house;
     const colors = {
         gryffindor: { primary: '#740001', secondary: '#D3A625' },
         slytherin: { primary: '#1a472a', secondary: '#5d5d5d' },
@@ -168,8 +208,6 @@ function addHouseEffect(card, house) {
     if (houseColors) {
         card.style.borderColor = houseColors.primary;
         card.style.boxShadow = `0 20px 40px ${houseColors.primary}40`;
-        
-        // Add floating particles
         createFloatingParticles(card, houseColors.primary);
     }
 }
@@ -178,8 +216,6 @@ function addHouseEffect(card, house) {
 function removeHouseEffect(card) {
     card.style.borderColor = '';
     card.style.boxShadow = '';
-    
-    // Remove particles
     const particles = card.querySelectorAll('.house-particle');
     particles.forEach(particle => particle.remove());
 }
@@ -207,31 +243,14 @@ function createFloatingParticles(card, color) {
     }
 }
 
-// Initialize spell cards
-function initializeSpellCards() {
-    const spellCards = document.querySelectorAll('.spell-card');
-    
-    spellCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            createSpellEffect(card);
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            removeSpellEffect(card);
-        });
-        
-        card.addEventListener('click', () => {
-            castSpell(card);
-        });
-    });
-}
-
 // Create spell casting effect
 function createSpellEffect(card) {
     const spellName = card.querySelector('h3').textContent;
     const effects = {
         'Lumos': { color: '#FFD700', icon: '✨' },
         'Wingardium Leviosa': { color: '#87CEEB', icon: '🪶' },
+        'Expecto Patronum': { color: '#98FB98', icon: '🦌' },
+        'Alohomora': { color: '#FF6347', icon: '🔓' },
         'Protego': { color: '#98FB98', icon: '🛡️' },
         'Incendio': { color: '#FF6347', icon: '🔥' }
     };
@@ -240,8 +259,6 @@ function createSpellEffect(card) {
     if (effect) {
         card.style.borderColor = effect.color;
         card.style.boxShadow = `0 15px 30px ${effect.color}40`;
-        
-        // Add sparkle effect
         createSparkleEffect(card, effect.color);
     }
 }
@@ -250,7 +267,6 @@ function createSpellEffect(card) {
 function removeSpellEffect(card) {
     card.style.borderColor = '';
     card.style.boxShadow = '';
-    
     const sparkles = card.querySelectorAll('.spell-sparkle');
     sparkles.forEach(sparkle => sparkle.remove());
 }
@@ -278,56 +294,212 @@ function createSparkleEffect(card, color) {
     }
 }
 
-// Cast spell animation
-function castSpell(card) {
-    const spellName = card.querySelector('h3').textContent;
-    
-    // Create spell cast effect
+// Create creature effect
+function createCreatureEffect(card) {
+    card.style.borderColor = '#30D158';
+    card.style.boxShadow = '0 15px 30px rgba(48, 209, 88, 0.2)';
+}
+
+// Remove creature effect
+function removeCreatureEffect(card) {
+    card.style.borderColor = '';
+    card.style.boxShadow = '';
+}
+
+// Create character effect
+function createCharacterEffect(card) {
+    card.style.borderColor = '#FF2D92';
+    card.style.boxShadow = '0 15px 30px rgba(255, 45, 146, 0.2)';
+}
+
+// Remove character effect
+function removeCharacterEffect(card) {
+    card.style.borderColor = '';
+    card.style.boxShadow = '';
+}
+
+// Create potion effect
+function createPotionEffect(card) {
+    card.style.borderColor = '#64D2FF';
+    card.style.boxShadow = '0 15px 30px rgba(100, 210, 255, 0.2)';
+}
+
+// Remove potion effect
+function removePotionEffect(card) {
+    card.style.borderColor = '';
+    card.style.boxShadow = '';
+}
+
+// Initialize spell casting
+function initializeSpellCasting() {
+    // Cast spell animation
+    window.castSpell = function(spellName) {
+        const spellEffects = {
+            'lumos': { icon: '💡', color: '#FFD700', text: 'Lumos!' },
+            'wingardium-leviosa': { icon: '🪶', color: '#87CEEB', text: 'Wingardium Leviosa!' },
+            'expecto-patronum': { icon: '🦌', color: '#98FB98', text: 'Expecto Patronum!' },
+            'alohomora': { icon: '🔓', color: '#FF6347', text: 'Alohomora!' },
+            'protego': { icon: '🛡️', color: '#98FB98', text: 'Protego!' },
+            'incendio': { icon: '🔥', color: '#FF6347', text: 'Incendio!' }
+        };
+        
+        const effect = spellEffects[spellName];
+        if (effect) {
+            createSpellCastEffect(effect);
+        }
+    };
+
+    // Practice spell animation
+    window.practiceSpell = function(spellName) {
+        const practiceEffects = {
+            'lumos': { icon: '💡', color: '#FFD700' },
+            'wingardium-leviosa': { icon: '🪶', color: '#87CEEB' },
+            'alohomora': { icon: '🔓', color: '#FF6347' },
+            'protego': { icon: '🛡️', color: '#98FB98' }
+        };
+        
+        const effect = practiceEffects[spellName];
+        if (effect) {
+            createPracticeEffect(effect);
+        }
+    };
+}
+
+// Create spell cast effect
+function createSpellCastEffect(effect) {
     const castEffect = document.createElement('div');
     castEffect.style.cssText = `
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 3rem;
-        color: #FFD700;
+        font-size: 4rem;
+        color: ${effect.color};
         pointer-events: none;
         z-index: 10000;
         animation: spellCast 1s ease-out forwards;
     `;
     
-    const effects = {
-        'Lumos': '✨',
-        'Wingardium Leviosa': '🪶',
-        'Protego': '🛡️',
-        'Incendio': '🔥'
-    };
-    
-    castEffect.textContent = effects[spellName] || '✨';
+    castEffect.textContent = effect.icon;
     document.body.appendChild(castEffect);
     
-    // Show spell name
     const spellText = document.createElement('div');
     spellText.style.cssText = `
         position: fixed;
         top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: #FFD700;
-        font-family: 'Cinzel', serif;
+        color: ${effect.color};
+        font-family: 'Space Grotesk', sans-serif;
         font-size: 1.5rem;
+        font-weight: 600;
         pointer-events: none;
         z-index: 10000;
         animation: spellText 1s ease-out forwards;
     `;
-    spellText.textContent = spellName;
+    spellText.textContent = effect.text;
     document.body.appendChild(spellText);
     
-    // Remove effects after animation
     setTimeout(() => {
         castEffect.remove();
         spellText.remove();
     }, 1000);
+}
+
+// Create practice effect
+function createPracticeEffect(effect) {
+    const practiceArea = document.querySelector('.practice-target');
+    if (practiceArea) {
+        const effectElement = document.createElement('div');
+        effectElement.style.cssText = `
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: ${effect.color};
+            animation: practiceSpell 2s ease-out forwards;
+        `;
+        effectElement.textContent = effect.icon;
+        practiceArea.appendChild(effectElement);
+        
+        setTimeout(() => {
+            effectElement.remove();
+        }, 2000);
+    }
+}
+
+// Initialize quizzes
+function initializeQuizzes() {
+    // Sorting quiz
+    const quizOptions = document.querySelectorAll('.quiz-option');
+    quizOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const house = option.dataset.house;
+            showSortingResult(house);
+        });
+    });
+
+    // Creature quiz
+    const creatureOptions = document.querySelectorAll('[data-answer]');
+    creatureOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const answer = option.dataset.answer;
+            showCreatureResult(answer);
+        });
+    });
+}
+
+// Show sorting result
+function showSortingResult(house) {
+    const houseNames = {
+        gryffindor: { name: 'Gryffindor', icon: '🦁', description: 'Welcome to the house of the brave!' },
+        slytherin: { name: 'Slytherin', icon: '🐍', description: 'Welcome to the house of the ambitious!' },
+        ravenclaw: { name: 'Ravenclaw', icon: '🦅', description: 'Welcome to the house of the wise!' },
+        hufflepuff: { name: 'Hufflepuff', icon: '🦡', description: 'Welcome to the house of the loyal!' }
+    };
+    
+    const result = houseNames[house];
+    if (result) {
+        const quizQuestion = document.querySelector('.quiz-question');
+        const quizResult = document.querySelector('.quiz-result');
+        
+        if (quizQuestion && quizResult) {
+            quizQuestion.style.display = 'none';
+            quizResult.style.display = 'block';
+            
+            const resultIcon = quizResult.querySelector('.result-icon');
+            const houseName = quizResult.querySelector('.house-name');
+            const resultDescription = quizResult.querySelector('.result-description');
+            
+            if (resultIcon) resultIcon.textContent = result.icon;
+            if (houseName) houseName.textContent = result.name;
+            if (resultDescription) resultDescription.textContent = result.description;
+        }
+    }
+}
+
+// Show creature result
+function showCreatureResult(answer) {
+    const correctAnswer = 'thestral';
+    const options = document.querySelectorAll('[data-answer]');
+    
+    options.forEach(option => {
+        if (option.dataset.answer === correctAnswer) {
+            option.style.background = '#30D158';
+            option.style.color = 'white';
+        } else if (option.dataset.answer === answer && answer !== correctAnswer) {
+            option.style.background = '#FF3B30';
+            option.style.color = 'white';
+        }
+    });
+    
+    setTimeout(() => {
+        options.forEach(option => {
+            option.style.background = '';
+            option.style.color = '';
+        });
+    }, 3000);
 }
 
 // Initialize parallax effects
@@ -336,31 +508,12 @@ function initializeParallax() {
         const scrolled = window.pageYOffset;
         
         // Parallax for floating elements
-        const floatingElements = document.querySelectorAll('.floating-book, .floating-wand, .floating-potion');
+        const floatingElements = document.querySelectorAll('.floating-icon');
         floatingElements.forEach((el, index) => {
-            const speed = 0.5 + (index * 0.1);
+            const speed = 0.2 + (index * 0.05);
             el.style.transform = `translateY(${scrolled * speed}px)`;
         });
-        
-        // Parallax for particles
-        const particles = document.querySelectorAll('.particle');
-        particles.forEach((particle, index) => {
-            const speed = 0.2 + (index * 0.05);
-            particle.style.transform = `translateY(${scrolled * speed}px)`;
-        });
     });
-}
-
-// Smooth scroll to section
-function scrollToSection(sectionId) {
-    const section = document.querySelector(`#${sectionId}`);
-    if (section) {
-        const offsetTop = section.offsetTop - 80;
-        window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-        });
-    }
 }
 
 // Show house modal (placeholder for future enhancement)
@@ -430,6 +583,21 @@ const additionalStyles = `
         }
     }
     
+    @keyframes practiceSpell {
+        0% { 
+            opacity: 0; 
+            transform: translate(-50%, -50%) scale(0); 
+        }
+        50% { 
+            opacity: 1; 
+            transform: translate(-50%, -50%) scale(1.2); 
+        }
+        100% { 
+            opacity: 0; 
+            transform: translate(-50%, -50%) scale(1.5); 
+        }
+    }
+    
     .nav-menu.active {
         display: flex;
         flex-direction: column;
@@ -443,15 +611,15 @@ const additionalStyles = `
         padding: 1rem 0;
     }
     
-    .hamburger.active span:nth-child(1) {
+    .nav-toggle.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
     
-    .hamburger.active span:nth-child(2) {
+    .nav-toggle.active span:nth-child(2) {
         opacity: 0;
     }
     
-    .hamburger.active span:nth-child(3) {
+    .nav-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
     }
 `;
@@ -483,7 +651,6 @@ window.addEventListener('load', () => {
 // Add cursor trail effect
 let mouseX = 0;
 let mouseY = 0;
-let trail = [];
 
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
