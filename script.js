@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeQuizzes();
     initializeParallax();
     initializeBrewing();
+    initializeBackgroundMusic();
 });
 
 // Initialize all animations
@@ -1159,4 +1160,103 @@ function throttle(func, limit) {
 // Apply throttling to scroll events
 window.addEventListener('scroll', throttle(() => {
     // Scroll effects are handled in initializeScrollEffects
-}, 16)); // ~60fps 
+}, 16)); // ~60fps
+
+// Background Music Management
+function initializeBackgroundMusic() {
+    const backgroundMusic = document.getElementById('background-music');
+    
+    if (backgroundMusic) {
+        // Set volume to a comfortable level (30%)
+        backgroundMusic.volume = 0.3;
+        
+        // Auto-play music when user interacts with the page
+        // (This is required by modern browsers to prevent unwanted autoplay)
+        const startMusic = () => {
+            backgroundMusic.play().catch(error => {
+                console.log('Background music autoplay prevented:', error);
+            });
+            // Remove event listeners after first interaction
+            document.removeEventListener('click', startMusic);
+            document.removeEventListener('keydown', startMusic);
+            document.removeEventListener('touchstart', startMusic);
+        };
+        
+        // Add event listeners for user interaction
+        document.addEventListener('click', startMusic);
+        document.addEventListener('keydown', startMusic);
+        document.addEventListener('touchstart', startMusic);
+        
+        // Add music controls to the page
+        const musicControls = document.createElement('div');
+        musicControls.className = 'music-controls';
+        musicControls.innerHTML = `
+            <button id="music-toggle" class="music-btn" title="Toggle Background Music">
+                🎵
+            </button>
+        `;
+        musicControls.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            padding: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        `;
+        
+        const musicBtn = musicControls.querySelector('#music-toggle');
+        musicBtn.style.cssText = `
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        `;
+        
+        // Toggle music play/pause
+        musicBtn.addEventListener('click', () => {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+                musicBtn.textContent = '🔇';
+                musicBtn.title = 'Pause Background Music';
+            } else {
+                backgroundMusic.pause();
+                musicBtn.textContent = '🎵';
+                musicBtn.title = 'Play Background Music';
+            }
+        });
+        
+        // Update button state based on music status
+        backgroundMusic.addEventListener('play', () => {
+            musicBtn.textContent = '🔇';
+            musicBtn.title = 'Pause Background Music';
+        });
+        
+        backgroundMusic.addEventListener('pause', () => {
+            musicBtn.textContent = '🎵';
+            musicBtn.title = 'Play Background Music';
+        });
+        
+        // Add hover effects
+        musicControls.addEventListener('mouseenter', () => {
+            musicControls.style.transform = 'scale(1.1)';
+            musicControls.style.background = 'rgba(0, 0, 0, 0.8)';
+        });
+        
+        musicControls.addEventListener('mouseleave', () => {
+            musicControls.style.transform = 'scale(1)';
+            musicControls.style.background = 'rgba(0, 0, 0, 0.7)';
+        });
+        
+        document.body.appendChild(musicControls);
+    }
+}
+
+ 
