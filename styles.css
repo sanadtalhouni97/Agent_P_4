@@ -4091,3 +4091,537 @@ html {
         align-items: center;
     }
 }
+
+/* Magical Trivia Quiz Styles */
+.magical-trivia {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+    position: relative;
+    overflow: hidden;
+}
+
+.trivia-quiz {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.quiz-progress {
+    margin-bottom: 2rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+    width: 20%;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.quiz-question h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.quiz-options {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.quiz-option {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.quiz-option:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+}
+
+.quiz-option.correct {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.quiz-option.incorrect {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.quiz-result {
+    text-align: center;
+}
+
+.quiz-result h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-blue);
+}
+
+.score-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+
+.score {
+    color: var(--accent-purple);
+    font-weight: bold;
+}
+
+.retake-quiz {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    border: none;
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.retake-quiz:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+/* Artifacts Gallery Styles */
+.artifacts-gallery {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1));
+    position: relative;
+    overflow: hidden;
+}
+
+.artifacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.artifact-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.artifact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.artifact-card:hover::before {
+    left: 100%;
+}
+
+.artifact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3);
+    border-color: rgba(245, 158, 11, 0.5);
+}
+
+.artifact-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: artifactFloat 3s ease-in-out infinite;
+}
+
+.artifact-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.artifact-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.artifact-power {
+    background: rgba(245, 158, 11, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    color: #f59e0b;
+    font-weight: 600;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+@keyframes artifactFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* Transportation Hub Styles */
+.transportation-hub {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1));
+    position: relative;
+    overflow: hidden;
+}
+
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.transport-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.transport-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.transport-card:hover::before {
+    left: 100%;
+}
+
+.transport-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.3);
+    border-color: rgba(34, 197, 94, 0.5);
+}
+
+.transport-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: transportFloat 3s ease-in-out infinite;
+}
+
+.transport-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.transport-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.transport-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.transport-details span {
+    background: rgba(34, 197, 94, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    color: #22c55e;
+    font-size: 0.9rem;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+@keyframes transportFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-5deg); }
+}
+
+/* Responsive design for new sections */
+@media (max-width: 768px) {
+    .trivia-quiz {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+    
+    .quiz-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .artifacts-grid,
+    .transport-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .artifact-card,
+    .transport-card {
+        padding: 1.5rem;
+    }
+}
+
+/* House Quiz Challenge Styles */
+.house-quiz-challenge {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
+    position: relative;
+    overflow: hidden;
+}
+
+.house-quiz {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Famous Members Gallery Styles */
+.famous-members-gallery {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+    position: relative;
+    overflow: hidden;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.member-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.member-card:hover::before {
+    left: 100%;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.3);
+    border-color: rgba(16, 185, 129, 0.5);
+}
+
+.member-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: memberFloat 3s ease-in-out infinite;
+}
+
+.member-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.member-house {
+    color: var(--accent-blue);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.member-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.member-achievements {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.member-achievements span {
+    background: rgba(16, 185, 129, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    color: #10b981;
+    font-size: 0.9rem;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+@keyframes memberFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+/* House Rivalries Styles */
+.house-rivalries {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
+    position: relative;
+    overflow: hidden;
+}
+
+.rivalries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.rivalry-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.rivalry-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.rivalry-card:hover::before {
+    left: 100%;
+}
+
+.rivalry-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+    border-color: rgba(168, 85, 247, 0.5);
+}
+
+.rivalry-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: rivalryFloat 3s ease-in-out infinite;
+}
+
+.rivalry-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.rivalry-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.rivalry-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.rivalry-details span {
+    background: rgba(168, 85, 247, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    color: #a855f7;
+    font-size: 0.9rem;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+@keyframes rivalryFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-3deg); }
+}
+
+/* Responsive design for house sections */
+@media (max-width: 768px) {
+    .house-quiz {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+    
+    .members-grid,
+    .rivalries-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .member-card,
+    .rivalry-card {
+        padding: 1.5rem;
+    }
+}

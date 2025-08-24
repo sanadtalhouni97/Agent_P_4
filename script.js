@@ -560,6 +560,12 @@ function initializeQuizzes() {
             showCreatureResult(answer);
         });
     });
+    
+    // Magical trivia quiz functionality
+    initializeTriviaQuiz();
+    
+    // House quiz functionality
+    initializeHouseQuiz();
 }
 
 // Sorting Quiz Variables
@@ -1170,6 +1176,9 @@ function initializeBackgroundMusic() {
         // Set volume to a comfortable level (30%)
         backgroundMusic.volume = 0.3;
         
+        // Ensure music loops continuously
+        backgroundMusic.loop = true;
+        
         // Auto-play music when user interacts with the page
         // (This is required by modern browsers to prevent unwanted autoplay)
         const startMusic = () => {
@@ -1186,6 +1195,14 @@ function initializeBackgroundMusic() {
         document.addEventListener('click', startMusic);
         document.addEventListener('keydown', startMusic);
         document.addEventListener('touchstart', startMusic);
+        
+        // Ensure music restarts if it stops for any reason
+        backgroundMusic.addEventListener('ended', () => {
+            backgroundMusic.currentTime = 0;
+            backgroundMusic.play().catch(error => {
+                console.log('Background music restart failed:', error);
+            });
+        });
         
         // Add music controls to the page
         const musicControls = document.createElement('div');
@@ -1257,6 +1274,250 @@ function initializeBackgroundMusic() {
         
         document.body.appendChild(musicControls);
     }
+}
+
+// Initialize magical trivia quiz
+function initializeTriviaQuiz() {
+    const triviaQuiz = document.querySelector('.trivia-quiz');
+    if (!triviaQuiz) return;
+    
+    const quizQuestions = [
+        {
+            question: "What is the name of Harry Potter's owl?",
+            options: ["Hedwig", "Errol", "Pigwidgeon", "Fawkes"],
+            correct: 0
+        },
+        {
+            question: "Which house is known for bravery and courage?",
+            options: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
+            correct: 0
+        },
+        {
+            question: "What spell is used to levitate objects?",
+            options: ["Wingardium Leviosa", "Lumos", "Alohomora", "Expecto Patronum"],
+            correct: 0
+        },
+        {
+            question: "What is the name of the Hogwarts school song?",
+            options: ["Hoggy Warty Hogwarts", "School Song", "Hogwarts Anthem", "Wizard's Melody"],
+            correct: 0
+        },
+        {
+            question: "Which platform does the Hogwarts Express depart from?",
+            options: ["Platform 9¾", "Platform 10", "Platform 8", "Platform 11"],
+            correct: 0
+        }
+    ];
+    
+    let currentQuestion = 0;
+    let score = 0;
+    let quizActive = false;
+    
+    const quizQuestion = triviaQuiz.querySelector('.quiz-question');
+    const quizResult = triviaQuiz.querySelector('.quiz-result');
+    const progressFill = triviaQuiz.querySelector('.progress-fill');
+    const progressText = triviaQuiz.querySelector('.progress-text');
+    const scoreElement = triviaQuiz.querySelector('.score');
+    const retakeButton = triviaQuiz.querySelector('.retake-quiz');
+    
+    function startTriviaQuiz() {
+        currentQuestion = 0;
+        score = 0;
+        quizActive = true;
+        showQuestion();
+        quizQuestion.style.display = 'block';
+        quizResult.style.display = 'none';
+    }
+    
+    function showQuestion() {
+        if (currentQuestion >= quizQuestions.length) {
+            endQuiz();
+            return;
+        }
+        
+        const question = quizQuestions[currentQuestion];
+        const questionTitle = quizQuestion.querySelector('h3');
+        const optionsContainer = quizQuestion.querySelector('.quiz-options');
+        
+        questionTitle.textContent = question.question;
+        progressText.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+        progressFill.style.width = `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+        
+        optionsContainer.innerHTML = '';
+        question.options.forEach((option, index) => {
+            const button = document.createElement('button');
+            button.className = 'quiz-option';
+            button.textContent = option;
+            button.addEventListener('click', () => selectAnswer(index));
+            optionsContainer.appendChild(button);
+        });
+    }
+    
+    function selectAnswer(selectedIndex) {
+        if (!quizActive) return;
+        
+        const question = quizQuestions[currentQuestion];
+        const options = quizQuestion.querySelectorAll('.quiz-option');
+        
+        options.forEach((option, index) => {
+            option.disabled = true;
+            if (index === question.correct) {
+                option.classList.add('correct');
+            } else if (index === selectedIndex && index !== question.correct) {
+                option.classList.add('incorrect');
+            }
+        });
+        
+        if (selectedIndex === question.correct) {
+            score++;
+        }
+        
+        setTimeout(() => {
+            currentQuestion++;
+            showQuestion();
+        }, 1500);
+    }
+    
+    function endQuiz() {
+        quizActive = false;
+        quizQuestion.style.display = 'none';
+        quizResult.style.display = 'block';
+        scoreElement.textContent = score;
+        progressFill.style.width = '100%';
+    }
+    
+    function resetTriviaQuiz() {
+        startTriviaQuiz();
+    }
+    
+    if (retakeButton) {
+        retakeButton.addEventListener('click', resetTriviaQuiz);
+    }
+    
+    // Start the quiz automatically
+    startTriviaQuiz();
+}
+
+// Initialize house quiz
+function initializeHouseQuiz() {
+    const houseQuiz = document.querySelector('.house-quiz');
+    if (!houseQuiz) return;
+    
+    const quizQuestions = [
+        {
+            question: "Which house is known for valuing intelligence and wit above all else?",
+            options: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
+            correct: 2
+        },
+        {
+            question: "What is the motto of Gryffindor house?",
+            options: ["Wit beyond measure", "Those cunning folk", "Where dwell the brave", "Hard work and loyalty"],
+            correct: 2
+        },
+        {
+            question: "Which house's common room is located in the dungeons?",
+            options: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
+            correct: 1
+        },
+        {
+            question: "What animal represents Hufflepuff house?",
+            options: ["Lion", "Snake", "Eagle", "Badger"],
+            correct: 3
+        },
+        {
+            question: "Which house is associated with the color green?",
+            options: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
+            correct: 1
+        }
+    ];
+    
+    let currentQuestion = 0;
+    let score = 0;
+    let quizActive = false;
+    
+    const quizQuestion = houseQuiz.querySelector('.quiz-question');
+    const quizResult = houseQuiz.querySelector('.quiz-result');
+    const progressFill = houseQuiz.querySelector('.progress-fill');
+    const progressText = houseQuiz.querySelector('.progress-text');
+    const scoreElement = houseQuiz.querySelector('.score');
+    const retakeButton = houseQuiz.querySelector('.retake-quiz');
+    
+    function startHouseQuiz() {
+        currentQuestion = 0;
+        score = 0;
+        quizActive = true;
+        showQuestion();
+        quizQuestion.style.display = 'block';
+        quizResult.style.display = 'none';
+    }
+    
+    function showQuestion() {
+        if (currentQuestion >= quizQuestions.length) {
+            endQuiz();
+            return;
+        }
+        
+        const question = quizQuestions[currentQuestion];
+        const questionTitle = quizQuestion.querySelector('h3');
+        const optionsContainer = quizQuestion.querySelector('.quiz-options');
+        
+        questionTitle.textContent = question.question;
+        progressText.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+        progressFill.style.width = `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+        
+        optionsContainer.innerHTML = '';
+        question.options.forEach((option, index) => {
+            const button = document.createElement('button');
+            button.className = 'quiz-option';
+            button.textContent = option;
+            button.addEventListener('click', () => selectAnswer(index));
+            optionsContainer.appendChild(button);
+        });
+    }
+    
+    function selectAnswer(selectedIndex) {
+        if (!quizActive) return;
+        
+        const question = quizQuestions[currentQuestion];
+        const options = quizQuestion.querySelectorAll('.quiz-option');
+        
+        options.forEach((option, index) => {
+            option.disabled = true;
+            if (index === question.correct) {
+                option.classList.add('correct');
+            } else if (index === selectedIndex && index !== question.correct) {
+                option.classList.add('incorrect');
+            }
+        });
+        
+        if (selectedIndex === question.correct) {
+            score++;
+        }
+        
+        setTimeout(() => {
+            currentQuestion++;
+            showQuestion();
+        }, 1500);
+    }
+    
+    function endQuiz() {
+        quizActive = false;
+        quizQuestion.style.display = 'none';
+        quizResult.style.display = 'block';
+        scoreElement.textContent = score;
+        progressFill.style.width = '100%';
+    }
+    
+    function resetHouseQuiz() {
+        startHouseQuiz();
+    }
+    
+    if (retakeButton) {
+        retakeButton.addEventListener('click', resetHouseQuiz);
+    }
+    
+    // Start the quiz automatically
+    startHouseQuiz();
 }
 
  
