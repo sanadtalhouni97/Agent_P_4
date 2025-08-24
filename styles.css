@@ -1073,6 +1073,468 @@ body {
     color: var(--text-secondary);
 }
 
+/* Locations Section */
+.locations-section {
+    padding: 6rem 0;
+}
+
+.locations-section:nth-child(even) {
+    background: var(--secondary-bg);
+}
+
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.location-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 15px 30px rgba(100, 210, 255, 0.2);
+}
+
+.location-image {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.location-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--accent-cyan);
+}
+
+.location-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.location-details {
+    margin-top: 1.5rem;
+}
+
+/* Artifacts Section */
+.artifacts-section {
+    padding: 6rem 0;
+}
+
+.artifacts-section:nth-child(even) {
+    background: var(--secondary-bg);
+}
+
+.artifacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.artifact-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.artifact-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-purple);
+    box-shadow: 0 15px 30px rgba(175, 82, 222, 0.2);
+}
+
+.artifact-image {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.artifact-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--accent-purple);
+}
+
+.artifact-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.artifact-details {
+    margin-bottom: 1.5rem;
+}
+
+.artifact-lore {
+    background: var(--tertiary-bg);
+    padding: 1rem;
+    border-radius: 12px;
+    border-left: 3px solid var(--accent-purple);
+}
+
+.artifact-lore h4 {
+    color: var(--accent-purple);
+    margin-bottom: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.artifact-lore p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Videos Section */
+.videos-section {
+    padding: 6rem 0;
+}
+
+.videos-section:nth-child(even) {
+    background: var(--secondary-bg);
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.video-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-orange);
+    box-shadow: 0 15px 30px rgba(255, 159, 10, 0.2);
+}
+
+.video-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.video-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 0.5rem;
+    color: var(--accent-orange);
+}
+
+.video-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.video-details {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.video-quality,
+.video-duration {
+    background: var(--tertiary-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-green);
+    box-shadow: 0 15px 30px rgba(48, 209, 88, 0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 1rem;
+    color: var(--accent-green);
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Plants Section */
+.plants-section {
+    padding: 6rem 0;
+}
+
+.plants-section:nth-child(even) {
+    background: var(--secondary-bg);
+}
+
+.plants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.plant-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.plant-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-green);
+    box-shadow: 0 15px 30px rgba(48, 209, 88, 0.2);
+}
+
+.plant-image {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.plant-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--accent-green);
+}
+
+.plant-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.plant-details {
+    margin-bottom: 1.5rem;
+}
+
+.plant-lore {
+    background: var(--tertiary-bg);
+    padding: 1rem;
+    border-radius: 12px;
+    border-left: 3px solid var(--accent-green);
+}
+
+.plant-lore h4 {
+    color: var(--accent-green);
+    margin-bottom: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.plant-lore p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Tips Grid */
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.tip-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 15px 30px rgba(100, 210, 255, 0.2);
+}
+
+.tip-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.tip-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 1rem;
+    color: var(--accent-cyan);
+}
+
+.tip-card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Transportation Section */
+.transportation-section {
+    padding: 6rem 0;
+}
+
+.transportation-section:nth-child(even) {
+    background: var(--secondary-bg);
+}
+
+.transportation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.transportation-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.transportation-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-orange);
+    box-shadow: 0 15px 30px rgba(255, 159, 10, 0.2);
+}
+
+.transportation-image {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.transportation-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--accent-orange);
+}
+
+.transportation-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.transportation-details {
+    margin-bottom: 1.5rem;
+}
+
+.transportation-lore {
+    background: var(--tertiary-bg);
+    padding: 1rem;
+    border-radius: 12px;
+    border-left: 3px solid var(--accent-orange);
+}
+
+.transportation-lore h4 {
+    color: var(--accent-orange);
+    margin-bottom: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.transportation-lore p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Safety Grid */
+.safety-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.safety-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.safety-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-pink);
+    box-shadow: 0 15px 30px rgba(255, 45, 146, 0.2);
+}
+
+.safety-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.safety-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 1rem;
+    color: var(--accent-pink);
+}
+
+.safety-card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
 /* Footer */
 .footer {
     background: var(--secondary-bg);
