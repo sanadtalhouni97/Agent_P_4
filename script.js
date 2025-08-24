@@ -115,6 +115,9 @@ function initializeNavigation() {
         }
     });
 
+    // Initialize dropdown functionality
+    initializeDropdownNavigation();
+
     // Navbar auto-hide/show and background on scroll
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
@@ -138,6 +141,49 @@ function initializeNavigation() {
         }
         
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+}
+
+// Initialize dropdown navigation
+function initializeDropdownNavigation() {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        const dropdownMenu = toggle.nextElementSibling;
+        
+        // Toggle dropdown on click
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Close other dropdowns
+            document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                if (menu !== dropdownMenu) {
+                    menu.classList.remove('show');
+                    menu.previousElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Toggle current dropdown
+            toggle.classList.toggle('active');
+            dropdownMenu.classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!toggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                toggle.classList.remove('active');
+                dropdownMenu.classList.remove('show');
+            }
+        });
+        
+        // Close dropdown on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                toggle.classList.remove('active');
+                dropdownMenu.classList.remove('show');
+            }
+        });
     });
 }
 
