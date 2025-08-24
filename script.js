@@ -436,6 +436,15 @@ function initializeSpellCasting() {
         
         const effect = spellEffects[spellName];
         if (effect) {
+            // Add casting effect to the button
+            const spellButton = document.querySelector(`[onclick="castSpell('${spellName}')"]`);
+            if (spellButton) {
+                spellButton.classList.add('casting');
+                setTimeout(() => {
+                    spellButton.classList.remove('casting');
+                }, 1000);
+            }
+            
             createSpellCastEffect(effect);
         }
     };
@@ -501,6 +510,10 @@ function createSpellCastEffect(effect) {
 function createPracticeEffect(effect) {
     const practiceArea = document.querySelector('.practice-target');
     if (practiceArea) {
+        // Add hit effect to target
+        practiceArea.classList.add('hit');
+        
+        // Create spell effect
         const effectElement = document.createElement('div');
         effectElement.style.cssText = `
             position: absolute;
@@ -510,12 +523,24 @@ function createPracticeEffect(effect) {
             font-size: 3rem;
             color: ${effect.color};
             animation: practiceSpell 2s ease-out forwards;
+            z-index: 10;
         `;
         effectElement.textContent = effect.icon;
         practiceArea.appendChild(effectElement);
         
+        // Add casting effect to the button
+        const spellButton = document.querySelector(`[onclick="practiceSpell('${effect.icon === '💡' ? 'lumos' : effect.icon === '🪶' ? 'wingardium-leviosa' : effect.icon === '🔓' ? 'alohomora' : 'protego'}')"]`);
+        if (spellButton) {
+            spellButton.classList.add('casting');
+            setTimeout(() => {
+                spellButton.classList.remove('casting');
+            }, 1000);
+        }
+        
+        // Remove effects after animation
         setTimeout(() => {
             effectElement.remove();
+            practiceArea.classList.remove('hit');
         }, 2000);
     }
 }
