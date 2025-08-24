@@ -523,14 +523,8 @@ function createPracticeEffect(effect) {
 // Initialize quizzes
 function initializeQuizzes() {
     // Sorting quiz
-    const quizOptions = document.querySelectorAll('.quiz-option');
-    quizOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            const house = option.dataset.house;
-            showSortingResult(house);
-        });
-    });
-
+    initializeSortingQuiz();
+    
     // Creature quiz
     const creatureOptions = document.querySelectorAll('[data-answer]');
     creatureOptions.forEach(option => {
@@ -541,33 +535,214 @@ function initializeQuizzes() {
     });
 }
 
+// Sorting Quiz Variables
+let currentQuestion = 1;
+let totalQuestions = 4;
+let houseScores = {
+    gryffindor: 0,
+    slytherin: 0,
+    ravenclaw: 0,
+    hufflepuff: 0
+};
+
+// Initialize sorting quiz
+function initializeSortingQuiz() {
+    const quizOptions = document.querySelectorAll('.quiz-option');
+    const retakeBtn = document.querySelector('.retake-quiz-btn');
+    
+    quizOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const house = option.dataset.house;
+            const points = parseInt(option.dataset.points) || 1;
+            
+            // Add points to house score
+            houseScores[house] += points;
+            
+            // Move to next question or show result
+            if (currentQuestion < totalQuestions) {
+                nextQuestion();
+            } else {
+                showSortingResult();
+            }
+        });
+    });
+    
+    // Retake quiz button
+    if (retakeBtn) {
+        retakeBtn.addEventListener('click', resetQuiz);
+    }
+}
+
+// Move to next question
+function nextQuestion() {
+    const currentQuestionEl = document.querySelector(`#question${currentQuestion}`);
+    const nextQuestionEl = document.querySelector(`#question${currentQuestion + 1}`);
+    
+    if (currentQuestionEl && nextQuestionEl) {
+        // Hide current question with fade out
+        currentQuestionEl.style.opacity = '0';
+        currentQuestionEl.style.transform = 'translateY(-20px)';
+        
+        setTimeout(() => {
+            currentQuestionEl.style.display = 'none';
+            currentQuestion++;
+            
+            // Show next question with fade in
+            nextQuestionEl.style.display = 'block';
+            nextQuestionEl.style.opacity = '0';
+            nextQuestionEl.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                nextQuestionEl.style.opacity = '1';
+                nextQuestionEl.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Update progress
+            updateProgress();
+        }, 300);
+    }
+}
+
+// Update progress bar
+function updateProgress() {
+    const progressFill = document.querySelector('.progress-fill');
+    const currentQuestionSpan = document.querySelector('.current-question');
+    
+    if (progressFill) {
+        const progress = (currentQuestion / totalQuestions) * 100;
+        progressFill.style.width = `${progress}%`;
+    }
+    
+    if (currentQuestionSpan) {
+        currentQuestionSpan.textContent = currentQuestion;
+    }
+}
+
 // Show sorting result
-function showSortingResult(house) {
+function showSortingResult() {
     const houseNames = {
-        gryffindor: { name: 'Gryffindor', icon: '🦁', description: 'Welcome to the house of the brave!' },
-        slytherin: { name: 'Slytherin', icon: '🐍', description: 'Welcome to the house of the ambitious!' },
-        ravenclaw: { name: 'Ravenclaw', icon: '🦅', description: 'Welcome to the house of the wise!' },
-        hufflepuff: { name: 'Hufflepuff', icon: '🦡', description: 'Welcome to the house of the loyal!' }
+        gryffindor: { 
+            name: 'Gryffindor', 
+            icon: '🦁', 
+            description: 'Welcome to the house of the brave!',
+            traits: ['💪 Bravery', '⚡ Courage', '🔥 Determination', '🦁 Chivalry']
+        },
+        slytherin: { 
+            name: 'Slytherin', 
+            icon: '🐍', 
+            description: 'Welcome to the house of the ambitious!',
+            traits: ['🎯 Ambition', '🧠 Cunning', '💎 Resourcefulness', '🐍 Leadership']
+        },
+        ravenclaw: { 
+            name: 'Ravenclaw', 
+            icon: '🦅', 
+            description: 'Welcome to the house of the wise!',
+            traits: ['🧠 Intelligence', '💡 Creativity', '📚 Learning', '🦅 Wisdom']
+        },
+        hufflepuff: { 
+            name: 'Hufflepuff', 
+            icon: '🦡', 
+            description: 'Welcome to the house of the loyal!',
+            traits: ['🤝 Loyalty', '⏰ Patience', '💛 Hard Work', '🦡 Kindness']
+        }
     };
     
-    const result = houseNames[house];
+    // Find the house with highest score
+    const sortedHouses = Object.entries(houseScores).sort(([,a], [,b]) => b - a);
+    const winningHouse = sortedHouses[0][0];
+    const result = houseNames[winningHouse];
+    
     if (result) {
-        const quizQuestion = document.querySelector('.quiz-question');
+        const quizQuestions = document.querySelectorAll('.quiz-question');
         const quizResult = document.querySelector('.quiz-result');
         
-        if (quizQuestion && quizResult) {
-            quizQuestion.style.display = 'none';
-            quizResult.style.display = 'block';
+        if (quizResult) {
+            // Hide all questions
+            quizQuestions.forEach(q => {
+                q.style.opacity = '0';
+                q.style.transform = 'translateY(-20px)';
+                setTimeout(() => q.style.display = 'none', 300);
+            });
             
-            const resultIcon = quizResult.querySelector('.result-icon');
-            const houseName = quizResult.querySelector('.house-name');
-            const resultDescription = quizResult.querySelector('.result-description');
-            
-            if (resultIcon) resultIcon.textContent = result.icon;
-            if (houseName) houseName.textContent = result.name;
-            if (resultDescription) resultDescription.textContent = result.description;
+            // Show result with animation
+            setTimeout(() => {
+                quizResult.style.display = 'block';
+                quizResult.style.opacity = '0';
+                quizResult.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    quizResult.style.opacity = '1';
+                    quizResult.style.transform = 'translateY(0)';
+                }, 100);
+                
+                // Update result content
+                const resultIcon = quizResult.querySelector('.result-icon');
+                const houseName = quizResult.querySelector('.house-name');
+                const resultDescription = quizResult.querySelector('.result-description');
+                const traitsList = quizResult.querySelector('.traits-list');
+                
+                if (resultIcon) resultIcon.textContent = result.icon;
+                if (houseName) houseName.textContent = result.name;
+                if (resultDescription) resultDescription.textContent = result.description;
+                
+                if (traitsList) {
+                    traitsList.innerHTML = '';
+                    result.traits.forEach(trait => {
+                        const traitSpan = document.createElement('span');
+                        traitSpan.className = 'trait';
+                        traitSpan.textContent = trait;
+                        traitsList.appendChild(traitSpan);
+                    });
+                }
+                
+                // Update progress to 100%
+                updateProgress();
+            }, 400);
         }
     }
+}
+
+// Reset quiz
+function resetQuiz() {
+    currentQuestion = 1;
+    houseScores = {
+        gryffindor: 0,
+        slytherin: 0,
+        ravenclaw: 0,
+        hufflepuff: 0
+    };
+    
+    const quizQuestions = document.querySelectorAll('.quiz-question');
+    const quizResult = document.querySelector('.quiz-result');
+    
+    // Hide result
+    if (quizResult) {
+        quizResult.style.opacity = '0';
+        quizResult.style.transform = 'translateY(-20px)';
+        setTimeout(() => quizResult.style.display = 'none', 300);
+    }
+    
+    // Show first question
+    setTimeout(() => {
+        quizQuestions.forEach((q, index) => {
+            if (index === 0) {
+                q.style.display = 'block';
+                q.style.opacity = '0';
+                q.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    q.style.opacity = '1';
+                    q.style.transform = 'translateY(0)';
+                }, 100);
+            } else {
+                q.style.display = 'none';
+                q.style.opacity = '1';
+                q.style.transform = 'translateY(0)';
+            }
+        });
+        
+        // Reset progress
+        updateProgress();
+    }, 400);
 }
 
 // Show creature result

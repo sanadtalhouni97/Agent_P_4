@@ -2117,4 +2117,465 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-purple);
+}
+
+/* Sorting Quiz Section */
+.sorting-quiz {
+    padding: 6rem 0;
+    background: var(--secondary-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.sorting-quiz::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(175, 82, 222, 0.1) 0%, rgba(0, 122, 255, 0.1) 100%);
+    pointer-events: none;
+}
+
+.sorting-hat-animation {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.hat-container {
+    position: relative;
+    display: inline-block;
+}
+
+.sorting-hat-icon {
+    font-size: 4rem;
+    animation: hatBounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(175, 82, 222, 0.5));
+}
+
+.magic-sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: sparkleFloat 3s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.sparkle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 30%; right: 30%; animation-delay: 0.5s; }
+.sparkle:nth-child(3) { top: 60%; left: 40%; animation-delay: 1s; }
+.sparkle:nth-child(4) { top: 40%; right: 20%; animation-delay: 1.5s; }
+.sparkle:nth-child(5) { top: 70%; left: 60%; animation-delay: 2s; }
+
+@keyframes hatBounce {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes sparkleFloat {
+    0%, 100% { 
+        transform: translateY(0px) scale(1); 
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translateY(-15px) scale(1.2); 
+        opacity: 1;
+    }
+}
+
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-question {
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.quiz-question h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.quiz-option {
+    background: var(--tertiary-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-align: left;
+}
+
+.quiz-option:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.3);
+}
+
+.quiz-option:active {
+    transform: translateY(0);
+}
+
+.quiz-result {
+    text-align: center;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.quiz-result h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.result-house {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 2rem 0;
+}
+
+.result-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: resultPulse 2s ease-in-out infinite;
+}
+
+@keyframes resultPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.result-house h4 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.house-name {
+    color: var(--accent-purple);
+    font-weight: 700;
+}
+
+.result-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.house-traits-result {
+    margin: 2rem 0;
+}
+
+.house-traits-result h5 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.traits-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.trait {
+    background: var(--accent-purple);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.retake-quiz-btn {
+    background: var(--accent-green);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.retake-quiz-btn:hover {
+    background: #28a745;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(48, 209, 88, 0.3);
+}
+
+.quiz-progress {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--tertiary-bg);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 25%;
+}
+
+.progress-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* House Comparison Section */
+.house-comparison {
+    padding: 6rem 0;
+    background: var(--primary-bg);
+    position: relative;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.comparison-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.comparison-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+}
+
+.comparison-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.comparison-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.comparison-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: comparisonFloat 3s ease-in-out infinite;
+}
+
+@keyframes comparisonFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.comparison-header h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.comparison-content {
+    text-align: center;
+}
+
+.vs-element {
+    font-size: 2rem;
+    margin: 1rem 0;
+    animation: vsPulse 2s ease-in-out infinite;
+}
+
+@keyframes vsPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+.comparison-content p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.comparison-traits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.trait-column {
+    text-align: center;
+}
+
+.trait-column h4 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.trait-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.trait-column li {
+    color: var(--text-secondary);
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.trait-column li:hover {
+    color: var(--text-primary);
+}
+
+/* Responsive Design for Quiz and Comparison */
+@media (max-width: 768px) {
+    .quiz-container {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+    
+    .quiz-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .quiz-option {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .result-house {
+        padding: 2rem;
+    }
+    
+    .result-icon {
+        font-size: 3rem;
+    }
+    
+    .result-house h4 {
+        font-size: 1.5rem;
+    }
+    
+    .traits-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .comparison-card {
+        padding: 2rem;
+    }
+    
+    .comparison-traits {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .comparison-icon {
+        font-size: 2.5rem;
+    }
+    
+    .comparison-header h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .quiz-container {
+        padding: 1.5rem;
+    }
+    
+    .quiz-question h3 {
+        font-size: 1.2rem;
+    }
+    
+    .quiz-option {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .result-house {
+        padding: 1.5rem;
+    }
+    
+    .result-icon {
+        font-size: 2.5rem;
+    }
+    
+    .result-house h4 {
+        font-size: 1.3rem;
+    }
+    
+    .comparison-card {
+        padding: 1.5rem;
+    }
+    
+    .comparison-icon {
+        font-size: 2rem;
+    }
+    
+    .comparison-header h3 {
+        font-size: 1.1rem;
+    }
 } 
