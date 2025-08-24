@@ -566,6 +566,12 @@ function initializeQuizzes() {
     
     // House quiz functionality
     initializeHouseQuiz();
+    
+    // Spell mastery quiz functionality
+    initializeSpellMasteryQuiz();
+    
+    // Creature care quiz functionality
+    initializeCreatureCareQuiz();
 }
 
 // Sorting Quiz Variables
@@ -1518,6 +1524,250 @@ function initializeHouseQuiz() {
     
     // Start the quiz automatically
     startHouseQuiz();
+}
+
+// Initialize spell mastery quiz
+function initializeSpellMasteryQuiz() {
+    const masteryQuiz = document.querySelector('.mastery-quiz');
+    if (!masteryQuiz) return;
+    
+    const spellQuestions = [
+        {
+            question: "What spell is used to unlock doors?",
+            options: ["Lumos", "Alohomora", "Wingardium Leviosa", "Protego"],
+            correct: 1
+        },
+        {
+            question: "Which spell creates light from your wand?",
+            options: ["Lumos", "Nox", "Alohomora", "Wingardium Leviosa"],
+            correct: 0
+        },
+        {
+            question: "What spell is used to levitate objects?",
+            options: ["Lumos", "Alohomora", "Wingardium Leviosa", "Protego"],
+            correct: 2
+        },
+        {
+            question: "Which spell creates a protective shield?",
+            options: ["Lumos", "Alohomora", "Wingardium Leviosa", "Protego"],
+            correct: 3
+        },
+        {
+            question: "What spell extinguishes light?",
+            options: ["Lumos", "Nox", "Alohomora", "Wingardium Leviosa"],
+            correct: 1
+        }
+    ];
+    
+    let currentQuestion = 0;
+    let score = 0;
+    let quizActive = false;
+    
+    const quizQuestion = masteryQuiz.querySelector('.quiz-question');
+    const quizResult = masteryQuiz.querySelector('.quiz-result');
+    const progressFill = masteryQuiz.querySelector('.progress-fill');
+    const progressText = masteryQuiz.querySelector('.progress-text');
+    const scoreElement = masteryQuiz.querySelector('.score');
+    const retakeButton = masteryQuiz.querySelector('.retake-quiz');
+    
+    function startMasteryQuiz() {
+        currentQuestion = 0;
+        score = 0;
+        quizActive = true;
+        showQuestion();
+        quizQuestion.style.display = 'block';
+        quizResult.style.display = 'none';
+    }
+    
+    function showQuestion() {
+        if (currentQuestion >= spellQuestions.length) {
+            endQuiz();
+            return;
+        }
+        
+        const question = spellQuestions[currentQuestion];
+        const questionTitle = quizQuestion.querySelector('h3');
+        const optionsContainer = quizQuestion.querySelector('.quiz-options');
+        
+        questionTitle.textContent = question.question;
+        progressText.textContent = `Question ${currentQuestion + 1} of ${spellQuestions.length}`;
+        progressFill.style.width = `${((currentQuestion + 1) / spellQuestions.length) * 100}%`;
+        
+        optionsContainer.innerHTML = '';
+        question.options.forEach((option, index) => {
+            const button = document.createElement('button');
+            button.className = 'quiz-option';
+            button.textContent = option;
+            button.addEventListener('click', () => selectAnswer(index));
+            optionsContainer.appendChild(button);
+        });
+    }
+    
+    function selectAnswer(selectedIndex) {
+        if (!quizActive) return;
+        
+        const question = spellQuestions[currentQuestion];
+        const options = quizQuestion.querySelectorAll('.quiz-option');
+        
+        options.forEach((option, index) => {
+            option.disabled = true;
+            if (index === question.correct) {
+                option.classList.add('correct');
+            } else if (index === selectedIndex && index !== question.correct) {
+                option.classList.add('incorrect');
+            }
+        });
+        
+        if (selectedIndex === question.correct) {
+            score++;
+        }
+        
+        setTimeout(() => {
+            currentQuestion++;
+            showQuestion();
+        }, 1500);
+    }
+    
+    function endQuiz() {
+        quizActive = false;
+        quizQuestion.style.display = 'none';
+        quizResult.style.display = 'block';
+        scoreElement.textContent = score;
+        progressFill.style.width = '100%';
+    }
+    
+    function resetMasteryQuiz() {
+        startMasteryQuiz();
+    }
+    
+    if (retakeButton) {
+        retakeButton.addEventListener('click', resetMasteryQuiz);
+    }
+    
+    // Start the quiz automatically
+    startMasteryQuiz();
+}
+
+// Initialize creature care quiz
+function initializeCreatureCareQuiz() {
+    const careQuiz = document.querySelector('.care-quiz');
+    if (!careQuiz) return;
+    
+    const careQuestions = [
+        {
+            question: "What should you feed a Hippogriff to gain its trust?",
+            options: ["Dragon meat", "Dead ferrets", "Phoenix feathers", "Unicorn blood"],
+            correct: 1
+        },
+        {
+            question: "How should you approach a Hippogriff?",
+            options: ["Run towards it", "Bow and wait", "Cast a spell", "Ignore it"],
+            correct: 1
+        },
+        {
+            question: "What do Thestrals eat?",
+            options: ["Grass", "Meat", "Insects", "They don't eat"],
+            correct: 1
+        },
+        {
+            question: "How do you calm a nervous Phoenix?",
+            options: ["Sing to it", "Feed it", "Pet it", "Leave it alone"],
+            correct: 0
+        },
+        {
+            question: "What should you never do around a Dragon?",
+            options: ["Make eye contact", "Make sudden movements", "Speak loudly", "All of the above"],
+            correct: 3
+        }
+    ];
+    
+    let currentQuestion = 0;
+    let score = 0;
+    let quizActive = false;
+    
+    const quizQuestion = careQuiz.querySelector('.quiz-question');
+    const quizResult = careQuiz.querySelector('.quiz-result');
+    const progressFill = careQuiz.querySelector('.progress-fill');
+    const progressText = careQuiz.querySelector('.progress-text');
+    const scoreElement = careQuiz.querySelector('.score');
+    const retakeButton = careQuiz.querySelector('.retake-quiz');
+    
+    function startCareQuiz() {
+        currentQuestion = 0;
+        score = 0;
+        quizActive = true;
+        showQuestion();
+        quizQuestion.style.display = 'block';
+        quizResult.style.display = 'none';
+    }
+    
+    function showQuestion() {
+        if (currentQuestion >= careQuestions.length) {
+            endQuiz();
+            return;
+        }
+        
+        const question = careQuestions[currentQuestion];
+        const questionTitle = quizQuestion.querySelector('h3');
+        const optionsContainer = quizQuestion.querySelector('.quiz-options');
+        
+        questionTitle.textContent = question.question;
+        progressText.textContent = `Question ${currentQuestion + 1} of ${careQuestions.length}`;
+        progressFill.style.width = `${((currentQuestion + 1) / careQuestions.length) * 100}%`;
+        
+        optionsContainer.innerHTML = '';
+        question.options.forEach((option, index) => {
+            const button = document.createElement('button');
+            button.className = 'quiz-option';
+            button.textContent = option;
+            button.addEventListener('click', () => selectAnswer(index));
+            optionsContainer.appendChild(button);
+        });
+    }
+    
+    function selectAnswer(selectedIndex) {
+        if (!quizActive) return;
+        
+        const question = careQuestions[currentQuestion];
+        const options = quizQuestion.querySelectorAll('.quiz-option');
+        
+        options.forEach((option, index) => {
+            option.disabled = true;
+            if (index === question.correct) {
+                option.classList.add('correct');
+            } else if (index === selectedIndex && index !== question.correct) {
+                option.classList.add('incorrect');
+            }
+        });
+        
+        if (selectedIndex === question.correct) {
+            score++;
+        }
+        
+        setTimeout(() => {
+            currentQuestion++;
+            showQuestion();
+        }, 1500);
+    }
+    
+    function endQuiz() {
+        quizActive = false;
+        quizQuestion.style.display = 'none';
+        quizResult.style.display = 'block';
+        scoreElement.textContent = score;
+        progressFill.style.width = '100%';
+    }
+    
+    function resetCareQuiz() {
+        startCareQuiz();
+    }
+    
+    if (retakeButton) {
+        retakeButton.addEventListener('click', resetCareQuiz);
+    }
+    
+    // Start the quiz automatically
+    startCareQuiz();
 }
 
  
