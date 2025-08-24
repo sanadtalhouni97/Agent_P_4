@@ -19,6 +19,17 @@
         <div class="floating-icon">💎</div>
         <div class="floating-icon">🔥</div>
         <div class="floating-icon">🌟</div>
+        <div class="floating-icon">🎩</div>
+        <div class="floating-icon">✨</div>
+        <div class="floating-icon">💫</div>
+        <div class="floating-icon">⭐</div>
+        <div class="floating-icon">🏰</div>
+        <div class="floating-icon">🪄</div>
+        <div class="floating-icon">🎭</div>
+        <div class="floating-icon">💪</div>
+        <div class="floating-icon">🧠</div>
+        <div class="floating-icon">🤝</div>
+        <div class="floating-icon">🎯</div>
     </div>
 
     <!-- Navigation -->
@@ -281,24 +292,154 @@
     <!-- Sorting Quiz Section -->
     <section class="sorting-quiz">
         <div class="container">
-            <h2 class="section-title">🎩 Take the Sorting Quiz! 🎩</h2>
-            <p class="section-subtitle">🧠 Let's see where the Sorting Hat would place you! 🧠</p>
-            <div class="quiz-container">
-                <div class="quiz-question">
-                    <h3>Question 1: What's your favorite way to spend a weekend? 🌟</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-option" data-house="gryffindor">⚔️ Going on an adventure!</button>
-                        <button class="quiz-option" data-house="slytherin">🎯 Working towards my goals</button>
-                        <button class="quiz-option" data-house="ravenclaw">📚 Reading and learning</button>
-                        <button class="quiz-option" data-house="hufflepuff">🤗 Spending time with friends</button>
+            <h2 class="section-title animate-in">🎩 Take the Sorting Quiz! 🎩</h2>
+            <p class="section-subtitle animate-in">🧠 Let's see where the Sorting Hat would place you! 🧠</p>
+            
+            <!-- Animated Sorting Hat -->
+            <div class="sorting-hat-animation">
+                <div class="hat-container">
+                    <div class="sorting-hat-icon">🎩</div>
+                    <div class="magic-sparkles">
+                        <div class="sparkle">✨</div>
+                        <div class="sparkle">⭐</div>
+                        <div class="sparkle">💫</div>
+                        <div class="sparkle">🌟</div>
+                        <div class="sparkle">✨</div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="quiz-container">
+                <div class="quiz-question" id="question1">
+                    <h3>Question 1: What's your favorite way to spend a weekend? 🌟</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-house="gryffindor" data-points="3">⚔️ Going on an adventure!</button>
+                        <button class="quiz-option" data-house="slytherin" data-points="3">🎯 Working towards my goals</button>
+                        <button class="quiz-option" data-house="ravenclaw" data-points="3">📚 Reading and learning</button>
+                        <button class="quiz-option" data-house="hufflepuff" data-points="3">🤗 Spending time with friends</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-question" id="question2" style="display: none;">
+                    <h3>Question 2: Which magical creature would you choose as a companion? 🐉</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-house="gryffindor" data-points="2">🦁 A brave lion</button>
+                        <button class="quiz-option" data-house="slytherin" data-points="2">🐍 A cunning snake</button>
+                        <button class="quiz-option" data-house="ravenclaw" data-points="2">🦅 A wise eagle</button>
+                        <button class="quiz-option" data-house="hufflepuff" data-points="2">🦡 A loyal badger</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-question" id="question3" style="display: none;">
+                    <h3>Question 3: What's your greatest strength? 💪</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-house="gryffindor" data-points="2">⚡ Courage and bravery</button>
+                        <button class="quiz-option" data-house="slytherin" data-points="2">🎯 Ambition and determination</button>
+                        <button class="quiz-option" data-house="ravenclaw" data-points="2">🧠 Intelligence and wisdom</button>
+                        <button class="quiz-option" data-house="hufflepuff" data-points="2">🤝 Loyalty and kindness</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-question" id="question4" style="display: none;">
+                    <h3>Question 4: What would you do if you found a lost item? 🔍</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-house="gryffindor" data-points="1">⚔️ Search for the owner immediately</button>
+                        <button class="quiz-option" data-house="slytherin" data-points="1">🎯 Keep it if it's valuable</button>
+                        <button class="quiz-option" data-house="ravenclaw" data-points="1">📚 Research its origins first</button>
+                        <button class="quiz-option" data-house="hufflepuff" data-points="1">🤗 Turn it in to lost and found</button>
+                    </div>
+                </div>
+                
                 <div class="quiz-result" style="display: none;">
                     <h3>🎭 The Sorting Hat has decided! 🎭</h3>
                     <div class="result-house">
                         <div class="result-icon">🦁</div>
                         <h4>You belong in <span class="house-name">Gryffindor</span>!</h4>
                         <p class="result-description">Welcome to the house of the brave! 🦁</p>
+                        <div class="house-traits-result">
+                            <h5>Your House Traits:</h5>
+                            <div class="traits-list">
+                                <span class="trait">💪 Bravery</span>
+                                <span class="trait">⚡ Courage</span>
+                                <span class="trait">🔥 Determination</span>
+                                <span class="trait">🦁 Chivalry</span>
+                            </div>
+                        </div>
+                        <button class="retake-quiz-btn">🔄 Take Quiz Again</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quiz Progress -->
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <span class="progress-text">Question <span class="current-question">1</span> of 4</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- House Comparison Section -->
+    <section class="house-comparison">
+        <div class="container">
+            <h2 class="section-title animate-in">⚖️ House Comparison ⚖️</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <div class="comparison-icon">🦁</div>
+                        <h3>Gryffindor vs Slytherin</h3>
+                    </div>
+                    <div class="comparison-content">
+                        <div class="vs-element">⚔️</div>
+                        <p>Bravery vs Ambition - Two sides of the same coin! 🎭</p>
+                        <div class="comparison-traits">
+                            <div class="trait-column">
+                                <h4>🦁 Gryffindor</h4>
+                                <ul>
+                                    <li>💪 Courage</li>
+                                    <li>⚡ Bravery</li>
+                                    <li>🔥 Determination</li>
+                                </ul>
+                            </div>
+                            <div class="trait-column">
+                                <h4>🐍 Slytherin</h4>
+                                <ul>
+                                    <li>🎯 Ambition</li>
+                                    <li>🧠 Cunning</li>
+                                    <li>💎 Resourcefulness</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <div class="comparison-icon">🦅</div>
+                        <h3>Ravenclaw vs Hufflepuff</h3>
+                    </div>
+                    <div class="comparison-content">
+                        <div class="vs-element">⚖️</div>
+                        <p>Wisdom vs Loyalty - Both equally valuable! 🌟</p>
+                        <div class="comparison-traits">
+                            <div class="trait-column">
+                                <h4>🦅 Ravenclaw</h4>
+                                <ul>
+                                    <li>🧠 Intelligence</li>
+                                    <li>💡 Creativity</li>
+                                    <li>📚 Learning</li>
+                                </ul>
+                            </div>
+                            <div class="trait-column">
+                                <h4>🦡 Hufflepuff</h4>
+                                <ul>
+                                    <li>🤝 Loyalty</li>
+                                    <li>⏰ Patience</li>
+                                    <li>💛 Hard Work</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -340,7 +481,7 @@
             </div>
             <div class="footer-bottom">
                 <p>✨ Made with magic and love for the wizarding world! ✨</p>
-                <p>© 2024 Hogwarts Hub - All rights reserved! 🏰</p>
+                <p>© 2025 Hogwarts Hub - All rights reserved! 🏰</p>
             </div>
         </div>
     </footer>
