@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSpellCasting();
     initializeQuizzes();
     initializeParallax();
+    initializeBrewing();
 });
 
 // Initialize all animations
@@ -990,6 +991,156 @@ trailStyle.textContent = `
     }
 `;
 document.head.appendChild(trailStyle);
+
+// Initialize brewing functionality
+function initializeBrewing() {
+    const ingredients = document.querySelectorAll('.ingredient');
+    const cauldron = document.querySelector('.cauldron');
+    
+    if (ingredients.length > 0 && cauldron) {
+        ingredients.forEach(ingredient => {
+            ingredient.addEventListener('click', function() {
+                // Add click effect
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+                
+                // Create ingredient effect
+                createIngredientEffect(this.textContent, cauldron);
+            });
+            
+            // Add hover sound effect (visual feedback)
+            ingredient.addEventListener('mouseenter', function() {
+                this.style.animation = 'ingredientHover 0.3s ease';
+            });
+            
+            ingredient.addEventListener('mouseleave', function() {
+                this.style.animation = '';
+            });
+        });
+        
+        // Add cauldron interaction
+        cauldron.addEventListener('click', function() {
+            createCauldronEffect(this);
+        });
+    }
+}
+
+// Create ingredient effect when clicked
+function createIngredientEffect(ingredientName, cauldron) {
+    const effect = document.createElement('div');
+    effect.className = 'ingredient-effect';
+    effect.textContent = ingredientName.split(' ')[0]; // Get emoji
+    effect.style.cssText = `
+        position: absolute;
+        font-size: 2rem;
+        pointer-events: none;
+        z-index: 1000;
+        animation: ingredientToCauldron 1s ease-out forwards;
+    `;
+    
+    // Position effect near the ingredient
+    const rect = event.target.getBoundingClientRect();
+    effect.style.left = rect.left + rect.width / 2 + 'px';
+    effect.style.top = rect.top + rect.height / 2 + 'px';
+    
+    document.body.appendChild(effect);
+    
+    // Remove effect after animation
+    setTimeout(() => {
+        effect.remove();
+    }, 1000);
+    
+    // Add cauldron reaction
+    setTimeout(() => {
+        createCauldronBubble(cauldron);
+    }, 500);
+}
+
+// Create cauldron bubble effect
+function createCauldronBubble(cauldron) {
+    const bubble = document.createElement('div');
+    bubble.className = 'cauldron-bubble';
+    bubble.textContent = '💨';
+    bubble.style.cssText = `
+        position: absolute;
+        font-size: 1.5rem;
+        pointer-events: none;
+        z-index: 1001;
+        animation: bubbleRise 2s ease-out forwards;
+    `;
+    
+    const rect = cauldron.getBoundingClientRect();
+    bubble.style.left = rect.left + rect.width / 2 + 'px';
+    bubble.style.top = rect.top + rect.height / 2 + 'px';
+    
+    document.body.appendChild(bubble);
+    
+    setTimeout(() => {
+        bubble.remove();
+    }, 2000);
+}
+
+// Create cauldron click effect
+function createCauldronEffect(cauldron) {
+    cauldron.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        cauldron.style.transform = '';
+    }, 200);
+    
+    // Create multiple bubbles
+    for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+            createCauldronBubble(cauldron);
+        }, i * 200);
+    }
+}
+
+// Add brewing animations to CSS
+const brewingAnimations = document.createElement('style');
+brewingAnimations.textContent = `
+    @keyframes ingredientToCauldron {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0.8;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(0.5);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes bubbleRise {
+        0% {
+            transform: translate(-50%, -50%) scale(0.5);
+            opacity: 0;
+        }
+        20% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        80% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0.8;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes ingredientHover {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+`;
+document.head.appendChild(brewingAnimations);
 
 // Performance optimization: Throttle scroll events
 function throttle(func, limit) {
