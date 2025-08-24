@@ -800,6 +800,10 @@ body {
     font-size: 3rem;
     text-align: center;
     margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.section-title span {
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -3387,11 +3391,15 @@ html {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 4rem;
+    color: var(--text-primary);
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+.brewing-section .section-title span {
     background: linear-gradient(135deg, var(--accent-orange), var(--accent-purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: titleGlow 3s ease-in-out infinite;
 }
 
 @keyframes titleGlow {
